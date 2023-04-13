@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Doctor Consultation</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    <style>
+        .navbar {
+            margin: 5px;
+            background-color: rgb(41, 41, 41);
+            position: relative;
+            /* border-radius: 40px; */
+
+        }
+
+        .navbar::before {
+            content: '';
+            background-color: blueviolet;
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            z-index: -1;
+            opacity: 0.4;
+        }
+
+        .navbar ul {
+            margin: 1px;
+            overflow: auto;
+        }
+
+        .navbar li {
+            float: left;
+            list-style: none;
+            margin: 20px 20px;
+        }
+
+        .navbar li a {
+            padding: 3px 3px;
+            color: white;
+            list-style: none;
+            text-decoration: none;
+        }
+
+        .navbar li a:hover {
+            /* background-color: blueviolet; */
+
+        }
+
+        .footer li a:hover {
+            color: gold;
+
+        }
+
+        #search {
+            /* margin-top: 50px; */
+            width: 100%;
+            position: absolute;
+            /* bottom: 416px;
+            left: 320px;
+            height: 36px; */
+            text-align: center;
+            width: 50%;
+            border-radius: 40px;
+            padding: 6px 20px 5px 30px;
+            overflow: auto;
+            display: flex;
+
+
+            /* width: 100%; */
+            /* justify-content: center; */
+            flex-wrap: wrap;
+            flex-grow: inherit;
+            /* display: flex; */
+
+
+
+        }
+
+        #logo {
+            /* padding: 10px; */
+            width: 135px;
+            float: right;
+
+
+        }
+
+        .navbar ul li a {
+
+            display: block;
+            /* padding: 3px 22px; */
+            border-radius: 20px;
+
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        main {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .doctor-card {
+            background-color: #f5f5f5;
+            border-radius: 0.5rem;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            padding: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .doctor-card img {
+            width: 150px;
+            height: 150px;
+            margin-right: 2rem;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .details {
+            flex: 1;
+        }
+
+        .consultation-options {
+            margin-left: 2rem;
+        }
+
+        .option {
+            margin-bottom: 1rem;
+        }
+
+        input[type="radio"] {
+            margin-right: 0.5rem;
+        }
+
+        .footer li a {
+
+
+            border-radius: 20px;
+
+        }
+
+        .footer {
+            background-color: black;
+            color: aliceblue;
+
+            align-items: center;
+
+
+            color: #FCF8E8;
+            display: flex;
+            justify-content: space-around;
+
+            width: 100%;
+            ;
+            flex-wrap: wrap;
+            flex-grow: inherit;
+
+        }
+
+        .footer li a {
+            color: grey;
+        }
+
+        .footer h4 {
+            color: white;
+        }
+
+        .footer div {
+            margin: 10px;
+            padding: 20px;
+
+        }
+
+
+        .footer li a:hover {
+            color: gold;
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <nav class="navbar">
+
+            <ul>
+                <li><img src="/ffsdprojectopiherb.jpg" alt="opiherb" id="logo">
+                </li>
+                <li></li>
+                <li></li>
+                
+
+                <li><a href="/login_signup2">Login</a></li>
+                <li><a href="/login_signup2">Sign Up</a></li>
+                <li><a href="">Introduction</a></li>
+                <li><a href="">Doctors</a></li>
+                <li><a href="">Medicines</a></li>
+                <!-- <li><a href="">Emergency</a></li> -->
+                <li><a href="">First Aid/Emergency</a></li>
+                <li><a href="">Premium</a></li>
+                <li><a href="">Offers</a></li>
+
+                <!-- <li><button type="button" class="btn btn-info" id="logo">Sign in/Sign up</button></li> -->
+
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+
+        <%for(dd of model){%>
+        <section class="doctor-card">
+            <img src="doctor.jpg" alt="Doctor image">
+            <div class="details">
+                <h2><%=dd.d_name%></h2>
+                <p>Specialization: <%=dd.spcl%></p>
+                <p>Experience: <%=dd.exp%></p>
+                <p>Address: <%=dd.address%></p>
+                <p>Phone: <%=dd.ph_no%></p>
+                <p>Email: <%=dd.email%></p>
+            </div>
+            <section class="consultation-options">
+                <h3>Consultation Options</h3>
+                <div class="option">
+                    <input type="radio" id="online-option" name="consultation-option" value="online">
+                    <label for="online-option">Online Consultation</label>
+                </div>
+                <div class="option">
+                    <input type="radio" id="offline-option" name="consultation-option" value="offline">
+                    <label for="offline-option">Offline Consultation</label>
+                </div>
+            </section>
+        </section>
+        <%}%>
+    </main>
+    <footer>
+        <div class="footer">
+
+            <div>
+                <h4>Know us</h4>
+                <li><a href="">About</a></li>
+                <li><a href="">Contact</a></li>
+                <li><a href="">Business</a></li>
+                <li><a href="">Partnership</a></li>
+
+            </div>
+            <div>
+                <h4>Our Policies</h4>
+                <li><a href="">Privacy Policy</a></li>
+                <li><a href="">Grievance Redressal</a></li>
+                <li><a href="">Fake jobs and Frauds</a></li>
+            </div>
+            <div>
+                <h4>Our Services</h4>
+                <li><a href="">Order Medicines</a></li>
+                <li><a href="">Consult a Doctor</a></li>
+                <li><a href="">Articles</a></li>
+            </div>
+            <div>
+                <h4>Connect with Us</h4>
+                <li>
+
+                    <a href="#" class="fab fa-facebook-f"> facebook</a>
+                </li>
+                <li>
+
+                    <a href="#" class="fab fa-twitter"> twitter</a>
+                </li>
+                <li>
+
+                    <a href="#" class="fab fa-instagram"> instagram</a>
+                </li>
+
+
+            </div>
+
+
+        </div>
+    </footer>
+    <script>
+        const consultationOptions = document.querySelectorAll('input[name="consultation-option"]');
+
+        consultationOptions.forEach(option => {
+            option.addEventListener('change', () => {
+                if (option.value === 'online') {
+                    alert('Online consultation selected');
+                } else if (option.value === 'offline') {
+                    alert('Offline consultation selected');
+                }
+            });
+        });
+
+    </script>
+</body>
+
+</html>

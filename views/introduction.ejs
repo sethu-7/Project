@@ -1,0 +1,706 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Introduction</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+    body {
+        background-color: #DCDCDC;
+    }
+
+    .search-container {
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.nav-item:hover .subnav {
+  		display: block;
+  	}
+  	.subnav {
+  		display: none;
+  		position: absolute;
+  		margin: 0;
+  		padding: 0;
+  		list-style: none;
+  		background-color: #eee;
+  		z-index: 9;
+  		width: inherit;
+  		box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  	}
+  	.subnav li a {
+  		display: block;
+  		text-decoration: none;
+  		color: #000;
+  		padding: 10px;
+  		margin: 0;
+  		border-bottom: 1px solid #ddd;
+  	}
+  	.subnav li a:hover {
+  		background-color: #ccc;
+  	}
+
+
+.middle-search {
+    margin-top: 30px;
+	margin-bottom: 30px;
+}
+
+input[type="text"] {
+    width: 400px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+button[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 8px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+    </style>
+  </head>
+
+
+  <header>
+    <style>
+        .navbar {
+            margin: 5px;
+            background-color: rgb(41, 41, 41);
+            position: relative;
+            /* border-radius: 40px; */
+
+        }
+
+        .navbar::before {
+            content: '';
+            background-color: blueviolet;
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            z-index: -1;
+            opacity: 0.4;
+        }
+
+        .navbar ul {
+            margin: 1px;
+            overflow: auto;
+        }
+
+        .navbar li {
+            float: left;
+            list-style: none;
+            margin: 20px 20px;
+        }
+
+        .navbar li a {
+            padding: 3px 3px;
+            color: white;
+            list-style: none;
+            text-decoration: none;
+        }
+
+        .navbar li a:hover {
+            /* background-color: blueviolet; */
+
+        }
+
+        .footer li a:hover {
+            color: gold;
+
+        }
+
+        #search {
+            /* margin-top: 50px; */
+            width: 100%;
+            position: absolute;
+            /* bottom: 416px;
+            left: 320px;
+            height: 36px; */
+            text-align: center;
+            width: 50%;
+            border-radius: 40px;
+            padding: 6px 20px 5px 30px;
+            overflow: auto;
+            display: flex;
+
+
+            /* width: 100%; */
+            /* justify-content: center; */
+            flex-wrap: wrap;
+            flex-grow: inherit;
+            /* display: flex; */
+
+
+
+        }
+
+        #logo {
+            /* padding: 10px; */
+            width: 135px;
+            float: right;
+
+
+        }
+
+.navbar ul li a {
+
+            display: block;
+            /* padding: 3px 22px; */
+            border-radius: 20px;
+
+        }
+    </style>
+    <nav class="navbar">
+
+        <ul>
+            <li><img src="ffsdprojectopiherb.jpg" alt="opiherb" id="logo">
+            </li>
+            <li></li>
+            
+            
+            <li><a class="nav-link" href="#" data-toggle="modal" data-target="#loginModal">Login</a>
+                Login</a></li>
+            <li><a class="nav-link" href="#" data-toggle="modal" data-target="#signupModal">Sign Up</a>
+                >Sign Up</a></li>
+            <li><a href="after-login">Introduction</a></li>
+            <li><a href="doctor_project_final">Doctors</a></li>
+            <li><a href="project_final">Medicines</a></li>
+            <!-- <li><a href="">Emergency</a></li> -->
+            <li><a href="fsd">First Aid/Emergency</a></li>
+            <li><a href="index">Premium</a></li>
+            <li><a href="offers">Offers</a></li>
+            
+            <!-- <li><button type="button" class="btn btn-info" id="logo">Sign in/Sign up</button></li> -->
+
+        </ul>
+    </nav>
+
+
+</header>
+
+  <body>
+
+    <!-- Signup Modal -->
+    <div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Sign Up</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form class="signup-form" action="#" method="post">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name" required>
+                        </div>
+        
+                        <div>
+                            <label for="password">Password:</label>
+                            <p><input type="password" id="password" name="password" placeholder="Enter Password" required /></p>
+                            <span class="form-error"></span>
+                        </div>
+                        
+
+                        <div class="form-group">
+                            <label for="phoneNumber">Phone Number</label>
+                            <input type="tel" class="form-control" id="phoneNumber" name="phoneNumber" placeholder="Enter your phone number" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email address" required>
+                        </div>
+                        <div class="form-group">—
+                            <label for="address">Address</label>
+                            <input type="text" class="form-control" id="address" name="address" placeholder="Enter your address" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="emergencyNumber">Emergency Contact Number</label>
+                            <input type="tel" class="form-control" id="emergencyNumber" name="emergencyNumber" placeholder="Enter emergency contact number" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary" id="submitButton">Sign Up</button>
+                    </form>
+                    
+                    <script>
+                        const form = document.querySelector('form');
+            
+                        form.addEventListener('submit', e => {
+                            e.preventDefault();
+
+                            const password = document.getElementById('password');
+                            const errorSpan = document.querySelector('.form-error');
+            
+                            // Validate password
+                            let isValid = true;
+            
+                            if (password.value.length < 12) {
+                                errorSpan.innerHTML = 'Password must be at least 12 characters.';
+                                isValid = false;
+                            } else if (!/[A-Z]/.test(password.value)) {
+                                errorSpan.innerHTML = 'Password must contain at least one uppercase letter.';
+                                isValid = false;
+                            } else if (!/[a-z]/.test(password.value)) {
+                                errorSpan.innerHTML = 'Password must contain at least one lowercase letter.';
+                                 isValid = false;
+                            } else if (!/[0-9]/.test(password.value)) {
+                                errorSpan.innerHTML = 'Password must contain at least one number.';
+                                isValid = false;
+                            } else if (!/[!@#$?]/.test(password.value)) {
+                                errorSpan.innerHTML = 'Password must contain at least one special character.';
+                                isValid = false;
+                            }
+            
+                            // Submit form
+                            if (isValid) {
+                                document.getElementById('submitButton').disabled = true;
+                                form.submit();
+                            }
+                        });
+                    </script>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+     <!-- Login Modal -->
+     <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Login</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form class="signup-form" action="#" method="post">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" class="form-control" id="password1" name="password1" placeholder="Enter your password" required>
+                        </div>
+                
+                        <button type="submit" class="btn btn-primary" id="submitButton">Login</button>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="jumbotron">
+		<div class="container text-center">
+			<h1>Welcome to OPIHERBS</h1>
+			<p>Your premier online healthcare and medical services provider.</p>
+		</div>
+	</div>
+
+	
+			<div class="search-container">
+			
+				<!-- Middle Search Bar -->
+				<div class="middle-search">
+					<form>
+						<input type="text" placeholder="Search Medicines" />
+						<button type="submit">Search</button>
+					</form>
+				</div>
+			
+			</div>
+
+            <div class="container-fluid" style="margin: auto;">
+                <div class="row" style="padding-left: 10%;">
+                    <div class="col-sm-6" >
+                        <div class="card" style="width:400px">
+                            <img class="card-img-top" src="doctor.jpg" alt="doctors" style="width:100%">
+                            <div class="card-body">
+                                <h4 class="card-title">Doctors</h4>
+                                <p class="card-text">Online and offline consultations to help you get the best medical advice.</p>
+                                <a href="doctor_project_final" class="btn btn-primary">Find a Doctor</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="card" style="width:400px">
+                            <img class="card-img-top" src="medicines.jpg" alt="medicines" style="width:100%">
+                            <div class="card-body">
+                                <h4 class="card-title">Medicines</h4>
+                                <p class="card-text">Order medicines online and get home delivery.</p>
+                                <a href="project_final" class="btn btn-primary">Order Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="padding-left: 10%;">
+                    <div class="col-sm-6">
+                        <div class="card" style="width:400px">
+                            <img class="card-img-top" src="emergency.jpg" alt="emergency" style="width:100%">
+                            <div class="card-body">
+                                <h4 class="card-title">Emergency</h4>
+                                <p class="card-text">Get help in case of medical emergency.</p>
+                                <a href="fsd" class="btn btn-primary">Get Help</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="card" style="width:400px">
+                            <img class="card-img-top" src="first_aids.jpg" alt="firstaid" style="width:100%">
+                            <div class="card-body">
+                                <h4 class="card-title">First Aid</h4>
+                                <p class="card-text">Learn first aid and get help in case of medical emergency.</p>
+                                <a href="fsd" class="btn btn-primary">Learn More</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+
+
+<h2 style="border-top: #100202; text-align: center; padding-top:10%; text-underline-position: below; border-bottom: #000; padding-bottom: 2%;">Terms and Condition</h2>
+<div style="text-align: center; font-size: 25px; margin: auto; padding-left: 1%;">
+<p>1. All products for sale on the web page are for personal use only and are not intended for resale.</p>
+
+<p>	2. All products purchased from the web page must be used in accordance with the instructions provided with the product.</p>
+    
+<p>	3. Customers must consult their doctor or health care professional before purchasing any medication or product from the web page.</p>
+    
+<p>	4. The web page is not responsible for any adverse effects arising from the use of any product or medication purchased from the web page.</p>
+    
+<p>	5. Customers must be 18 years of age or older to purchase any product or medication from the web page.</p>
+    
+<p>	6. All payments must be made in advance before the product or medication can be delivered.</p>
+    
+<p>	7. All products and medications purchased from the web page are non-refundable, and no returns are accepted.</p>
+    
+<p>	8. All products and medications will be shipped in discreet packaging to protect the customer's privacy.</p>
+    
+<p>	9. The web page is not responsible for any delays in shipping due to circumstances outside of our control.</p>
+    
+<p>	10. The web page reserves the right to modify these terms and conditions at any time without prior notice.</p>
+</div>
+
+<section class="reviews">
+    <div class="cont">
+        <h2 class="section-title">Our Patients Love Us</h2>
+        <div class="review-cards">
+            <!-- Dynamic review cards will be generated here -->
+        </div>
+    </div>
+</section>
+<style>
+.reviews {
+    padding: 4rem 0;
+    background-color: #f5f5f5;
+}
+
+.cont {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    box-sizing: border-box;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.review-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.review-card {
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 0.5rem;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.review-card img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-bottom: 1rem;
+}
+
+.review-card h3 {
+    margin-bottom: 0.5rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.review-card p {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}
+
+.review-card span {
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+</style>
+<script>
+const reviews = [
+{
+    name: 'John Smith',
+    photo: 'https://randomuser.me/api/portraits/men/75.jpg',
+    review: 'I had a great experience with the doctor. He was very knowledgeable and took the time to answer all of my questions.',
+    rating: 5
+},
+{
+    name: 'Jane Doe',
+    photo: 'https://randomuser.me/api/portraits/women/75.jpg',
+    review: 'The doctor was very kind and caring. He listened to my concerns and helped me find the right treatment plan.',
+    rating: 4
+},
+{
+    name: 'David Lee',
+    photo: 'https://randomuser.me/api/portraits/men/76.jpg',
+    review: 'I was impressed with the doctor\'s expertise and professionalism. He was able to diagnose my condition quickly and accurately.',
+    rating: 4.5
+}
+];
+
+const reviewCards = document.querySelector('.review-cards');
+
+reviews.forEach(review => {
+const card = document.createElement('div');
+card.classList.add('review-card');
+
+const img = document.createElement('img');
+img.src = review.photo;
+img.alt = `${review.name} photo`;
+
+const name = document.createElement('h3');
+name.textContent = review.name;
+
+const rating = document.createElement('span');
+rating.textContent = `${review.rating} / 5`;
+
+const reviewText = document.createElement('p');
+reviewText.textContent = review.review;
+
+card.appendChild(img);
+card.appendChild(name);
+card.appendChild(rating);
+card.appendChild(reviewText);
+
+reviewCards.appendChild(card);
+});
+
+</script>
+                       
+
+
+
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+
+  <style>
+    .site-footer
+{
+  background-color:#26272b;
+  padding:45px 0 20px;
+  font-size:15px;
+  line-height:24px;
+  color:#737373;
+}
+.site-footer hr
+{
+  border-top-color:#bbb;
+  opacity:0.5
+}
+.site-footer hr.small
+{
+  margin:20px 0
+}
+.site-footer h6
+{
+  color:#fff;
+  font-size:16px;
+  text-transform:uppercase;
+  margin-top:5px;
+  letter-spacing:2px
+}
+.site-footer a
+{
+  color:#737373;
+}
+.site-footer a:hover
+{
+  color:#3366cc;
+  text-decoration:none;
+}
+.site-footer .social-icons
+{
+  text-align:right
+}
+.site-footer .social-icons a
+{
+  width:40px;
+  height:40px;
+  line-height:40px;
+  margin-left:6px;
+  margin-right:0;
+  border-radius:100%;
+  background-color:#33353d
+}
+.copyright-text
+{
+  margin:0
+}
+@media (max-width:991px)
+{
+  .site-footer [class^=col-]
+  {
+    margin-bottom:30px
+  }
+}
+@media (max-width:767px)
+{
+  .site-footer
+  {
+    padding-bottom:0
+  }
+  .site-footer .copyright-text,.site-footer .social-icons
+  {
+    text-align:center
+  }
+}
+.foot1{
+  justify-content: space-between;
+}
+.footer-links
+{
+  padding-left:0;
+  list-style:none
+}
+.footer-links li
+{
+  display:block
+}
+.footer-links a
+{
+  color:#737373
+}
+.footer-links a:active,.footer-links a:focus,.footer-links a:hover
+{
+  color:gold;
+  text-decoration:none;
+}
+.footer-links.inline li
+{
+  display:inline-block;
+}
+</style>
+
+<link href="https://fonts.googleapis.com/css?family=Archivo+Black&display=swap" rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+
+  <footer class="site-footer">
+       
+         
+        
+    <div class="foot1 d-flex" style="flex-wrap: wrap; justify-content: space-around;""\>
+      <div class="d-inline-block">
+          <h6>Know us</h6>
+          
+           
+              <ul class="footer-links">
+              <li><a href="aboutus">About Us</a></li>
+              <li><a href="contact">Contact Us</a></li>
+              <li><a href="">Business</a></li>
+              <li><a href="partnership">Partnerships</a></li>
+               <!-- <li><a href="./payments">Payment</a></li>
+              <li><a href="./offers">Offers</a></li> -->
+            </ul>
+          </div>
+            
+
+          <div class="d-inline-block"> 
+            <h6> Our policies</h6>
+              <ul class="footer-links"><li><a href="privacy">Privacy Policy</a>
+              </li>
+              <li><a href="grievance">Grievance Redressal</a></li>
+              <li><a href="fraud">Fake jobs and Frauds</a></li>
+             
+            </ul>
+          </div>
+
+          <div class="d-inline-block"> 
+            <h6>Services</h6>
+              <ul class="footer-links"><li><a href="medicines">Order Medicines</a>
+              </li>
+              <li><a href="appointment-page">Consult a Doctor</a></li>
+              <li><a href="">Articles</a></li>
+              <li><a href="payments">payments</a></li>
+              
+            </ul>
+          </div>
+
+          <div class="d-inline-block"> 
+            <h6> Social Media</h6>
+              <ul class="footer-links"> <li>
+
+                <a href="#" class="fab fa-facebook-f"> facebook</a>
+            </li>
+            <li>
+
+                <a href="#" class="fab fa-twitter"> twitter</a>
+            </li>
+            <li>
+
+                <a href="#" class="fab fa-instagram"> instagram</a>
+            </li>
+              
+            </ul>
+          </div>
+
+        </div>
+            
+            
+         
+      
+        
+    
+      <hr>
+   
+    
+</footer>
+
+</html>

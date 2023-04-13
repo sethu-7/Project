@@ -1,0 +1,25 @@
+<% if (model && model.length) { %>
+    <% model.forEach(function(fod) { %>
+        <tr>
+            <td>
+                <%= fod.date %>
+            </td>
+            <td>
+                <%= fod.time %>
+            </td>
+            <td>
+                <%= fod.p_id %>
+            </td>
+            <td>
+                <%= fod.p_name %>
+            </td>
+            <td>
+                <%= fod.status %>
+            </td>
+        </tr>
+        <% }); %>
+            <% } else { %>
+                <tr>
+                    <td colspan="5">No data available</td>
+                </tr>
+                <% } %>

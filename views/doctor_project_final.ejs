@@ -1,0 +1,1075 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>OPIHERBS:</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link href="StyleSheet.css" rel="stylesheet" type="text/css" media="only screen" />
+    <link href="MobileStyleSheet.css" rel="stylesheet" type="text/css"
+        media="only screen and (max-device-width: 480px) , only screen and (-webkit-min-device-pixel-ratio: 2) , screen and (-webkit-device-pixel-ratio:1.5)" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Secular+One&family=Yeseva+One&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Secular+One&family=Yeseva+One&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Secular+One&family=Yeseva+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+
+
+
+    <style>
+        :root {
+            --blue: #4b0082;
+            --box-shadow: .5rem .5rem 0 rgb(22, 160, 133, .2) --text-shadow:.4rem .4rem 0 rgba(0, 0, 0, .2) --border:.2rem solid #4b0082;
+
+
+        }
+
+        html {
+            overflow-x: hidden;
+            scroll-padding-top: 7rem;
+            scroll-behavior: smooth;
+        }
+
+        .ourdoc {
+            background-color: #fce8f1;
+            font-family: 'Yeseva One', cursive;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+            outline: none;
+            border: none;
+            text-transform: capitalize;
+            transition: all .2s ease-out;
+            text-decoration: none;
+        }
+
+        /* .ourdoc .ourboxcontainer{
+            display: grid;
+            grid-template-columns: repeat(auto-fit,minmax(27rem,1fr));
+            gap: 2rem;
+        }
+        
+        .ourdoc .ourboxcontainer.ourbox{
+            text-align: center;
+            background-color: #FCF8E8;
+            border-radius: 5rem;
+            border: var(--border);
+            box-shadow: var(--box-shadow);
+            padding: 2rem;
+        } */
+
+        .ourdoc .docheading {
+            margin: 30px;
+            color: black;
+            text-align: center;
+
+        }
+
+        .ourdoc .ourboxcontainer {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            grid-template-columns: repeat(auto-fit, minmax(27rem, 1fr));
+            gap: 2rem;
+            margin: 0 auto;
+            /* fix margin */
+            max-width: 120rem;
+            /* set max-width */
+        }
+
+        .ourdoc .ourboxcontainer .ourbox {
+            text-align: center;
+            background-color: white;
+
+            border-radius: 5rem;
+            border: var(--border);
+            box-shadow: var(--box-shadow);
+            padding: 2rem;
+            border: 2px solid black;
+            /* add border */
+            margin: 1rem;
+            /* add margin */
+        }
+
+
+        .ourdoc .ourboxcontainer .ourbox img {
+            height: 20rem;
+            border: var(--border);
+            border-radius: .5rem;
+            margin-top: 1rem;
+        }
+
+        .ourdoc .ourboxcontainer .ourbox h3 {
+            color: black;
+            font-size: 2.5rem;
+        }
+
+        .ourdoc .ourboxcontainer .ourbox span {
+            color: gray;
+            font-size: 1.5rem;
+        }
+
+        .ourdoc .ourboxcontainer .ourbox .share {
+            padding-top: 2rem;
+
+        }
+
+        .ourdoc .ourboxcontainer .ourbox .share a {
+            height: 5rem;
+            width: 5rem;
+            line-height: 4.5rem;
+            font-size: 2rem;
+            color: black;
+            border-radius: .5rem;
+            border: var(--border);
+            margin: 3rem;
+
+        }
+
+        .ourdoc .ourboxcontainer .ourbox .share a:hover {
+            background: black;
+            color: #fce8f1;
+            box-shadow: var(--box-shadow);
+
+        }
+
+        .navbar {
+            margin: 5px;
+            background-color: rgb(41, 41, 41);
+            position: relative;
+            /* border-radius: 40px; */
+
+        }
+
+        .navbar::before {
+            content: '';
+            background-color: blueviolet;
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            z-index: -1;
+            opacity: 0.4;
+        }
+
+        .navbar ul {
+            margin: 1px;
+            overflow: auto;
+        }
+
+        .navbar li {
+            float: left;
+            list-style: none;
+            margin: 20px 20px;
+        }
+
+        .navbar li a {
+            padding: 3px 3px;
+            color: white;
+            list-style: none;
+            text-decoration: none;
+        }
+
+        .navbar li a:hover {
+            /* background-color: blueviolet; */
+
+        }
+
+        .footer li a:hover {
+            color: gold;
+
+        }
+
+        #search {
+            /* margin-top: 50px; */
+            width: 100%;
+            position: absolute;
+            /* bottom: 416px;
+            left: 320px;
+            height: 36px; */
+            text-align: center;
+            width: 50%;
+            border-radius: 40px;
+            padding: 6px 20px 5px 30px;
+            overflow: auto;
+            display: flex;
+
+
+            /* width: 100%; */
+            /* justify-content: center; */
+            flex-wrap: wrap;
+            flex-grow: inherit;
+            /* display: flex; */
+
+
+
+        }
+
+        #logo {
+            /* padding: 10px; */
+            width: 135px;
+            float: right;
+
+
+        }
+
+
+        .navbar input {
+            border: 3px solid rgb(193, 75, 222);
+            border-radius: 15px;
+            width: 130px;
+            text-align: center;
+
+        }
+
+
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            padding: auto;
+            justify-content: center;
+            align-items: center;
+            height: 400px;
+        }
+
+        .container::before {
+            content: '';
+            background-image: url("https://www.spaandclinic.com.au/wp-content/uploads/2020/05/iStock-12030820411.jpg");
+            position: absolute;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            height: 100%;
+            width: 100%;
+            z-index: -1;
+            opacity: 0.5;
+
+        }
+
+        #heading {
+            font-size: 50px;
+            text-align: center;
+            margin-top: -200px;
+            font-family: 'Yeseva One', cursive;
+        }
+
+        /* .btn btn-info {
+            float: right;
+            display: table-cell;
+            text-align: right;
+            padding: 10px 10px;
+            width: 20px;
+            width: 100%;
+            position: absolute;
+            bottom: 416px;
+            left: 320px;
+            height: 36px;
+            text-align: center;
+            width: 50%;
+            border-radius: 40px;
+            padding: 6px 20px 5px 30px;
+            overflow: auto;
+        } */
+
+        .navbar ul li a {
+
+            display: block;
+            /* padding: 3px 22px; */
+            border-radius: 20px;
+
+        }
+
+        .footer li a {
+
+
+            border-radius: 20px;
+
+        }
+
+        .footer {
+            background-color: black;
+            color: aliceblue;
+
+            align-items: center;
+
+
+            color: #FCF8E8;
+            display: flex;
+            justify-content: space-around;
+
+            width: 100%;
+            ;
+            flex-wrap: wrap;
+            flex-grow: inherit;
+
+        }
+
+        .footer li a {
+            color: grey;
+        }
+
+        .footer h4 {
+            color: white;
+        }
+
+        .footer div {
+            margin: 10px;
+            padding: 20px;
+
+        }
+
+        .consult {
+            margin: 40px;
+
+        }
+
+        .doc {
+            background-color: #fce8f1;
+
+        }
+
+        .doctor {
+            margin: 40px;
+
+
+        }
+
+        #flex {
+            display: flex;
+            justify-content: space-around;
+            /* word-wrap: inherit; */
+            margin: 34px;
+            /* flex-direction: column; */
+        }
+
+        #flex .box {
+            /* border: 2px solid indigo; */
+            text-align: center;
+            display: block;
+            /* height: 100px; */
+            /* display: flex;
+            align-items: center; */
+            height: 300px;
+            margin: auto;
+            padding: 20px
+        }
+
+        #flex .boxside {
+            border: solid white;
+            border-width: 10px;
+            background-image: url("https://img.freepik.com/premium-vector/abstract-thin-lines-wavy-illustration-free-shape-temlate-curve-style-artwork-seamless-background_121035-618.jpg");
+            text-align: center;
+            display: block;
+
+            font-size: large;
+            height: 100px;
+            margin: auto;
+            padding: 20px
+        }
+
+        #flex .box img {
+            height: 350px;
+            margin: -40px;
+            padding: auto;
+
+
+            display: block;
+
+
+        }
+
+        #flexdoc {
+
+            display: flex;
+            justify-content: space-around;
+            /* word-wrap: inherit; */
+            margin: 34px;
+            /* flex-direction: column; */
+        }
+
+        #flexdoc .boxdoc {
+            /* border: 2px solid indigo; */
+            text-align: center;
+            display: block;
+            /* height: 100px; */
+            /* display: flex;
+            align-items: center; */
+            height: 300px;
+            margin: auto;
+            padding: 20px
+        }
+
+        #flexdoc .boxsidedoc {
+
+            /* background-image: url("https://img.freepik.com/premium-vector/abstract-thin-lines-wavy-illustration-free-shape-temlate-curve-style-artwork-seamless-background_121035-618.jpg"); */
+            text-align: center;
+            display: block;
+
+            font-size: large;
+            height: 100px;
+            margin: auto;
+            padding: 20px
+        }
+
+        #flex .boxdoc img {
+            height: 350px;
+            margin: -40px;
+            padding: auto;
+
+
+            display: block;
+
+        }
+
+
+        .doctor h1 {
+            font-family: 'Secular One', sans-serif;
+            font-family: 'Yeseva One', cursive;
+
+        }
+
+        .doctor div {
+            font-family: 'Secular One', sans-serif;
+            font-family: 'Yeseva One', cursive;
+        }
+
+
+
+
+
+        .consult div {
+            font-family: 'Secular One', sans-serif;
+            font-family: 'Yeseva One', cursive;
+
+        }
+
+        .consult h2 {
+            text-align: right;
+            font-family: 'Secular One', sans-serif;
+            font-family: 'Yeseva One', cursive;
+        }
+
+        .consult p {
+            text-align: right;
+            font-weight: 500;
+            font-size: medium;
+        }
+
+
+
+
+        :root {
+            --clr-neon: rgba(235, 97, 143, 1);
+            --clr-bg: rgba(1, 1, 1, 1);
+            --clr-white: rgba(255, 255, 255, 1);
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+
+        /* body {
+	min-height: 100vh;
+	display: grid;
+	place-items: center;
+	background: var(--clr-bg);
+	font-family: system-ui;
+	color: var(--clr-neon);
+} */
+
+        .button {
+            font-size: 2em;
+
+            display: inline-block;
+            cursor: pointer;
+            text-decoration: none;
+            color: var(--clr-neon);
+            border: var(--clr-neon) 4px solid;
+            padding: 0.25em 1em;
+            border-radius: 0.25em;
+
+            text-shadow: 0 0 0.125em rgba(255, 255, 255, 0.55), 0 0 0.5em currentColor;
+
+            box-shadow: inset 0 0 0.5em 0 var(--clr-neon), 0 0 0.5em 0 var(--clr-neon);
+
+            position: relative;
+        }
+
+        .button::before {
+            pointer-events: none;
+            content: "";
+            position: absolute;
+            background: var(--clr-neon);
+            top: 120%;
+            left: 0;
+            width: 100%;
+            height: 100%;
+
+            transform: perspective(1.2em) rotateX(40deg) scale(1.5, 0.5);
+            filter: blur(1.15em);
+            opacity: 0.7;
+
+            transition: transform 0.5s linear;
+        }
+
+        .button::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            box-shadow: 0 0 4em 0.6em var(--clr-neon), 0 0 1em 0.2em var(--clr-white);
+            opacity: 0;
+            background: var(--clr-neon);
+            z-index: -1;
+            transition: opacity 0.5s linear;
+        }
+
+        .button:hover,
+        .button:focus {
+            color: var(--clr-bg);
+            text-shadow: none;
+        }
+
+        .button:hover::before,
+        .button:focus::before {
+            opacity: 1;
+            transform: perspective(1em) rotateX(40deg) scale(1.5, 0.6);
+            transition: transform 0.5s linear;
+        }
+
+        .button:hover::after,
+        .button:focus::after {
+            opacity: 1;
+        }
+
+
+
+
+
+
+
+
+
+        .reviews {
+            padding: 4rem 0;
+            background-color: #f5f5f5;
+            /* background-image: url('https://media.istockphoto.com/id/1222074609/photo/heart-shaped-stethoscope.jpg?s=612x612&w=0&k=20&c=vWBZuvI77BZYOVWLC9vL1yCPrEBpNfR9jJtz7O5bVSE=');
+            background-repeat: space; */
+        }
+
+        .cont {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            box-sizing: border-box;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .review-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .review-card {
+            background-color: #fff;
+            padding: 2rem;
+            border-radius: 0.5rem;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        .review-card img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin-bottom: 1rem;
+        }
+
+        .review-card h3 {
+            margin-bottom: 0.5rem;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .review-card p {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .review-card span {
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar">
+
+            <ul>
+                <li><img src="/ffsdprojectopiherb.jpg" alt="opiherb" id="logo">
+                </li>
+                <li></li>
+                <li></li>
+
+
+                <!-- <li><a href="/login_signup2">Login</a></li>
+
+                <li><a href="/login_signup2">Sign Up</a></li> -->
+                <li class="nav-item">
+                    <a class="nav-link" href="#" data-toggle="modal" data-target="#loginModal">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" data-toggle="modal" data-target="#signupModal">Sign Up</a>
+                </li>
+                <li><a href="">Introduction</a></li>
+                <li><a href="">Doctors</a></li>
+                <li><a href="">Medicines</a></li>
+                <!-- <li><a href="">Emergency</a></li> -->
+                <li><a href="">First Aid/Emergency</a></li>
+                <li><a href="">Premium</a></li>
+                <li><a href="">Offers</a></li>
+
+                <!-- <li><button type="button" class="btn btn-info" id="logo">Sign in/Sign up</button></li> -->
+
+            </ul>
+        </nav>
+
+        <!-- Login Modal -->
+        <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Login</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form class="signup-form" action="#" method="post">
+                            <div class="form-group">
+                                <label for="name">Name</label>
+                                <input type="text" class="form-control" id="name" name="name"
+                                    placeholder="Enter your name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="password">Password</label>
+                                <input type="password" class="form-control" id="password1" name="password1"
+                                    placeholder="Enter your password" required>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary" id="submitButton">Login</button>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <!-- Signup Modal -->
+        <div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Sign Up</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form class="signup-form" action="#" method="post">
+                            <div class="form-group">
+                                <label for="name">Name</label>
+                                <input type="text" class="form-control" id="name" name="name"
+                                    placeholder="Enter your name" required>
+                            </div>
+                            <div>
+                                <label for="password">Password:</label>
+                                <p><input type="password" id="password" name="password" placeholder="Enter Password"
+                                        required /></p>
+                                <span class="form-error"></span>
+                            </div>
+
+
+                            <div class="form-group">
+                                <label for="phoneNumber">Phone Number</label>
+                                <input type="tel" class="form-control" id="phoneNumber" name="phoneNumber"
+                                    placeholder="Enter your phone number" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email Address</label>
+                                <input type="email" class="form-control" id="email" name="email"
+                                    placeholder="Enter your email address" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="address">Address</label>
+                                <input type="text" class="form-control" id="address" name="address"
+                                    placeholder="Enter your address" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="emergencyNumber">Emergency Contact Number</label>
+                                <input type="tel" class="form-control" id="emergencyNumber" name="emergencyNumber"
+                                    placeholder="Enter emergency contact number" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary" id="submitButton">Sign Up</button>
+                        </form>
+
+
+
+                    </div>
+                </div>
+            </div>
+                
+        </div>
+        <div class="modal fade" id="signupdocModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Sign Up</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form class="signup-form" action="#" method="post">
+                            <div class="form-group">
+                                <label for="name">Name</label>
+                                <input type="text" class="form-control" id="name" name="name"
+                                    placeholder="Enter your name" required>
+                            </div>
+                            <div>
+                                <label for="password">Password:</label>
+                                <p><input type="password" id="password" name="password" placeholder="Enter Password"
+                                        required /></p>
+                                <span class="form-error"></span>
+                            </div>
+
+
+                            <div class="form-group">
+                                <label for="phoneNumber">Phone Number</label>
+                                <input type="tel" class="form-control" id="phoneNumber" name="phoneNumber"
+                                    placeholder="Enter your phone number" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email Address</label>
+                                <input type="email" class="form-control" id="email" name="email"
+                                    placeholder="Enter your email address" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="address">Address</label>
+                                <input type="text" class="form-control" id="address" name="address"
+                                    placeholder="Enter your address" required>
+                            </div>
+
+                            <div>
+                                <label for="formFileLg" class="form-label">Upload Doctors License</label>
+                                <input class="form-control form-control-lg" id="formFileLg" type="file" />
+                                          
+                            </div>
+                            <button type="submit" class="btn btn-primary" id="submitButton">Sign Up</button>
+                        </form>
+
+
+
+                    </div>
+                </div>
+            </div>
+                
+        </div>
+
+    </header>
+
+    <section>
+        <div class="container">
+            <h1 id="heading">FIND YOUR NEAREST DOCTOR NOW</h1><br>
+            <input type="search" id="search" placeholder="search doctors,clinics hospitals etc..">
+
+        </div>
+
+        <div class="consult">
+            <h2>Consult with the Best Doctors Around the world</h2>
+            <p>Starting at ₹199</p>
+            <div id="flex">
+                <div class="box">
+                    <img src="https://img.freepik.com/premium-vector/vector-illustration-cardiologist-white-coat-with-heart-his-hands-profession_87693-1659.jpg"
+                        alt="doctor">
+                </div>
+
+                <div class="box">
+
+
+                    <div class="boxside">Talk within 30 min</div>
+                    <div class="boxside">First consultation entirely free!</div>
+                    <div class="boxside">Get a valid prescription</div>
+
+                </div>
+
+
+
+            </div>
+        </div>
+
+    </section>
+
+    <section class="ourdoc" id="ourdoc">
+        <h1 class="docheading">Our doctors</h1>
+
+        <div class="ourboxcontainer">
+            <% for(const fd of model) {%>
+                <div class="ourbox">
+                    <img src="" alt="doc">
+
+                    <h3>
+                        <%=fd.d_name%>
+                    </h3>
+
+                    <span>Expert Doctor</span>
+                    <div class="share">
+                        <a href="#" class="fab fa-facebook-f"></a>
+                        <a href="#" class="fab fa-twitter"></a>
+                        <a href="#" class="fab fa-instagram"></a>
+                        <a href="#" class="fab fa-linkedin"></a>
+                    </div>
+                </div>
+                <%}%>
+        </div>
+
+        <!-- <div class="ourboxcontainer">
+                <div class="ourbox">
+                    <img src="" alt="doc">
+                    <h3>john</h3>
+                    <span>expert doc</span>
+                    <div class="share">
+                        <a href="#" class="fab fa-facebook-f"></a>
+                        <a href="#" class="fab fa-twitter"></a>
+                        <a href="#" class="fab fa-instagram"></a>
+                        <a href="#" class="fab fa-linkedin"></a>
+                    </div>
+                </div>
+            </div> -->
+        <!-- <div class="ourboxcontainer">
+                <div class="ourbox">
+                    <img src="" alt="doc">
+                    <h3>john</h3>
+                    <span>expert doc</span>
+                    <div class="share">
+                        <a href="#" class="fab fa-facebook-f"></a>
+                        <a href="#" class="fab fa-twitter"></a>
+                        <a href="#" class="fab fa-instagram"></a>
+                        <a href="#" class="fab fa-linkedin"></a>
+                    </div>
+                </div>
+            </div> -->
+    </section>
+
+
+
+
+
+
+
+    <section class="reviews">
+        <div class="cont">
+            <h2 class="section-title">Our Patients Love Us</h2>
+            <div class="review-cards">
+                <!-- Dynamic review cards will be generated here -->
+            </div>
+        </div>
+    </section>
+
+
+
+    <section class="doc">
+        <div class="doctor">
+
+
+            <div id="flexdoc">
+
+
+                <div class="boxdoc">
+
+
+                    <h1>ARE YOU A DOCTOR?</h1>
+                    <div class="boxsidedoc">Join Us Today and connect with patients around the world
+
+                    </div>
+
+                    <body>
+                        <!-- <a href="/dashboard" class="button">Join Us</a> -->
+                        <a class="button" href="#" data-toggle="modal" data-target="#signupdocModal">Join Us</a>
+                    </body>
+
+
+                </div>
+                <!-- <div class="box">
+                    <img src="/doc_heart.png" alt="doctor">
+                </div> -->
+
+
+
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer">
+
+            <div>
+                <h4>Know us</h4>
+                <li><a href="">About</a></li>
+                <li><a href="">Contact</a></li>
+                <li><a href="">Business</a></li>
+                <li><a href="">Partnership</a></li>
+
+            </div>
+            <div>
+                <h4>Our Policies</h4>
+                <li><a href="">Privacy Policy</a></li>
+                <li><a href="">Grievance Redressal</a></li>
+                <li><a href="">Fake jobs and Frauds</a></li>
+            </div>
+            <div>
+                <h4>Our Services</h4>
+                <li><a href="">Order Medicines</a></li>
+                <li><a href="">Consult a Doctor</a></li>
+                <li><a href="">Articles</a></li>
+            </div>
+            <div>
+                <h4>Connect with Us</h4>
+                <li>
+
+                    <a href="#" class="fab fa-facebook-f"> facebook</a>
+                </li>
+                <li>
+
+                    <a href="#" class="fab fa-twitter"> twitter</a>
+                </li>
+                <li>
+
+                    <a href="#" class="fab fa-instagram"> instagram</a>
+                </li>
+
+
+            </div>
+
+
+        </div>
+    </footer>
+
+    <script>
+        const reviews = [
+            {
+                name: 'John Smith',
+                photo: 'https://randomuser.me/api/portraits/men/75.jpg',
+                review: 'I had a great experience with the doctor. He was very knowledgeable and took the time to answer all of my questions.',
+                rating: 5
+            },
+            {
+                name: 'Jane Doe',
+                photo: 'https://randomuser.me/api/portraits/women/75.jpg',
+                review: 'The doctor was very kind and caring. He listened to my concerns and helped me find the right treatment plan.',
+                rating: 4
+            },
+            {
+                name: 'David Lee',
+                photo: 'https://randomuser.me/api/portraits/men/76.jpg',
+                review: 'I was impressed with the doctor\'s expertise and professionalism. He was able to diagnose my condition quickly and accurately.',
+                rating: 4.5
+            }
+        ];
+
+        const reviewCards = document.querySelector('.review-cards');
+
+        reviews.forEach(review => {
+            const card = document.createElement('div');
+            card.classList.add('review-card');
+
+            const img = document.createElement('img');
+            img.src = review.photo;
+            img.alt = `${review.name} photo`;
+
+            const name = document.createElement('h3');
+            name.textContent = review.name;
+
+            const rating = document.createElement('span');
+            rating.textContent = `${review.rating} / 5`;
+
+            const reviewText = document.createElement('p');
+            reviewText.textContent = review.review;
+
+            card.appendChild(img);
+            card.appendChild(name);
+            card.appendChild(rating);
+            card.appendChild(reviewText);
+
+            reviewCards.appendChild(card);
+        });
+
+
+        const form = document.querySelector('form');
+
+        form.addEventListener('submit', e => {
+            e.preventDefault();
+
+            const password = document.getElementById('password');
+            const errorSpan = document.querySelector('.form-error');
+
+            // Validate password
+            let isValid = true;
+
+            if (password.value.length < 12) {
+                errorSpan.innerHTML = 'Password must be at least 12 characters.';
+                isValid = false;
+            } else if (!/[A-Z]/.test(password.value)) {
+                errorSpan.innerHTML = 'Password must contain at least one uppercase letter.';
+                isValid = false;
+            } else if (!/[a-z]/.test(password.value)) {
+                errorSpan.innerHTML = 'Password must contain at least one lowercase letter.';
+                isValid = false;
+            } else if (!/[0-9]/.test(password.value)) {
+                errorSpan.innerHTML = 'Password must contain at least one number.';
+                isValid = false;
+            } else if (!/[!@#$?]/.test(password.value)) {
+                errorSpan.innerHTML = 'Password must contain at least one special character.';
+                isValid = false;
+            }
+
+            // Submit form
+            if (isValid) {
+                document.getElementById('submitButton').disabled = true;
+                form.submit();
+            }
+        });
+
+
+    </script>
+
+</body>
+
+</html>
