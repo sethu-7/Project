@@ -7,8 +7,5 @@ app.set('views',path.join(__dirname,'views'));
 
 app.set('views','views')
 
-url="dfhiuadlhddoaudojad"
-url="Mehul";
 
-url="Sethu";
 app.listen(3300);
