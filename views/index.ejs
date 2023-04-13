@@ -1,0 +1,1006 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <link href="https://fonts.googleapis.com/css?family=Archivo+Black&display=swap" rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <style>
+     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+        *{
+            /* background-color: aqua; */
+            margin: .1rem;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        body{
+          /* background-color: rgba(83, 124, 174, 0.548); */
+        }
+        .start1nav{
+          margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #0d0d0e;
+            font-weight: bold;
+        }
+        
+        .logo{
+          margin: 0;
+          border-radius: 3%;
+        }
+        h1{
+            text-align: center;
+        }
+        .prem1{
+            font-weight: bold;
+        }
+
+        /* a.Signin{
+          color: #d09d9d;
+          white-space: nowrap;
+          font-size: 1rem;
+        } */
+
+
+        .gradient-text{
+          font-family: Georgia;
+          font-style: italic;
+          font-size: 4rem;
+          background-color: red;
+          background-image: linear-gradient(#4b00fb, #00eaff);
+          background-size: 100%;
+          background-repeat: repeat;
+
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent; 
+          -moz-background-clip: text;
+          -moz-text-fill-color: transparent;
+        }
+
+
+
+
+
+        
+
+
+
+
+
+
+        .search-container {
+            width: 100%;
+            margin: 0 auto;
+            text-align: center;
+        }
+    
+        .nav-item:hover .subnav {
+              display: block;
+        }
+        .subnav {
+            display: none;
+            position: absolute;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            background-color: #eee;
+            z-index: 9;
+            width: inherit;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        }
+        .subnav li a {
+            display: block;
+            text-decoration: none;
+            color: #000;
+            padding: 10px;
+            margin: 0;
+            border-bottom: 1px solid #ddd;
+        }
+        .subnav li a:hover {
+            background-color: #ccc;
+        }
+
+
+
+
+
+
+
+        .startbody{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 20px;
+  background-color: rgba(83, 124, 174, 0.548);
+  /* background: aqua; */
+}
+.wrapper{
+  max-width: 1090px;
+  width: 100%;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.wrapper .table{
+  background: #fff;
+  height: fit-content;
+  width: calc(33% - 20px);
+  padding: 30px 30px;
+  position: relative;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+}
+.table .price-section{
+  display: flex;
+  justify-content: center;
+}
+.table .price-area{
+  height: 120px;
+  width: 220px;
+  border-radius: 50%;
+  padding: 2px;
+}
+.price-area .inner-area{
+  height: 100%;
+  width: 100%;
+  border-radius: 50%;
+  border: 3px solid #fff;
+  line-height: 117px;
+  text-align: center;
+  color: #fff;
+  position: relative;
+}
+.price-area .inner-area .text{
+  font-size: 25px;
+  font-weight: 400;
+  position: absolute;
+  top: -10px;
+  left: 17px;
+}
+.price-area .inner-area .price{
+  font-size: 45px;
+  font-weight: 500;
+  margin-left: 16px;
+}
+.table .package-name{
+  width: 100%;
+  height: 2px;
+  margin: 35px 0;
+  position: relative;
+}
+.table .package-name::before{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-size: 25px;
+  font-weight: 500;
+  background: #fff;
+  padding: 0 15px;
+  transform: translate(-50%, -50%);
+}
+.table .features li{
+  margin-bottom: 15px;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+}
+.features li .list-name{
+  font-size: 17px;
+  font-weight: 400;
+}
+.features li .icon{
+  font-size: 15px;
+}
+.features li .icon.check{
+  color: #2db94d;
+}
+.features li .icon.cross{
+  color: #cd3241;
+}
+.table .btn{
+  width: 100%;
+  display: flex;
+  margin-top: 35px;
+  justify-content: center;
+}
+.table .btn button{
+  width: 80%;
+  height: 50px;
+  color: #fff;
+  font-size: 20px;
+  font-weight: 500;
+  border: none;
+  outline: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.table .btn button:hover{
+  border-radius: 5px;
+}
+.basic .features li::selection{
+  background: #ffd861;
+}
+.basic ::selection,
+.basic .price-area,
+.basic .inner-area{
+  background: #ffd861;
+}
+.basic .btn button{
+  border: 2px solid #ffd861;
+  background: #fff;
+  color: #ffd861;
+}
+.basic .btn button:hover{
+  background: #ffd861;
+  color: #fff;
+}
+.premium ::selection,
+.premium .price-area,
+.premium .inner-area,
+.premium .btn button{
+  background: #a26bfa;
+}
+.premium .btn button:hover{
+  background: #833af8;
+}
+.ultimate ::selection,
+.ultimate .price-area,
+.ultimate .inner-area{
+  background: #43ef8b;
+}
+.ultimate .btn button{
+  border: 2px solid #43ef8b;
+  color: #43ef8b;
+  background: #fff;
+}
+.ultimate .btn button:hover{
+  background: #43ef8b;
+  color: #fff;
+}
+.basic .package-name{
+  background: #ffecb3;
+}
+.premium .package-name{
+  background: #d0b3ff;
+}
+.ultimate .package-name{
+  background: #baf8d4;
+}
+.basic .package-name::before{
+  content: "Silver";
+}
+.premium .package-name::before{
+  content: "Gold";
+  font-size: 24px;
+}
+.ultimate .package-name::before{
+  content: "Diamond";
+  font-size: 24px;
+}
+@media (max-width: 1020px) {
+  .wrapper .table{
+    width: calc(50% - 20px);
+    margin-bottom: 40px;
+  }
+}
+@media (max-width: 698px) {
+  .wrapper .table{
+    width: 100%;
+  }
+}
+::selection{
+  color: #fff;
+}
+.table .ribbon{
+  width: 150px;
+  height: 150px;
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  overflow: hidden;
+}
+.table .ribbon::before,
+.table .ribbon::after{
+  position: absolute;
+  content: "";
+  z-index: -1;
+  display: block;
+  border: 7px solid #4606ac;
+  border-top-color: transparent;
+  border-left-color: transparent;
+}
+.table .ribbon::before{
+  top: 0px;
+  right: 15px;
+}
+.table .ribbon::after{
+  bottom: 15px;
+  left: 0px;
+}
+.table .ribbon span{
+  position: absolute;
+  top: 30px;
+  right: 0;
+  transform: rotate(-45deg);
+  width: 200px;
+  background: #a26bfa;
+  padding: 10px 0;
+  color: #fff;
+  text-align: center;
+  font-size: 17px;
+  text-transform: uppercase;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.12);
+}
+
+
+
+
+
+
+
+
+.site-footer
+{
+  background-color:#26272b;
+  padding:45px 0 20px;
+  font-size:15px;
+  line-height:24px;
+  color:#737373;
+}
+.site-footer hr
+{
+  border-top-color:#bbb;
+  opacity:0.5
+}
+.site-footer hr.small
+{
+  margin:20px 0
+}
+.site-footer h6
+{
+  color:#fff;
+  font-size:16px;
+  text-transform:uppercase;
+  margin-top:5px;
+  letter-spacing:2px
+}
+.site-footer a
+{
+  color:#737373;
+}
+.site-footer a:hover
+{
+  color:#3366cc;
+  text-decoration:none;
+}
+.ftr1{
+  display:inline;
+}
+.footer-links
+{
+  padding-left:0;
+  list-style:none
+}
+.footer-links li
+{
+  display:block
+}
+.footer-links a
+{
+  color:#737373
+}
+.footer-links a:active,.footer-links a:focus,.footer-links a:hover
+{
+  color:#3366cc;
+  text-decoration:none;
+}
+.footer-links.inline li
+{
+  display:inline-block;
+}
+.site-footer .social-icons
+{
+  text-align:right
+}
+.site-footer .social-icons a
+{
+  width:40px;
+  height:40px;
+  line-height:40px;
+  margin-left:6px;
+  margin-right:0;
+  border-radius:100%;
+  background-color:#33353d
+}
+.copyright-text
+{
+  margin:0
+}
+@media (max-width:991px)
+{
+  .site-footer [class^=col-]
+  {
+    margin-bottom:30px
+  }
+}
+@media (max-width:767px)
+{
+  .site-footer
+  {
+    padding-bottom:0
+  }
+  .site-footer .copyright-text,.site-footer .social-icons
+  {
+    text-align:center
+  }
+}
+.social-icons
+{
+  padding-left:0;
+  margin-bottom:0;
+  list-style:none
+}
+.social-icons li
+{
+  display:inline-block;
+  margin-bottom:4px
+}
+.social-icons li.title
+{
+  margin-right:15px;
+  text-transform:uppercase;
+  color:#96a2b2;
+  font-weight:700;
+  font-size:13px
+}
+.social-icons a{
+  background-color:#eceeef;
+  color:#818a91;
+  font-size:16px;
+  display:inline-block;
+  line-height:44px;
+  width:44px;
+  height:44px;
+  text-align:center;
+  margin-right:8px;
+  border-radius:100%;
+  -webkit-transition:all .2s linear;
+  -o-transition:all .2s linear;
+  transition:all .2s linear
+}
+.social-icons a:active,.social-icons a:focus,.social-icons a:hover
+{
+  color:#fff;
+  background-color:#29aafe
+}
+.social-icons.size-sm a
+{
+  line-height:34px;
+  height:34px;
+  width:34px;
+  font-size:14px
+}
+.social-icons a.facebook:hover
+{
+  background-color:#3b5998
+}
+.social-icons a.twitter:hover
+{
+  background-color:#00aced
+}
+.social-icons a.linkedin:hover
+{
+  background-color:#007bb6
+}
+.social-icons a.dribbble:hover
+{
+  background-color:#ea4c89
+}
+@media (max-width:767px)
+{
+  .social-icons li.title
+  {
+    display:block;
+    margin-right:0;
+    font-weight:600
+  }
+}
+
+.premiumbenefits{
+  font-size: 1.1rem;
+}
+.foot1{
+  justify-content: space-around;
+}
+.ofrs{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.imaoffers img:hover{
+   box-shadow:0 10px 10px rgba(0, 0, 0, 0.653);
+}
+
+
+      
+    </style>
+
+</head>
+<body class="p-3 m-0 border-0 bd-example bd-example-cssgrid">
+
+
+    <!-- <h1 id="premiumhead" style="display: flex; "> <img src="CSS/project_logo.jpeg" alt="no img" height="50vh" width="80vh" style="display: flex; justify-content: flex-start;">Opiherbs Premium <a href="" class="Signin">Sign-in</a><a href="" class="Signup">Sign-up</a>
+      </h1> -->
+      <nav class="start1nav navbar navbar-expand-lg bg-body-tertiary">
+        <div class="  container-fluid">
+
+          <img class="logo" src="images/actualprojectlogo.jpg" alt="no img" height="80px" width="130px">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        
+            
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            
+            
+            <div style="text-align: center;width: 100%;"> <header>
+              <h1 class="gradient-text"> OPIHERBS PREMIUM</h1>
+            </header></div>
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link" href="#" data-toggle="modal" data-target="#loginModal">Login</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#" data-toggle="modal" data-target="#signupModal">Sign Up</a>
+            </li>
+          
+            </ul>
+          </div>
+          
+        </div>
+       
+      </nav>
+
+      <!-- Signup Modal -->
+    <div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Sign Up</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                  </button>
+              </div>
+              <div class="modal-body">
+                  <form class="signup-form" action="#" method="post">
+                      <div class="form-group">
+                          <label for="name">Name</label>
+                          <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name" required>
+                      </div>
+      
+                      <div>
+                          <label for="password">Password:</label>
+                          <p><input type="password" id="password" name="password" placeholder="Enter Password" required /></p>
+                          <span class="form-error"></span>
+                      </div>
+                      
+
+                      <div class="form-group">
+                          <label for="phoneNumber">Phone Number</label>
+                          <input type="tel" class="form-control" id="phoneNumber" name="phoneNumber" placeholder="Enter your phone number" required>
+                      </div>
+                      <div class="form-group">
+                          <label for="email">Email Address</label>
+                          <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email address" required>
+                      </div>
+                      <div class="form-group">——
+                          <label for="address">Address</label>
+                          <input type="text" class="form-control" id="address" name="address" placeholder="Enter your address" required>
+                      </div>
+                      <div class="form-group">
+                          <label for="emergencyNumber">Emergency Contact Number</label>
+                          <input type="tel" class="form-control" id="emergencyNumber" name="emergencyNumber" placeholder="Enter emergency contact number" required>
+                      </div>
+                      <button type="submit" class="btn btn-primary" id="submitButton">Sign Up</button>
+                  </form>
+                  
+                  <script>
+                      const form = document.querySelector('form');
+          
+                      form.addEventListener('submit', e => {
+                          e.preventDefault();
+
+                          const password = document.getElementById('password');
+                          const errorSpan = document.querySelector('.form-error');
+          
+                          // Validate password
+                          let isValid = true;
+          
+                          if (password.value.length < 12) {
+                              errorSpan.innerHTML = 'Password must be at least 12 characters.';
+                              isValid = false;
+                          } else if (!/[A-Z]/.test(password.value)) {
+                              errorSpan.innerHTML = 'Password must contain at least one uppercase letter.';
+                              isValid = false;
+                          } else if (!/[a-z]/.test(password.value)) {
+                              errorSpan.innerHTML = 'Password must contain at least one lowercase letter.';
+                               isValid = false;
+                          } else if (!/[0-9]/.test(password.value)) {
+                              errorSpan.innerHTML = 'Password must contain at least one number.';
+                              isValid = false;
+                          } else if (!/[!@#$?]/.test(password.value)) {
+                              errorSpan.innerHTML = 'Password must contain at least one special character.';
+                              isValid = false;
+                          }
+          
+                          // Submit form
+                          if (isValid) {
+                              document.getElementById('submitButton').disabled = true;
+                              form.submit();
+                          }
+                      });
+                  </script>
+
+              </div>
+          </div>
+      </div>
+  </div>
+
+   <!-- Login Modal -->
+   <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Login</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                  </button>
+              </div>
+              <div class="modal-body">
+                  <form class="signup-form" action="#" method="post">
+                      <div class="form-group">
+                          <label for="name">Name</label>
+                          <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name" required>
+                      </div>
+                      <div class="form-group">
+                          <label for="password">Password</label>
+                          <input type="password" class="form-control" id="password1" name="password1" placeholder="Enter your password" required>
+                      </div>
+              
+                      <button type="submit" class="btn btn-primary" id="submitButton">Login</button>
+                  </form>
+
+              </div>
+          </div>
+      </div>
+  </div>
+
+      <!-- <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">
+            <img src="images/project_logo.jpeg" alt="Logo" style="width:100px;">
+          </a>
+          <ul class="navbar-nav">
+                   
+
+                    <div style="text-align: center;width: 100%;"> <header>
+                      <h1 class="gradient-text">OPIHERBS PREMIUM</h1>
+                    </header></div>
+            
+            <li class="nav-item">
+              <a class="nav-link" href="login-signup2.html" >Introduction</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="doctors.html">Doctors</a>
+    
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="medicine.html">Medicines</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="emergency.html">Emergency</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="first_aid.html">First Aid</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="premium.html">Premium</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="offers.html">Offers</a>
+            </li>
+          </ul>
+        </div>
+      </nav> -->
+
+
+
+
+
+
+
+
+
+
+
+    <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active" data-bs-interval="10000">
+            <img src="/images/bimg2.jpg" class="d-block w-100" alt="no img" height="0580px">
+          </div>
+          <!-- <div class="carousel-item" data-bs-interval="2000">
+            <img src="../images/bimg4.jpg" class="d-block w-100" alt="no img" height="0580px">
+          </div> -->
+          <!-- <div class="carousel-item">
+            <img src="https://wallpaperaccess.com/full/749813.jpg" class="d-block w-100" alt="no img" height="0580px">
+          </div> -->
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+      
+
+      
+      <div class="startbody">
+        <div class="wrapper">
+          <div class="table basic">
+            <div class="price-section">
+              <div class="price-area">
+                <div class="inner-area">
+                  <span class="text"></span>
+                  <span class="price">₹999 <br></span>
+                  
+                </div>
+              </div>
+            </div>
+            <div class="package-name"></div>
+            <ul class="features">
+              <li>
+                <span class="list-name" style="font-weight: bolder;font-size: 1.2rem;">Plan valid for 1 month</span>
+              </li>
+              <li>
+                <span class="list-name">24/7 Services</span>
+                <span class="icon check"><i class="fas fa-check"></i></span>
+              </li>
+             
+              <li>
+                <span class="list-name">Free medicine delivery</span>
+                <span class="icon check"><i class="fas fa-check"></i></span>
+              </li>
+              <li>
+                <span class="list-name">Routine body checkup with offers and remainders for next checkups</span>
+                <span class="icon check"><i class="fas fa-check"></i></span>
+              </li>
+              <li>
+                <span class="list-name">Free followup consultations</span>
+                <span class="icon cross"><i class="fas fa-times"></i></span>
+              </li>
+              <li>
+                <span class="list-name">No wating time for a consultation with a doctor</span>
+                <span class="icon cross"><i class="fas fa-times"></i></span>
+              </li>
+             
+            </ul>
+            <div class="btn"><button><a href="/payments" style="color: #82c6f3;">Purchase</a></button></div>
+          </div>
+
+
+
+
+
+          <div class="table premium">
+            <div class="ribbon"><span>Recommend</span></div>
+            <div class="price-section">
+              <div class="price-area">
+                <div class="inner-area">
+                  <span class="text"></span>
+                  <span class="price">₹3499</span>
+                </div>
+              </div>
+            </div>
+            <div class="package-name"></div>
+            <ul class="features">
+              <li>
+                <span class="list-name" style="font-weight: bolder;font-size: 1.2rem;">Plan valid for 4 month</span>
+              </li>
+              <li>
+                <span class="list-name">24/7 Services</span>
+                <span class="icon check"><i class="fas fa-check"></i></span>
+              </li>
+              <li>
+                <span class="list-name">Free medicine delivery</span>
+                <span class="icon check"><i class="fas fa-check"></i></span>
+              </li>
+              <li>
+                <span class="list-name">Routine body checkup with offers and remainders for next checkups</span>
+                <span class="icon check"><i class="fas fa-check"></i></span>
+              </li>
+              <li>
+                <span class="list-name">Free followup consultations</span>
+                <span class="icon check"><i class="fas fa-check"></i></span>
+              </li>
+              <li>
+                <span class="list-name">No wating time for a consultation with a doctor</span>
+                <span class="icon cross"><i class="fas fa-times"></i></span>
+              </li>
+            </ul>
+            <div class="btn"><button><a href="/payments"  style="color: #82c6f3;">Purchase</a></button></div>
+          </div>
+
+
+
+
+
+          <div class="table ultimate">
+            <div class="price-section">
+              <div class="price-area">
+                <div class="inner-area">
+                  <span class="text"></span>
+                  <span class="price">₹9999</span>
+                </div>
+              </div>
+            </div>
+            <div class="package-name"></div>
+            <ul class="features">
+              <li>
+                <span class="list-name" style="font-weight: bolder;font-size: 1.2rem;">Plan valid for 1 year</span>
+              </li>
+              <li>
+                <span class="list-name">24/7 Services</span>
+                <span class="icon check"><i class="fas fa-check"></i></span>
+              </li>
+              <li>
+                <span class="list-name">Free medicine delivery</span>
+                <span class="icon check"><i class="fas fa-check"></i></span>
+              </li>
+              <li>
+                <span class="list-name">Routine body checkup with offers and remainders for next checkups</span>
+                <span class="icon check"><i class="fas fa-check"></i></span>
+              </li>
+              <li>
+                <span class="list-name">Free followup consultations</span>
+                <span class="icon check"><i class="fas fa-check"></i></span>
+              </li>
+               <li>
+                <span class="list-name">No wating time for a consultation with a doctor</span>
+                <span class="icon check"><i class="fas fa-check"></i></span>
+              </li>
+            </ul>
+            <div class="btn"><button><a href="/payments"  style="color: #82c6f3;">Purchase</a></button></div>
+          </div>
+        </div>
+      </div>
+      <br>
+
+
+
+
+     <div class="ofrs"><div class="premiumbenefits">
+      <h3>BENEFITS</h3>
+      <ul>
+        <li><b> Free Consultation</b>
+          <ol>
+            <li>Silver premium user will get one free consultation in span of one month.</li>
+            <li>First three Consultation for gold premium user are free.</li>
+            <li>Diamond premium user will get one free   consultation per month.</li>
+          </ol>
+        </li>
+        <!-- <li><b> Shipping Charges privilege</b>
+          <ol>
+            <li>Silver premium user will have to pay half of the regular shipping charges.</li>
+            <li>Gold or Diamond premium user have 100% advantage and will not have shipping charges.</li>
+          </ol>
+        </li> -->
+        <li><b>Discounts </b>
+          <br>
+          All premium members will get more discount than regular customers/patients. 
+        </li>
+        <li><b> Fast Delivery </b>
+         <br>
+           Premium users will get their products delivered at home on same day.
+        </li>
+      </ul>
+    </div>
+    <div>
+      <p></p>
+    <div style="align-self: center;" class="imaoffers">
+     
+      <a href="/offers"><img src="/images/offersimage.jpg" alt="no img" style="height: 200px;"></a>
+    </div>
+  </div>
+</div>
+      
+     
+
+
+
+
+      <footer class="site-footer">
+       
+         
+        
+        <div class="foot1 d-flex">
+          <div class="d-inline-block">
+              <h6>Know us</h6>
+              
+               
+                  <ul class="footer-links">
+                  <li><a href="./1">About Us</a></li>
+                  <li><a href="./S20210010127_contact_us.html">Contact Us</a></li>
+                  <li><a href="">Business</a></li>
+                  <li><a href="">Partnerships</a></li>
+                   <!-- <li><a href="./payments">Payment</a></li>
+                  <li><a href="./offers">Offers</a></li> -->
+                </ul>
+              </div>
+                
+
+              <div class="d-inline-block"> 
+                <h6> Our policies</h6>
+                  <ul class="footer-links"><li><a href="">Privacy Policy</a>
+                  </li>
+                  <li><a href="">Grievance Redressal</a></li>
+                  <li><a href="">Fake jobs and Frauds</a></li>
+                 
+                </ul>
+              </div>
+
+              <div class="d-inline-block"> 
+                <h6>Services</h6>
+                  <ul class="footer-links"><li><a href="">Order Medicines</a>
+                  </li>
+                  <li><a href="">Consult a Doctor</a></li>
+                  <li><a href="">Articles</a></li>
+                  <li><a href="/payments">payments</a></li>
+                  
+                </ul>
+              </div>
+
+              <div class="d-inline-block"> 
+                <h6> Social Media</h6>
+                  <ul class="footer-links"> <li>
+
+                    <a href="#" class="fab fa-facebook-f"> facebook</a>
+                </li>
+                <li>
+
+                    <a href="#" class="fab fa-twitter"> twitter</a>
+                </li>
+                <li>
+
+                    <a href="#" class="fab fa-instagram"> instagram</a>
+                </li>
+                  
+                </ul>
+              </div>
+
+            </div>
+              
+          <hr>
+       
+        
+  </footer>
+
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>

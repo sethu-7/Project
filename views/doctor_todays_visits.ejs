@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Today's visits</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Secular+One&family=Yeseva+One&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Secular+One&family=Yeseva+One&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Secular+One&family=Yeseva+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    <style>
+        html {
+            overflow-x: hidden;
+            scroll-padding-top: 7rem;
+            scroll-behavior: smooth;
+
+        }
+
+
+        .navbar {
+            margin: 5px;
+            background-color: indigo;
+            position: relative;
+            /* border-radius: 40px; */
+
+        }
+
+        .navbar::before {
+            content: '';
+            background-color: blueviolet;
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            z-index: -1;
+            opacity: 0.4;
+        }
+
+        .navbar ul {
+            margin: 1px;
+            overflow: auto;
+        }
+
+        .navbar li {
+            float: left;
+            list-style: none;
+            margin: 20px 20px;
+        }
+
+        .navbar li a {
+            padding: 3px 3px;
+            color: white;
+            list-style: none;
+            text-decoration: none;
+        }
+
+        .navbar li a:hover {
+            background-color: blueviolet;
+
+
+        }
+
+        .navbar ul li a {
+
+            display: block;
+            /* padding: 3px 22px; */
+            border-radius: 20px;
+
+        }
+
+        .navbar input {
+            border: 3px solid rgb(193, 75, 222);
+            border-radius: 15px;
+            width: 130px;
+            text-align: center;
+
+        }
+
+        .navbar ul li a {
+
+            display: block;
+            /* padding: 3px 22px; */
+            border-radius: 20px;
+
+        }
+
+        /* padding: 10px; */
+        #logo {
+            width: 135px;
+            float: right;
+
+
+        }
+
+        .patients {
+            margin: 30px;
+        }
+
+        .patients h1 {
+            /* font-family: 'Secular One', sans-serif; */
+            font-family: 'Yeseva One', cursive;
+            display: inline;
+        }
+
+        .search-container {
+
+            float: right;
+            padding: 8px;
+        }
+
+        .search-container button {
+            border: solid #ddd;
+            float: right;
+            padding: 6px 10px;
+            margin-top: 8px;
+            margin-right: 16px;
+            background: #ddd;
+            font-size: 17px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .search-container button:hover {
+            background: #ccc;
+        }
+
+        @media screen and (max-width: 600px) {
+            .topnav .search-container {
+                float: none;
+            }
+
+            input[type=text],
+            .search-container button {
+                float: none;
+                display: block;
+                text-align: left;
+                width: 100%;
+                margin: 0;
+                padding: 14px;
+
+                /* background-color: #ddd; */
+            }
+
+            input[type=text] {
+                border: 1px solid #ccc;
+                /* background-color: #ddd; */
+            }
+        }
+
+        input[type=text] {
+            padding: 6px;
+            margin-top: 8px;
+            font-size: 17px;
+
+        }
+
+
+
+
+
+
+
+        #patients {
+            font-family: Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+            padding: 5px;
+        }
+
+        #patients td,
+        #patients th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        #patients tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        #patients tr:hover {
+            background-color: #ddd;
+        }
+
+        #patients th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: indigo;
+            color: white;
+        }
+
+        .footer li a {
+
+            /* display: block; */
+            /* padding: 3px 22px; */
+            border-radius: 20px;
+
+        }
+
+        .footer {
+            background-color: indigo;
+            color: aliceblue;
+            /* display: flex; */
+            align-items: center;
+
+
+            color: #FCF8E8;
+            display: flex;
+
+            /* height: 300px; */
+            /* justify-content: center; */
+            /* position: fixed; */
+            width: 100%;
+            /* justify-content: ; */
+            flex-wrap: wrap;
+            flex-grow: inherit;
+            justify-content: space-around;
+
+        }
+
+        .footer li a {
+            color: white;
+        }
+
+        .footer div {
+            margin: 10px;
+            padding: 20px;
+            /* font-size: 30px; */
+        }
+
+
+
+        .footer li a:hover {
+            background-color: blueviolet;
+
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar">
+
+            <ul>
+                </li>
+                <li><img src="/ffsdprojectopiherb.jpg" alt="opiherb" id="logo">
+                <li><a href="/dashboard">Dashboard</a></li>
+                <li><a href="/doctor_todays_visits">Todays Visits</a></li>
+
+                <li><a href="/doctor_patients">Patients</a></li>
+                <li><a href="/doctor_profile">Profile</a></li>
+
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+
+                <!-- <li><button type="button" class="btn btn-info" id="logo">Sign in/Sign up</button></li> -->
+            </ul>
+        </nav>
+    </header>
+
+    <section>
+        <div class="patients">
+            <h1>TODAY'S VISITS
+
+            </h1>
+            <div class="search-container">
+                <form action="#">
+                    <input type="text" placeholder="Search.." name="search">
+                    <button type="submit"><i class="fa fa-search"></i></button>
+                </form>
+            </div>
+            <table id="patients">
+                <tr>
+
+                    <th>Time</th>
+                    <th>Patient ID</th>
+                    <th>Patient Name</th>
+                    <th>Status</th>
+                </tr>
+                
+                <% for(const f of model) {%>
+                    <tr>
+                        
+                        <td>
+                            <%= f.time %>
+                        </td>
+                        <td>
+                            <%= f.p_id%>
+                        </td>
+                        <td>
+                            <%= f.p_name%>
+                        </td>
+                        <td>
+                            <%= f.status%>
+                        </td>
+
+
+                    </tr>
+                    <%}%>
+            </table>
+
+        </div>
+
+
+    </section>
+
+    <footer>
+        <div class="footer">
+
+            <div>
+                <h4>Know us</h4>
+                <li><a href="">About</a></li>
+                <li><a href="">Contact</a></li>
+                <li><a href="">Business</a></li>
+                <li><a href="">Partnership</a></li>
+
+            </div>
+            <div>
+                <h4>Our Policies</h4>
+                <li><a href="">Privacy Policy</a></li>
+                <li><a href="">Grievance Redressal</a></li>
+                <li><a href="">Fake jobs and Frauds</a></li>
+            </div>
+            <div>
+                <h4>Our Services</h4>
+                <li><a href="">Order Medicines</a></li>
+                <li><a href="">Consult a Doctor</a></li>
+                <li><a href="">Articles</a></li>
+            </div>
+            <div>
+                <h4>Connect with Us</h4>
+                <li>
+
+                    <a href="#" class="fab fa-facebook-f"> facebook</a>
+                </li>
+                <li>
+
+                    <a href="#" class="fab fa-twitter"> twitter</a>
+                </li>
+                <li>
+
+                    <a href="#" class="fab fa-instagram"> instagram</a>
+                </li>
+
+
+            </div>
+
+
+        </div>
+    </footer>
+
+</body>
+
+</html>

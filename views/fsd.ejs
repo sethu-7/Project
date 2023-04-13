@@ -1,0 +1,676 @@
+<html>
+
+<head>
+	<title>
+		Emergency and First Aid Contact
+	</title>
+	<link rel="stylesheet" href="css\fsd.css">
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			background-color: lightblue;
+		}
+
+		h1 {
+			text-align: center;
+			color: #1c1c1c;
+		}
+
+		table {
+			margin: 0 auto;
+			border-collapse: collapse;
+			border: 2px solid #1c1c1c;
+			text-align: left;
+			width: 80%;
+		}
+
+		th,
+		td {
+			padding: 10px;
+			border: 1px solid #1c1c1c;
+		}
+
+		th {
+			background-color: #1c1c1c;
+			color: #fff;
+			font-weight: bold;
+		}
+
+		#emergency-procedures {
+			margin: 50px auto;
+			width: 80%;
+		}
+
+		#emergency-procedures h2 {
+			color: #1c1c1c;
+		}
+
+		#emergency-procedures ul {
+			margin-left: 20px;
+		}
+
+		.navbar {
+			margin: 5px;
+			background-color: rgb(41, 41, 41);
+			position: relative;
+			/* border-radius: 40px; */
+
+		}
+
+		.navbar::before {
+			content: '';
+			background-color: blueviolet;
+			position: absolute;
+			height: 100%;
+			width: 100%;
+			z-index: -1;
+			opacity: 0.4;
+		}
+
+		.navbar ul {
+			margin: 1px;
+			overflow: auto;
+		}
+
+		.navbar li {
+			float: left;
+			list-style: none;
+			margin: 20px 20px;
+		}
+
+		.navbar li a {
+			padding: 3px 3px;
+			color: white;
+			list-style: none;
+			text-decoration: none;
+		}
+
+		.navbar li a:hover {
+			/* background-color: blueviolet; */
+
+		}
+
+		.footer li a:hover {
+			color: gold;
+
+		}
+
+		#search {
+			/* margin-top: 50px; */
+			width: 100%;
+			position: absolute;
+			/* bottom: 416px;
+            left: 320px;
+            height: 36px; */
+			text-align: center;
+			width: 50%;
+			border-radius: 40px;
+			padding: 6px 20px 5px 30px;
+			overflow: auto;
+			display: flex;
+
+
+			/* width: 100%; */
+			/* justify-content: center; */
+			flex-wrap: wrap;
+			flex-grow: inherit;
+			/* display: flex; */
+
+
+
+		}
+
+		#logo {
+			/* padding: 10px; */
+			width: 135px;
+			float: right;
+
+
+		}
+
+		.navbar ul li a {
+
+			display: block;
+			/* padding: 3px 22px; */
+			border-radius: 20px;
+
+		}
+
+		.footer li a:hover {
+			color: gold;
+
+		}
+
+		.footer li a {
+
+
+			border-radius: 20px;
+
+		}
+
+		.footer {
+			background-color: black;
+			color: aliceblue;
+
+			align-items: center;
+
+
+			color: #FCF8E8;
+			display: flex;
+			justify-content: space-around;
+
+			width: 100%;
+			;
+			flex-wrap: wrap;
+			flex-grow: inherit;
+
+		}
+
+		.footer li a {
+			color: grey;
+		}
+
+		.footer h4 {
+			color: white;
+		}
+
+		.footer div {
+			margin: 10px;
+			padding: 20px;
+		}
+	</style>
+</head>
+
+<body>
+
+	<header>
+		<nav class="navbar">
+
+			<ul>
+				<li><img src="ffsdprojectopiherb.jpg" alt="opiherb" id="logo">
+				</li>
+				<li></li>
+				
+
+				<li><a href="/login_signup2">Login</a></li>
+				<li><a href="/login_signup2">Sign Up</a></li>
+				<li><a href="">Introduction</a></li>
+				<li><a href="doctor_project_final">Doctors</a></li>
+            <li><a href="project_final">Medicines</a></li>
+            <!-- <li><a href="">Emergency</a></li> -->
+            <li><a href="fsd">First Aid/Emergency</a></li>
+            <li><a href="index">Premium</a></li>
+            <li><a href="offers">Offers</a></li>
+
+				<!-- <li><button type="button" class="btn btn-info" id="logo">Sign in/Sign up</button></li> -->
+
+			</ul>
+		</nav>
+		    
+	</header>
+
+
+	<hr style=" position: relative;
+	top: 20px;
+	border: none;
+	height: 12px;
+	background: black;
+	margin-bottom: 50px;">
+	<h1>Emergency and First Aid Contact</h1>
+	<hr style=" position: relative;
+	top: 20px;
+	border: none;
+	height: 12px;
+	background: black;
+	margin-bottom: 50px;">
+
+	<hr style=" position: relative;
+	top: 20px;
+	border: none;
+	height: 6px;
+	background: black;
+	margin-bottom: 50px;" width="80%">
+	<h1>Emergency</h1>
+	<hr style=" position: relative;
+	top: 20px;
+	border: none;
+	height: 6px;
+	background: black;
+	margin-bottom: 50px;" width="80%">
+	<table>
+		<thead>
+			<tr>
+				<th>Emergency Contact</th>
+				<th>Phone Number</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>Police</td>
+				<td>100</td>
+			</tr>
+			<tr>
+				<td>Fire Department</td>
+				<td>114</td>
+			</tr>
+			<tr>
+				<td>Ambulance</td>
+				<td>108</td>
+			</tr>
+
+
+	</table>
+	<div id="emergency-procedures">
+		<h2>Emergency Procedures</h2>
+		<ul>
+			<li>If someone is unconscious and not breathing, call 108 and start CPR immediately.</li>
+			<li>If someone is bleeding heavily, apply pressure to the wound and call 108.</li>
+			<li>If someone is experiencing chest pain or difficulty breathing, call 108 and have them sit down and rest.
+			</li>
+			<li>If someone is having a seizure, move any dangerous objects away from them and call 108.</li>
+		</ul>
+		<style>
+			.btn {
+				border: none;
+				color: white;
+				padding: 14px 28px;
+				font-size: 16px;
+				cursor: pointer;
+			}
+
+			.Emergency {
+				background-color: #f44336;
+			}
+
+			.Emergency:hover {
+				background: #da190b;
+			}
+		</style>
+		<div style="text-align:center">
+			<button class="btn Emergency">Emergency</button>
+		</div>
+		<hr style=" position: relative;
+	top: 20px;
+	border: none;
+	height: 6px;
+	background: black;
+	margin-bottom: 50px;">
+		<h1>First Aid Kit</h1>
+		<hr style=" position: relative;
+	top: 20px;
+	border: none;
+	height: 6px;
+	background: black;
+	margin-bottom: 50px;">
+		<p>If someone is injured or has a medical emergency, follow these first aid procedures:</p>
+		<ol>
+			<li>Call 108 if the person is not breathing, has chest pain, or has a severe injury.</li>
+			<li>If the person is conscious and able to talk, ask them about their medical history and any medications
+				they are taking.</li>
+			<li>If the person is bleeding, apply pressure to the wound with a clean cloth or bandage.</li>
+			<li>If the person is having a seizure, clear the area around them and gently roll them onto their side to
+				prevent choking.</li>
+		</ol>
+		<hr style=" position: relative;
+	top: 20px;
+	border: none;
+	height: 6px;
+	background: black;
+	margin-bottom: 50px;">
+		<h1>Information about Opiherbs First Aid Combo for Emergency Medication, Dressing &amp; Pain Management</h1>
+		<hr style=" position: relative;
+	top: 20px;
+	border: none;
+	height: 6px;
+	background: black;
+	margin-bottom: 50px;">
+		<h2>Opiherbs Digital Thermometer (Opiherbs Healthcare Solutions Private Limited)</h2>
+		<p>Opiherbs Digital Thermometer is fast, accurate and easy to use, which gives a reading within 20 seconds. It
+			can be used in the oral cavity, rectal cavity, or under the armpit. It has a rigid tip and is also
+			water-resistant.</p>
+		<h3>Uses:</h3>
+		<p>Opiherbs Digital Thermometer is used to measure the body temperature and convert the reading into a readable
+			format such as Celsius, Fahrenheit or Kelvin.</p>
+		<h3>Product Specifications and Features:</h3>
+		<ul>
+			<li>Measurement range: 35.5C - 42.0C / 95F - 109F</li>
+			<li>Error: +/- 0.1C</li>
+			<li>Accuracy: Highly accurate with memory function</li>
+			<li>Quick result: Provides reading within 20 seconds</li>
+			<li>Alarm: Notifies when measurement taking is completed</li>
+			<li>This is a water-resistant thermometer</li>
+		</ul>
+		<p>Good to Know: Dual mode reading (°F and °C )</p>
+		<p>Type of Thermometer: Non-mercury-based digital thermometer</p>
+		<h3>Directions for Use:</h3>
+		<ol>
+			<li>Clean the tip with cold water and soap, then rinse it</li>
+			<li>Turn the thermometer on</li>
+			<li>Put the tip under the tongue, towards the back of the mouth</li>
+			<li>Close your lips around the thermometer</li>
+			<li>Wait until it beeps or flashes</li>
+			<li>Check the temperature on the display</li>
+		</ol>
+		<h3>Safety Information:</h3>
+		<ul>
+			<li>Read the label carefully before use</li>
+			<li>Keep the thermometer away from direct contact with sunlight</li>
+			<li>The thermometer should be washed before and after each use, preferably with an antiseptic solution</li>
+			<li>Do not wash the thermometer with hot water</li>
+			<li>Handle the thermometer with care</li>
+		</ul>
+		<h3>Frequently Asked Questions:</h3>
+		<p>Q. How do you know if the thermometer is accurate?<br>
+			A. The ice bath test is the easiest way to test a thermometer for accuracy, assuming your thermometer will
+			display temperatures of 32°F or less.</p>
+		<p>Q. How do you know if the thermometer is broken?<br>
+			A. Insert your thermometer into the glass of cold water without touching the sides of the glass. After 30
+			seconds, your thermometer should read 32° F. If it doesn't, it may need to be replaced or recalibrated.</p>
+		<p>Q. How do you clean a thermometer?<br>
+			A. Use a cotton swab dipped in alcohol to clean the inside of any small crevices. Allow the alcohol to
+			air-dry on the thermometer to kill germs effectively.</p>
+
+		<title>Opiherbs Healthcare Solutions Private Limited Products</title>
+		<hr style=" position: relative;
+		top: 20px;
+		border: none;
+		height: 6px;
+		background: black;
+		margin-bottom: 50px;">
+		<h1>What can affect a thermometer reading?</h1>
+
+		<hr style=" position: relative;
+	top: 20px;
+	border: none;
+	height: 6px;
+	background: black;
+	margin-bottom: 50px;">
+		<p>Direct sunlight, cold temperatures, or a sweaty forehead can affect temperature readings. Variations in user
+			technique, such as holding the scanner too far away from the forehead, may also affect accuracy.</p>
+
+		<h2>Opiherbs Cotton Crepe Bandage 6cm</h2>
+		<p>Opiherbs Cotton Crepe Bandage is suitable for use as support for sprains and strains in joints and muscles.
+			It works as a moderate compression bandage for knee swelling, ankle swelling, and other relevant injuries.
+		</p>
+		<h3>Uses:</h3>
+		<ul>
+			<li>Relieves muscle strain and joint pain</li>
+			<li>Reduces swelling</li>
+			<li>Provides warmth and firm support to the affected area</li>
+		</ul>
+		<h3>Product Specifications and Features:</h3>
+		<ul>
+			<li>Super soft and comfortable to wear</li>
+			<li>Made from a skin-friendly and absorbent material</li>
+			<li>Offers firm support and compression to the affected area</li>
+		</ul>
+		<h3>Directions For Use:</h3>
+		<p>Use as directed on the label.</p>
+		<h3>Safety Information:</h3>
+		<ul>
+			<li>Wash carefully in lukewarm water and remove excess water by squeezing gently</li>
+			<li>Allow it to dry without stretching</li>
+			<li>Do not iron</li>
+		</ul>
+		<hr style="position:relative; top: 20px; border: none; height: 6px; background: black; margin-bottom: 50px;">
+		<h1>Opiherbs Medicated First Aid Dressing - Washproof, Bandages Pack of 20</h1>
+		<hr style="position:relative; top: 20px; border: none; height: 6px; background: black; margin-bottom: 50px;">
+		<p>Opiherbs Medicated First Aid Dressing is washproof and provides antiseptic protection to help heal any minor
+			cut or scrape. Each washproof medicated pad contains benzalkonium chloride solution I.P. equivalent to
+			benzalkonium chloride 0.5% w/w.</p>
+		<h3>Uses:</h3>
+		<ul>
+			<li>Protects minor cuts and scrapes from infection</li>
+		</ul>
+		<h3>Product Specifications and Features:</h3>
+		<ul>
+			<li>Size: 70mm X 19mm</li>
+			<li>Advanced protection for cuts and scrapes</li>
+			<li>Antiseptic protection</li>
+			<li>Long-lasting hold</li>
+			<li>Transparent in colour to match your skin</li>
+			<li>Each washproof medicated pad contains benzalkonium chloride solution I.P. equivalent to benzalkonium
+				chloride 0.5% w/w</li>
+		</ul>
+		<h3>Directions For Use:</h3>
+		<ol>
+			<li>Clean the wound and dry the surrounding skin</li>
+			<li>Hold the Opiherbs Medicated First Aid Dressing by the protective strips with the pad side facing down
+			</li>
+			<li>Place the pad on the wound, conveniently peel away the strips uniformly and press the sticky edges of
+				the dressing down on the skin</li>
+			<li>For best results, change the dressing daily until the wound is healed</li>
+		</ol>
+		<h3>Safety Information:</h3>
+		<ul>
+			<li>External use only</li>
+			<li>For single-use only</li>
+			<li>Store in a cool and dry place</li>
+			<hr style=" position: relative;
+	top: 20px;
+	border: none;
+	height: 6px;
+	background: black;
+	margin-bottom: 50px;">
+			<h1>Opiherbs Pain Relief Spray for Lower Back Pain, Joint Pain, Neck Pain &amp; Sprain (Opiherbs Healthcare
+				Solutions Private Limited)</h1>
+			<hr style=" position: relative;
+	top: 20px;
+	border: none;
+	height: 6px;
+	background: black;
+	margin-bottom: 50px;">
+			<p><br /><span>Opiherbs Pain Relief Spray for Low Back Pain, Joint Pain, Neck Pain &amp;
+					Sprain</span><span>&nbsp;is an analgesic (or pain-relieving) spray solution which contains a
+					non-steroidal anti-inflammatory drug to relieve mild to moderate pain and inflammation, particularly
+					musculoskeletal pain. It acts on the site of pain, providing relief through muscle relaxation and
+					helping in quick recovery.&nbsp; The ingredients of Opiherbs Pain Relief Spray penetrate deep into
+					the skin to generate warmth and are recognised for their soothing qualities. The product is also
+					used for the management of chronic pain caused by osteoarthritis, rheumatoid arthritis, low back
+					pain, and frozen shoulder.</span><br /><br /><span>Key Ingredients:</span></p>
+			<ul>
+				<li>Diclofenac Diethylamine 1.16% w/w</li>
+			</ul>
+			<ul>
+				<li>Linseed oil 3.00% w/w</li>
+			</ul>
+			<ul>
+				<li>Methyl Salicylate 10.00% w/w</li>
+			</ul>
+			<ul>
+				<li>Menthol 5% w/w</li>
+			</ul>
+			<p><br /><span>Role of Key Ingredients:</span></p>
+			<ul>
+				<li>Diclofenac Diethylamine is used to relieve pain and inflammation associated with musculoskeletal
+					disorders, strain, sprain, arthritis, post-traumatic pain, and low back pain. It belongs to the
+					class of medications known as nonsteroidal anti-inflammatory drugs (NSAIDs). It is used to relieve
+					acute muscular pain and works by blocking the synthesis of chemical enzymes(i.e prostaglandins)
+					responsible for pain</li>
+			</ul>
+			<ul>
+				<li>Linseed oil is also known as flaxseed oil. It helps reduce inflammation and thus helps soothe sore
+					muscles&nbsp;</li>
+			</ul>
+			<ul>
+				<li>Methyl Salicylate is commonly known as wintergreen oil. It also reduces inflammation and provides
+					relief from rheumatic conditions, muscle and joint pain</li>
+			</ul>
+			<ul>
+				<li>Menthol has a cooling effect, which soothes the skin and reduces pain</li>
+			</ul>
+			<p><span><br />Key Benefits:</span></p>
+			<ul>
+				<li>Provides relief from pain, swelling and inflammation</li>
+			</ul>
+			<ul>
+				<li>It can work great on sports injuries such as muscle pulls, sprains, and strain</li>
+			</ul>
+			<ul>
+				<li>Helps reduce irritation and swelling around the affected area</li>
+			</ul>
+			<ul>
+				<li>Its quick absorption formula enables it to act fast and reduce pain</li>
+			</ul>
+			<ul>
+				<li>It is effective for pain in the joints, knees, back, shoulders, and neck</li>
+			</ul>
+			<p><span><br />Directions For Use:<br /></span><span>Shake well before each use. Spray the contents from a 5
+					cm distance on the affected area three to four times a day. Do not spray on open
+					wounds.</span><br /><br /><span>Safety Information:</span></p>
+			<ul>
+				<li>Keep out of reach of children&nbsp;</li>
+			</ul>
+			<ul>
+				<li>Replace cap tightly after use&nbsp;</li>
+			</ul>
+			<ul>
+				<li>Avoid contact with eyes</li>
+			</ul>
+			<ul>
+				<li>For external use only</li>
+			</ul>
+			<ul>
+				<li>Not for veterinary use</li>
+			</ul>
+			<ul>
+				<li><span>Caution:</span>&nbsp;FLAMMABLE Pressurised container. Keep away from heat and sunlight. Do not
+					expose to temperatures exceeding 50&deg;C. Do not pierce or burn even when apparently empty. Do not
+					spray on a naked flame or incandescent material. Do not spray near your eyes or face. Avoid direct
+					inhalation</li>
+			</ul>
+			<p><span>Frequently Asked Questions:<br /></span><br /><span>Q. What is Musculoskeletal
+					pain?<br /></span><span>It is defined as acute or chronic pain that affects bones, muscles,
+					ligaments, tendons, and even nerves.</span><br /><br /></p>
+			<hr style=" position: relative;
+	top: 20px;
+	border: none;
+	height: 6px;
+	background: black;
+	margin-bottom: 50px;">
+			<h1>Opiherbs Antiseptic Liquid (Opiherbs Healthcare Solutions Private Limited)</h1>
+			<hr style=" position: relative;
+	top: 20px;
+	border: none;
+	height: 6px;
+	background: black;
+	margin-bottom: 50px;">
+			<p><br /><span>Opiherbs Antiseptic Liquid</span><span>&nbsp;is a chlorhexidine-based antiseptic formula. It
+					contains effective antiseptic cetrimide and strong antibacterial &amp; disinfectant chlorhexidine.
+					It is suitable for first-aid treatment and helps prevent infections by killing bacteria, germs, and
+					viruses. It is useful for personal hygiene as well. Due to its antiseptic and disinfectant nature,
+					it can also be used for household cleaning purposes.</span><br /><br /><span>Key Ingredients:</span>
+			</p>
+			<ul>
+				<li>Chlorhexidine Gluconate</li>
+			</ul>
+			<ul>
+				<li>Cetrimide</li>
+			</ul>
+			<p><span>Key Benefits:</span></p>
+			<ul>
+				<li><span>Chlorhexidine Gluconate:&nbsp;</span>It is a strong antibacterial compound which kills
+					bacteria and prevents regrowth. It is effective against a wide range of bacteria and microbes</li>
+			</ul>
+			<ul>
+				<li><span>Cetrimide:&nbsp;</span>It is also a strong antiseptic compound. It is primarily used to treat
+					wounds, cuts, and minor burns and protect against infection</li>
+			</ul>
+			<ul>
+				<li>Prevents infection and helps with minor cuts, wounds, and first aids</li>
+			</ul>
+			<ul>
+				<li>It can be added to water for bathing and floor cleaning&nbsp;</li>
+			</ul>
+			<ul>
+				<li>It is good for personal hygiene and diaper rashes for babies</li>
+			</ul>
+			<ul>
+				<li>Good for laboratories and&nbsp; kitchen uses</li>
+			</ul>
+			<ul>
+				<li>It causes no burning or itching sensation&nbsp;</li>
+			</ul>
+			<p><span><br />Directions For Use:</span></p>
+			<ul>
+				<li><span>First aid:&nbsp;</span>Dilute one part of the product in 15 parts of water for minor cuts and
+					wounds</li>
+			</ul>
+			<ul>
+				<li><span>Bathing:&nbsp;</span>Dilute approximately 15 ml of product in a bucket of water (approximately
+					10lt)</li>
+			</ul>
+			<ul>
+				<li><span>Personal hygiene:&nbsp;</span>Dilute 2 tablespoon (approximately 30ml) in mug of
+					water(approximately 1lt)</li>
+			</ul>
+			<ul>
+				<li><span>Cloth washing:&nbsp;</span>Dilute 2 tablespoons (approximately 30ml) in 5lt of water&nbsp;
+				</li>
+			</ul>
+			<p><br /><span>Safety Information:<br /></span></p>
+			<ul>
+				<li>Avoid direct contact with eyes</li>
+			</ul>
+			<ul>
+				<li>If any contact or irritation persists, discontinue the use and consult a doctor</li>
+			</ul>
+			<ul>
+				<li>Keep away from children</li>
+			</ul>
+			<ul>
+				<li>Read the label carefully before use</li>
+			</ul>
+
+			<footer>
+				<div class="footer">
+
+					<div>
+                        <h4>Know Us</h4>
+                        <li><a href="aboutus">About</a></li>
+                        <li><a href="contact">Contact</a></li>
+                        <li><a href="">Business</a></li>
+                        <li><a href="partnership">Partnership</a></li>
+
+                    </div>
+                    <div>
+                        <h4>Our Policies</h4>
+                        <li><a href="privacy">Privacy Policy</a></li>
+                        <li><a href="grievance">Grievance Redressal</a></li>
+                        <li><a href="fraud">Fake jobs and Frauds</a></li>
+                    </div>
+                    <div>
+                        <h4>Our Services</h4>
+                        <li><a href="medicines">Order Medicines</a></li>
+                        <li><a href="appointment-page">Consult a Doctor</a></li>
+                        <li><a href="">Articles</a></li>
+                    </div>
+					<div>
+						<h4>Connect with Us</h4>
+						<li>
+
+							<a href="#" class="fab fa-facebook-f"> facebook</a>
+						</li>
+						<li>
+
+							<a href="#" class="fab fa-twitter"> twitter</a>
+						</li>
+						<li>
+
+							<a href="#" class="fab fa-instagram"> instagram</a>
+						</li>
+
+
+					</div>
+
+
+				</div>
+			</footer>
+
+		</ul>
+	</div>
+	</nav>
+
+</body>
+
+</html>
