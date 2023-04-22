@@ -213,7 +213,7 @@ app.listen(5000, () => {
 app.post('/signup', async (req, res) => {
     try {
 
-        let newpatient = new d({
+        let newpatient = new patient({
             name: req.body.name,
             password: req.body.password,
             phoneNumber: req.body.phoneNumber,
