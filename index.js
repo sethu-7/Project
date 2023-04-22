@@ -105,6 +105,17 @@ app.get('/doctor_project_final', (req, res) => {
 app.get('/dashboard', (req, res) => {
     res.render('dashboard')
 })
+app.get('/doctor_profile', (req, res) => {
+    res.render('doctor_profile')
+})
+app.get('/appointment-page', (req, res) => {
+    doctor.find({email:req.query.email}).then(function(doct){
+        res.render('appointment-page',{
+            doc:doct
+        })
+
+    })
+})
 app.get('/', (req, res) => {
     res.render('introduction')
 })
@@ -156,9 +167,12 @@ app.post('/submit', upload.single('file'), async (req, res) => {
             password: req.body.password,
             phoneNumber: req.body.phoneNumber,
             email: req.body.email,
-            adress: req.body.address,
+            district: req.body.district,
             Specialization: req.body.Specialization,
             experience: req.body.experience,
+            timeslot1:req.body.timeslot1,
+            timeslot2:req.body.timeslot2,
+            timeslot3:req.body.timeslot3,
             file: req.body.file
 
 

@@ -9,11 +9,14 @@ const doctorSchema = new Schema({
     password: String,
     phoneNumber: Number,
     email: String,
-    address:String,
+    district:String,
     Specialization: String,
     // fee:Number,
     experience: Number,
     address: String,
+    timeslot1:String,
+    timeslot2:String,
+    timeslot3:String,
     file:{
         type:String
     }

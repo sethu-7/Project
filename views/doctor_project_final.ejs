@@ -156,6 +156,7 @@
 
         .container {
             display: flex;
+
             flex-direction: column;
             padding: auto;
             justify-content: center;
@@ -181,6 +182,9 @@
             text-align: center;
             margin-top: -200px;
             font-family: 'Yeseva One', cursive;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         /* .btn btn-info {
@@ -534,24 +538,19 @@
             font-size: 1.2rem;
         }
 
-        #search{
-            /* margin-top: 50px; */
-            width: 100%;
-            position: absolute;
-            /* bottom: 416px;
-            left: 320px;
-            height: 36px; */
+        .search {
+
+            width: 150%;
+            position: relative;
             text-align: center;
-            width: 50%;
             border-radius: 40px;
             padding: 6px 20px 5px 30px;
             overflow: auto;
             display: flex;
-            /* width: 100%; */
-            /* justify-content: center; */
             flex-wrap: wrap;
             flex-grow: inherit;
-            /* display: flex; */
+
+
         }
     </style>
 </head>
@@ -596,9 +595,9 @@
                                         placeholder="Enter your email address" required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="address">Address</label>
-                                    <input type="text" class="form-control" id="address" name="address"
-                                        placeholder="Enter your address" required>
+                                    <label for="district">District</label>
+                                    <input type="text" class="form-control" id="district" name="district"
+                                        placeholder="Enter your district" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="Specialization">Specialization</label>
@@ -609,6 +608,49 @@
                                     <label for="experience">Experience</label>
                                     <input type="text" class="form-control" id="experience" name="experience"
                                         placeholder="Enter your experience" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="timeslot">Time Slot1</label>
+                                    <select class="form-control" id="timeslot" name="timeslot" required>
+                                        <option value="">Select a time slot</option>
+                                        <option value="9:00 AM - 10:00 AM">9:00 AM - 10:00 AM</option>
+                                        <option value="10:00 AM - 11:00 AM">10:00 AM - 11:00 AM</option>
+                                        <option value="11:00 AM - 12:00 PM">11:00 AM - 12:00 PM</option>
+                                        <option value="12:00 PM - 1:00 PM">12:00 PM - 1:00 PM</option>
+                                        <option value="1:00 PM - 2:00 PM">1:00 PM - 2:00 PM</option>
+                                        <option value="2:00 PM - 3:00 PM">2:00 PM - 3:00 PM</option>
+                                        <option value="3:00 PM - 4:00 PM">3:00 PM - 4:00 PM</option>
+                                        <option value="4:00 PM - 5:00 PM">4:00 PM - 5:00 PM</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="timeslot2">Time Slot1</label>
+                                    <select class="form-control" id="timeslot2" name="timeslot2" required>
+                                        <option value="">Select a time slot</option>
+                                        <option value="9:00 AM - 10:00 AM">9:00 AM - 10:00 AM</option>
+                                        <option value="10:00 AM - 11:00 AM">10:00 AM - 11:00 AM</option>
+                                        <option value="11:00 AM - 12:00 PM">11:00 AM - 12:00 PM</option>
+                                        <option value="12:00 PM - 1:00 PM">12:00 PM - 1:00 PM</option>
+                                        <option value="1:00 PM - 2:00 PM">1:00 PM - 2:00 PM</option>
+                                        <option value="2:00 PM - 3:00 PM">2:00 PM - 3:00 PM</option>
+                                        <option value="3:00 PM - 4:00 PM">3:00 PM - 4:00 PM</option>
+                                        <option value="4:00 PM - 5:00 PM">4:00 PM - 5:00 PM</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="timeslot3">Time Slot1</label>
+                                    <select class="form-control" id="timeslot3" name="timeslot3" required>
+                                        <option value="">Select a time slot</option>
+                                        <option value="9:00 AM - 10:00 AM">9:00 AM - 10:00 AM</option>
+                                        <option value="10:00 AM - 11:00 AM">10:00 AM - 11:00 AM</option>
+                                        <option value="11:00 AM - 12:00 PM">11:00 AM - 12:00 PM</option>
+                                        <option value="12:00 PM - 1:00 PM">12:00 PM - 1:00 PM</option>
+                                        <option value="1:00 PM - 2:00 PM">1:00 PM - 2:00 PM</option>
+                                        <option value="2:00 PM - 3:00 PM">2:00 PM - 3:00 PM</option>
+                                        <option value="3:00 PM - 4:00 PM">3:00 PM - 4:00 PM</option>
+                                        <option value="4:00 PM - 5:00 PM">4:00 PM - 5:00 PM</option>
+                                    </select>
                                 </div>
 
                                 <div>
@@ -633,11 +675,11 @@
         <div class="container">
             <h1 id="heading">FIND YOUR NEAREST DOCTOR NOW</h1><br>
             <div>
-                <form class="form-inline" action="doctor_list" >
-                    <i class="fas fa-search" aria-hidden="true"></i>
-                    <input class="form-control form-control-sm ml-5 w-100" type="text"  id="Spec" name="Spec" placeholder="Search for doctor Specializations"
-                      aria-label="Search">
-                  </form>
+                <form action="doctor_list">
+                    <!-- <i class="fas fa-search" aria-hidden="true"></i> -->
+                    <input class="search" type="text" id="Spec" name="Spec"
+                        placeholder="Search for doctor Specializations">
+                </form>
 
             </div>
 

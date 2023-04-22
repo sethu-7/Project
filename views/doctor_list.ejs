@@ -35,6 +35,7 @@
             background-color: #f5f5f5;
             border-radius: 0.5rem;
             display: flex;
+            justify-content: space-around;
             flex-direction: row;
             align-items: center;
             padding: 1rem;
@@ -129,24 +130,58 @@
                         </p>
                         <p>Experience: <%=doctor.experience%>
                         </p>
-                        <!-- <p>Address: <%=doctor.address%>
-                        </p> -->
+                        <p>District: <%=doctor.district%>
+                        </p>
                         <p>Phone: <%=doctor.phoneNumber%>
                         </p>
                         <p>Email: <%=doctor.email%>
                         </p>
-                    </div>
-                    <section class="consultation-options">
-                        <h3>Consultation Options</h3>
-                        <div class="option">
-                            <input type="radio" id="online-option" name="consultation-option" value="online">
-                            <label for="online-option">Online Consultation</label>
+                        <section class="consultation-options">
+                            <h4>Consultation Options</h4>
+                            <div class="option">
+                                <input type="radio" id="online-option" name="consultation-option" value="online">
+                                <label for="online-option">Online Consultation</label>
+                            </div>
+                            <div class="option">
+                                <input type="radio" id="offline-option" name="consultation-option" value="offline">
+                                <label for="offline-option">Offline Consultation</label>
+                            </div>
+
+
+                        </section>
+                        <u>
+                            <h4 style="font-size: 125%;">Select Date & Time:</h4>
+                        </u>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="date" style="padding-bottom: 5%; font-size: 100%;">Select Date</label>
+                                    <input type="date" class="form-control" id="date" style="font-size: 100%;" />
+                                </div>
+                            </div>
+                            </div>
+                            <div>
+
+                                <h4>Available time slots</h4>
+                                <label for="time" style="padding-bottom: 1%; font-size: 100%; ">Select Time</label>
+                                <select class="form-control" id="time" style="font-size: 200%;">
+                                    <option>
+                                        <%=doctor.timeslot1%>
+                                    </option>
+                                    <option>
+                                        <%=doctor.timeslot2%>
+                                    </option>
+                                    <option>
+                                        <%=doctor.timeslot3%>
+                                    </option>
+    
+                                </select>
+    
+                                <button type="button"  class="book-now-btn" onclick="alert('Booking Succesful')">Book
+                                    Now</button>
+                            </div>
                         </div>
-                        <div class="option">
-                            <input type="radio" id="offline-option" name="consultation-option" value="offline">
-                            <label for="offline-option">Offline Consultation</label>
-                        </div>
-                    </section>
+
                 </section>
                 <%})%>
 
