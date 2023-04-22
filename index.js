@@ -59,6 +59,8 @@ const mongoose = require('mongoose');
 const multer = require('multer');
 const bodyParser = require('body-parser');
 const doctor = require('./model/doctor')
+const doctor = require('./model/patient')
+
 const app = express();
 app.use(bodyParser.urlencoded({ extended: true }))
 app.set("view engine", "ejs")
@@ -163,6 +165,56 @@ app.post('/submit', upload.single('file'), async (req, res) => {
     try {
 
         let newdoctor = new doctor({
+            name: req.body.name,
+            password: req.body.password,
+            phoneNumber: req.body.phoneNumber,
+            email: req.body.email,
+            district: req.body.district,
+            Specialization: req.body.Specialization,
+            experience: req.body.experience,
+            timeslot1:req.body.timeslot1,
+            timeslot2:req.body.timeslot2,
+            timeslot3:req.body.timeslot3,
+            file: req.body.file
+
+
+        });
+
+        // const file = {
+        //     data: req.file.buffer,
+        //     contentType: req.file.mimetype,
+
+        // };
+
+        // const result = db.collection('doctor').insertOne(file);
+        // console.log('File saved to database:', result.insertedId);
+        await newdoctor.save();
+
+
+        res.redirect('/dashboard')
+
+        // res.status(201).send('doctor created successfully');
+    } catch {
+        res.status(500).send('Error creating docto');
+    }
+});
+
+
+
+
+
+
+
+
+app.listen(5000, () => {
+    console.log('Server listening on port 5000');
+});
+
+
+app.post('/signup', async (req, res) => {
+    try {
+
+        let newpatient = new d({
             name: req.body.name,
             password: req.body.password,
             phoneNumber: req.body.phoneNumber,
