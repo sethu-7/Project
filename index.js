@@ -179,7 +179,7 @@ app.post('/submit', upload.single('file'), async (req, res) => {
 
         // res.status(201).send('doctor created successfully');
     } catch {
-        res.status(500).send('Error creating doctor');
+        res.status(500).send('Error creating doctorrrrrr');
     }
 });
 
