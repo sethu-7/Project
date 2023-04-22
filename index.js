@@ -229,7 +229,6 @@ app.post('/signup', async (req, res) => {
 
         res.redirect('/dashboard')
 
-        // res.status(201).send('doctor created successfully');
     } catch {
         res.status(500).send('Error creating patient');
     }
