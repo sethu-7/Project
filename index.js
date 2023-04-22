@@ -59,7 +59,7 @@ const mongoose = require('mongoose');
 const multer = require('multer');
 const bodyParser = require('body-parser');
 const doctor = require('./model/doctor')
-const doctor = require('./model/patient')
+const patient = require('./model/patient')
 
 const app = express();
 app.use(bodyParser.urlencoded({ extended: true }))
@@ -219,14 +219,8 @@ app.post('/signup', async (req, res) => {
             password: req.body.password,
             phoneNumber: req.body.phoneNumber,
             email: req.body.email,
-            district: req.body.district,
-            Specialization: req.body.Specialization,
-            experience: req.body.experience,
-            timeslot1:req.body.timeslot1,
-            timeslot2:req.body.timeslot2,
-            timeslot3:req.body.timeslot3,
-            file: req.body.file
-
+            address: req.body.address,
+           emergencyNumber: req.body.emergencyNumber
 
         });
 
@@ -238,14 +232,14 @@ app.post('/signup', async (req, res) => {
 
         // const result = db.collection('doctor').insertOne(file);
         // console.log('File saved to database:', result.insertedId);
-        await newdoctor.save();
+        await newpatient.save();
 
 
         res.redirect('/dashboard')
 
         // res.status(201).send('doctor created successfully');
     } catch {
-        res.status(500).send('Error creating docto');
+        res.status(500).send('Error creating patient');
     }
 });
 

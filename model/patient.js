@@ -13,7 +13,7 @@ const patientSchema = new Schema({
     password: String,
     phoneNumber: Number,
     email: String,
-    district:String,
+    address:String,
     emergencyNumber: Number
 })
 
