@@ -144,93 +144,13 @@
 
         }
 
-        .navbar {
-            margin: 5px;
-            background-color: rgb(41, 41, 41);
-            position: relative;
-            /* border-radius: 40px; */
 
-        }
-
-        .navbar::before {
-            content: '';
-            background-color: blueviolet;
-            position: absolute;
-            height: 100%;
-            width: 100%;
-            z-index: -1;
-            opacity: 0.4;
-        }
-
-        .navbar ul {
-            margin: 1px;
-            overflow: auto;
-        }
-
-        .navbar li {
-            float: left;
-            list-style: none;
-            margin: 20px 20px;
-        }
-
-        .navbar li a {
-            padding: 3px 3px;
-            color: white;
-            list-style: none;
-            text-decoration: none;
-        }
-
-        .navbar li a:hover {
-            /* background-color: blueviolet; */
-
-        }
 
         .footer li a:hover {
             color: gold;
 
         }
 
-        #search {
-            /* margin-top: 50px; */
-            width: 100%;
-            position: absolute;
-            /* bottom: 416px;
-            left: 320px;
-            height: 36px; */
-            text-align: center;
-            width: 50%;
-            border-radius: 40px;
-            padding: 6px 20px 5px 30px;
-            overflow: auto;
-            display: flex;
-
-
-            /* width: 100%; */
-            /* justify-content: center; */
-            flex-wrap: wrap;
-            flex-grow: inherit;
-            /* display: flex; */
-
-
-
-        }
-
-        #logo {
-            /* padding: 10px; */
-            width: 135px;
-            float: right;
-
-
-        }
-
-
-        .navbar input {
-            border: 3px solid rgb(193, 75, 222);
-            border-radius: 15px;
-            width: 130px;
-            text-align: center;
-
-        }
 
 
 
@@ -281,13 +201,7 @@
             overflow: auto;
         } */
 
-        .navbar ul li a {
 
-            display: block;
-            /* padding: 3px 22px; */
-            border-radius: 20px;
-
-        }
 
         .footer li a {
 
@@ -619,196 +533,113 @@
             font-weight: bold;
             font-size: 1.2rem;
         }
+
+        #search{
+            /* margin-top: 50px; */
+            width: 100%;
+            position: absolute;
+            /* bottom: 416px;
+            left: 320px;
+            height: 36px; */
+            text-align: center;
+            width: 50%;
+            border-radius: 40px;
+            padding: 6px 20px 5px 30px;
+            overflow: auto;
+            display: flex;
+            /* width: 100%; */
+            /* justify-content: center; */
+            flex-wrap: wrap;
+            flex-grow: inherit;
+            /* display: flex; */
+        }
     </style>
 </head>
 
 <body>
     <header>
-        <nav class="navbar">
+        <%-include('header')-%>
 
-            <ul>
-                <li><img src="/ffsdprojectopiherb.jpg" alt="opiherb" id="logo">
-                </li>
-                <li></li>
-                <li></li>
+            <div class="modal fade" id="signupdocModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Sign Up</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form class="signup-form" action="/submit" method="post">
+                                <div class="form-group">
+                                    <label for="name">Name</label>
+                                    <input type="text" class="form-control" id="name" name="name"
+                                        placeholder="Enter your name" required>
+                                </div>
+                                <div>
+                                    <label for="password">Password:</label>
+                                    <p><input type="password" id="password" name="password" placeholder="Enter Password"
+                                            required /></p>
+                                    <span class="form-error"></span>
+                                </div>
 
 
-                <!-- <li><a href="/login_signup2">Login</a></li>
+                                <div class="form-group">
+                                    <label for="phoneNumber">Phone Number</label>
+                                    <input type="tel" class="form-control" id="phoneNumber" name="phoneNumber"
+                                        placeholder="Enter your phone number" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">Email Address</label>
+                                    <input type="email" class="form-control" id="email" name="email"
+                                        placeholder="Enter your email address" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="address">Address</label>
+                                    <input type="text" class="form-control" id="address" name="address"
+                                        placeholder="Enter your address" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="Specialization">Specialization</label>
+                                    <input type="text" class="form-control" name="Specialization"
+                                        placeholder="Enter your Specialization" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="experience">Experience</label>
+                                    <input type="text" class="form-control" id="experience" name="experience"
+                                        placeholder="Enter your experience" required>
+                                </div>
 
-                <li><a href="/login_signup2">Sign Up</a></li> -->
-                <li class="nav-item">
-                    <a class="nav-link" href="#" data-toggle="modal" data-target="#loginModal">Login</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#" data-toggle="modal" data-target="#signupModal">Sign Up</a>
-                </li>
-                <li><a href="">Introduction</a></li>
-                <li><a href="">Doctors</a></li>
-                <li><a href="">Medicines</a></li>
-                <!-- <li><a href="">Emergency</a></li> -->
-                <li><a href="">First Aid/Emergency</a></li>
-                <li><a href="">Premium</a></li>
-                <li><a href="">Offers</a></li>
-
-                <!-- <li><button type="button" class="btn btn-info" id="logo">Sign in/Sign up</button></li> -->
-
-            </ul>
-        </nav>
-
-        <!-- Login Modal -->
-        <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Login</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <form class="signup-form" action="#" method="post">
-                            <div class="form-group">
-                                <label for="name">Name</label>
-                                <input type="text" class="form-control" id="name" name="name"
-                                    placeholder="Enter your name" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="password">Password</label>
-                                <input type="password" class="form-control" id="password1" name="password1"
-                                    placeholder="Enter your password" required>
-                            </div>
-
-                            <button type="submit" class="btn btn-primary" id="submitButton">Login</button>
-                        </form>
-
-                    </div>
-                </div>
-            </div>
-        </div>
+                                <div>
+                                    <label for="file" class="form-label">Upload Doctors License</label>
+                                    <input class="form-control form-control-lg" id="file" name="file" type="file" />
+                                             
+                                </div>
+                                <button type="submit" class="btn btn-primary" id="submitButton">Sign Up</button>
+                            </form>
 
 
 
-        <!-- Signup Modal -->
-        <div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Sign Up</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <form class="signup-form" action="#" method="post">
-                            <div class="form-group">
-                                <label for="name">Name</label>
-                                <input type="text" class="form-control" id="name" name="name"
-                                    placeholder="Enter your name" required>
-                            </div>
-                            <div>
-                                <label for="password">Password:</label>
-                                <p><input type="password" id="password" name="password" placeholder="Enter Password"
-                                        required /></p>
-                                <span class="form-error"></span>
-                            </div>
-
-
-                            <div class="form-group">
-                                <label for="phoneNumber">Phone Number</label>
-                                <input type="tel" class="form-control" id="phoneNumber" name="phoneNumber"
-                                    placeholder="Enter your phone number" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="email">Email Address</label>
-                                <input type="email" class="form-control" id="email" name="email"
-                                    placeholder="Enter your email address" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="address">Address</label>
-                                <input type="text" class="form-control" id="address" name="address"
-                                    placeholder="Enter your address" required>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="emergencyNumber">Emergency Contact Number</label>
-                                <input type="tel" class="form-control" id="emergencyNumber" name="emergencyNumber"
-                                    placeholder="Enter emergency contact number" required>
-                            </div>
-                            <button type="submit" class="btn btn-primary" id="submitButton">Sign Up</button>
-                        </form>
-
-
-
+                        </div>
                     </div>
                 </div>
+                    
             </div>
-                
-        </div>
-        <div class="modal fade" id="signupdocModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Sign Up</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <form class="signup-form" action="#" method="post">
-                            <div class="form-group">
-                                <label for="name">Name</label>
-                                <input type="text" class="form-control" id="name" name="name"
-                                    placeholder="Enter your name" required>
-                            </div>
-                            <div>
-                                <label for="password">Password:</label>
-                                <p><input type="password" id="password" name="password" placeholder="Enter Password"
-                                        required /></p>
-                                <span class="form-error"></span>
-                            </div>
-
-
-                            <div class="form-group">
-                                <label for="phoneNumber">Phone Number</label>
-                                <input type="tel" class="form-control" id="phoneNumber" name="phoneNumber"
-                                    placeholder="Enter your phone number" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="email">Email Address</label>
-                                <input type="email" class="form-control" id="email" name="email"
-                                    placeholder="Enter your email address" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="address">Address</label>
-                                <input type="text" class="form-control" id="address" name="address"
-                                    placeholder="Enter your address" required>
-                            </div>
-
-                            <div>
-                                <label for="formFileLg" class="form-label">Upload Doctors License</label>
-                                <input class="form-control form-control-lg" id="formFileLg" type="file" />
-                                          
-                            </div>
-                            <button type="submit" class="btn btn-primary" id="submitButton">Sign Up</button>
-                        </form>
-
-
-
-                    </div>
-                </div>
-            </div>
-                
-        </div>
 
     </header>
 
     <section>
         <div class="container">
             <h1 id="heading">FIND YOUR NEAREST DOCTOR NOW</h1><br>
-            <input type="search" id="search" placeholder="search doctors,clinics hospitals etc..">
+            <div>
+                <form class="form-inline" action="doctor_list" >
+                    <i class="fas fa-search" aria-hidden="true"></i>
+                    <input class="form-control form-control-sm ml-5 w-100" type="text"  id="Spec" name="Spec" placeholder="Search for doctor Specializations"
+                      aria-label="Search">
+                  </form>
+
+            </div>
 
         </div>
 
@@ -841,12 +672,12 @@
         <h1 class="docheading">Our doctors</h1>
 
         <div class="ourboxcontainer">
-            <% for(const fd of model) {%>
+            <%doctorlist.forEach(function(doctor) {%>
                 <div class="ourbox">
                     <img src="" alt="doc">
 
                     <h3>
-                        <%=fd.d_name%>
+                        <%=doctor.name%>
                     </h3>
 
                     <span>Expert Doctor</span>
@@ -857,7 +688,7 @@
                         <a href="#" class="fab fa-linkedin"></a>
                     </div>
                 </div>
-                <%}%>
+                <%})%>
         </div>
 
         <!-- <div class="ourboxcontainer">
@@ -983,6 +814,13 @@
     </footer>
 
     <script>
+
+        function redirectToSearchPage() {
+            window.location.href = "/doctor_list";
+        }
+
+
+
         const reviews = [
             {
                 name: 'John Smith',
@@ -1043,30 +881,23 @@
             // Validate password
             let isValid = true;
 
-            if (password.value.length < 12) {
-                errorSpan.innerHTML = 'Password must be at least 12 characters.';
-                isValid = false;
-            } else if (!/[A-Z]/.test(password.value)) {
-                errorSpan.innerHTML = 'Password must contain at least one uppercase letter.';
-                isValid = false;
-            } else if (!/[a-z]/.test(password.value)) {
+            if (password.value.length < 12) { errorSpan.innerHTML = 'Password must be at least 12 characters.'; isValid = false; }
+            else if (!/[A-Z]/.test(password.value)) {
+                errorSpan.innerHTML = 'Password must contain at least one uppercase letter.'; isValid = false;
+            } else if
+                (!/[a-z]/.test(password.value)) {
                 errorSpan.innerHTML = 'Password must contain at least one lowercase letter.';
                 isValid = false;
             } else if (!/[0-9]/.test(password.value)) {
-                errorSpan.innerHTML = 'Password must contain at least one number.';
-                isValid = false;
-            } else if (!/[!@#$?]/.test(password.value)) {
-                errorSpan.innerHTML = 'Password must contain at least one special character.';
-                isValid = false;
-            }
+                errorSpan.innerHTML = 'Password must contain at least one number.'; isValid = false;
+            } else if
+                (!/[!@#$?]/.test(password.value)) {
+                errorSpan.innerHTML = 'Password must contain at least one special character.'
+                    ; isValid = false;
+            } // Submit form if (isValid) { document.getElementById('submitButton').disabled=true;
+            form.submit();
 
-            // Submit form
-            if (isValid) {
-                document.getElementById('submitButton').disabled = true;
-                form.submit();
-            }
         });
-
 
     </script>
 
