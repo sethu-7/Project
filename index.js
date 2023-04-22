@@ -224,14 +224,6 @@ app.post('/signup', async (req, res) => {
 
         });
 
-        // const file = {
-        //     data: req.file.buffer,
-        //     contentType: req.file.mimetype,
-
-        // };
-
-        // const result = db.collection('doctor').insertOne(file);
-        // console.log('File saved to database:', result.insertedId);
         await newpatient.save();
 
 
