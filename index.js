@@ -210,30 +210,30 @@ app.listen(5000, () => {
 
 
 
-// app.post('/signup', async (req, res) => {
-//     try {
+app.post('/signup', async (req, res) => {
+    try {
 
-//         let newpatient = new patient({
-//             name: req.body.name,
-//             password: req.body.password,
-//             phoneNumber: req.body.phoneNumber,
-//             email: req.body.email,
-//             address: req.body.address,
-//            emergencyNumber: req.body.emergencyNumber
+        let newpatient = new patient({
+            patient_name: req.body.patient_name,
+            patient_password: req.body.patient_password,
+            patient_phoneNumber: req.body.patient_phoneNumber,
+            patient_email: req.body.patient_email,
+            patient_address: req.body.patient_address,
+            patient_emergencyNumber: req.body.patient_emergencyNumber
 
-//         });
+        });
 
-//         await newpatient.save();
-
-
-//         res.redirect('/dashboard')
-
-//     } catch {
-//         res.status(500).send('Error creating patient');
-//     }
-// });
+        await newpatient.save();
 
 
-// app.listen(5000, () => {
-//     console.log('Server listening on port 5000');
-// });
+        res.redirect('/after-login')
+
+    } catch {
+        res.status(500).send('Error creating patient');
+    }
+});
+
+
+app.listen(5500, () => {
+    console.log('Server listening on port 5500');
+});

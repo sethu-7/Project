@@ -9,15 +9,15 @@ const Schema = mongoose.Schema;
 
 const patientSchema = new Schema({
     
-    name: String,
-    password: String,
-    phoneNumber: Number,
-    email: String,
-    address:String,
-    emergencyNumber: Number
+    patient_name: String,
+    patient_password: String,
+    patient_phoneNumber: Number,
+    patient_email: String,
+    patient_address:String,
+    patient_emergencyNumber: Number
 })
 
 
-
-
 module.exports = mongoose.model('Patients', patientSchema);
+
+
