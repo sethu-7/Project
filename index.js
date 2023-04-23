@@ -62,11 +62,18 @@ const doctor = require('./model/doctor')
 const patient = require('./model/patient')
 
 const app = express();
+const session = require('express-session')
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(express.json());
 app.set("view engine", "ejs")
 app.use(express.static('public/images'));
 const upload = multer({ dest: 'public/files/' });
+app.use(session({
+    secret: "secret-key",
+    resave: false,
+    saveUninitialized: false,
+
+}));
 
 mongoose.connect('mongodb+srv://sethu:geethu@cluster0.ngvcutp.mongodb.net/ffsd', { useNewUrlParser: true }, { useUnofiedToppology: true });
 const db = mongoose.connection;
@@ -168,7 +175,7 @@ app.delete('/offers/:title', async (req, res) => {
 
 
 app.get('/doctor_project_final', (req, res) => {
-    doctor.find({experience:{$gte:9}}).then( function (doctors) {
+    doctor.find({ experience: { $gte: 14 } }).then(function (doctors) {
         // if (err) {
         //     console.error(err);
         //     return res.status(500).send('Error occurred');
@@ -181,51 +188,71 @@ app.get('/doctor_project_final', (req, res) => {
 app.get('/dashboard', (req, res) => {
     res.render('dashboard')
 })
+
 app.get('/doctor_profile', (req, res) => {
-    res.render('doctor_profile')
-})
-app.get('/appointment-page', (req, res) => {
-    doctor.find({email:req.query.email}).then(function(doct){
-        res.render('appointment-page',{
-            doc:doct
+    doctor.find({ email: req.session.email }).then(function (perdoc) {
+        res.render('doctor_profile', {
+            per: perdoc
         })
 
     })
 })
+app.get('/admin', (req, res) => {
+    // const query = doctor.find();
+    doctor.find({}).then(function (perdoc) {
+        res.render('admin_page', {
+            per: perdoc
+        })
+
+    })
+})
+// app.get('/appointment-page', (req, res) => {
+//     doctor.find({ email: req.query.email }).then(function (doct) {
+//         res.render('appointment-page', {
+//             doc: doct
+//         })
+
+//     })
+// })
 app.get('/', (req, res) => {
     res.render('introduction')
 })
-app.get('/header', (req, res) => {
-    
-    res.render('header')
+app.get('/login', (req, res) => {
+
+    res.render('login')
 })
 app.get('/doctor_list', (req, res) => {
-    const spcl=req.query.Spec
-    
-    doctor.find({Specialization:spcl}).then(function(doctorss) {
-        res.render('doctor_list',{
-            list:doctorss
+    const spcl = req.query.Spec
+
+    doctor.find({ $or: [{ Specialization: spcl }, { district: req.query.Spec }] }).then(function (doctorss) {
+        res.render('doctor_list', {
+            list: doctorss
         })
-        
-        
+
+
     })
+
 })
 
-app.post('/login', (req, res) => {
+app.post('/login', async (req, res, next) => {
     try {
-        // const email = req.body.email
-        const password = req.body.password
-        console.log('useremail')
+        const user = await doctor.findOne({
 
+            email: req.body.email,
+            password: req.body.password
+        })
 
-        const useremail = doctor.findOne({ email: req.body.email });
-        if (useremail.password === password) {
-            res.redirect('introduction');
+       
 
+        
+        if (user) {
+            req.session.email = user.email;
+
+            res.redirect('/doctor_profile')
         }
         else {
             send("password incorrect")
-            res.redirect('introduction')
+            // res.redirect('introduction')
         }
     }
     catch (error) {
@@ -246,9 +273,9 @@ app.post('/submit', upload.single('file'), async (req, res) => {
             district: req.body.district,
             Specialization: req.body.Specialization,
             experience: req.body.experience,
-            timeslot1:req.body.timeslot1,
-            timeslot2:req.body.timeslot2,
-            timeslot3:req.body.timeslot3,
+            timeslot1: req.body.timeslot1,
+            timeslot2: req.body.timeslot2,
+            timeslot3: req.body.timeslot3,
             file: req.body.file
 
 
@@ -263,9 +290,9 @@ app.post('/submit', upload.single('file'), async (req, res) => {
         // const result = db.collection('doctor').insertOne(file);
         // console.log('File saved to database:', result.insertedId);
         await newdoctor.save();
+        req.session.email = newdoctor.email;
 
-
-        res.redirect('/dashboard')
+        res.redirect('/doctor_profile')
 
         // res.status(201).send('doctor created successfully');
     } catch {
@@ -274,9 +301,9 @@ app.post('/submit', upload.single('file'), async (req, res) => {
 });
 
 
-app.listen(5000, () => {
-    console.log('Server listening on port 5000');
-});
+// app.listen(5000, () => {
+//     console.log('Server listening on port 5000');
+// });
 
 
 app.get('/admin_page', (req, res) => {
