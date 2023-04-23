@@ -23,75 +23,64 @@ a.Signin{
     white-space: nowrap;
     font-size: 1rem;
   }
-.offerdiv1{
+ 
+
+  .card-container {
     display: flex;
-   border: 1px solid black;
-   font-family:cursive;
-}
-.offerdiv1 p {
-    font-size: large;
-  font-weight: bolder;
-}
-img{
-    
-}
-#offersanchor{
-    color:rgb(83, 63, 48);
-    font-size: 1.3rem;
-}
-.percentoffers{
-    height: 10rem;
-    width: 10rem;
-}
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .card {
+    margin: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+    max-width: 300px;
+  }
+  
+  .card:hover {
+    transform: scale(1.05);
+  }
+  
+  .card img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+  
+  .card-content {
+    padding: 20px;
+  }
+  
+  .card-content h3 {
+    margin-top: 0;
+  }
+  
+  .card-content p {
+    margin-bottom: 0;
+  }
+  
+  .buy-now-btn {
+    display: block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #000000;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  .buy-now-btn:hover {
+    background-color: #0062cc;
+  }
+  
 
-
-
-.gradient-text{
-          font-family: Georgia;
-          font-style: italic;
-          font-size: 4rem;
-          background-color: red;
-          background-image: linear-gradient(#4b00fb, #00eaff);
-          background-size: 100%;
-          background-repeat: repeat;
-
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent; 
-          -moz-background-clip: text;
-          -moz-text-fill-color: transparent;
-        }
-
-.search-container {
-            width: 100%;
-            margin: 0 auto;
-            text-align: center;
-        }
-    
-        .nav-item:hover .subnav {
-              display: block;
-        }
-        .subnav {
-            display: none;
-            position: absolute;
-            margin: 0;
-            padding: 0;
-            list-style: none;
-            background-color: #eee;
-            z-index: 9;
-            width: inherit;
-            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-        }
-        .subnav li a {
-            display: block;
-            text-decoration: none;
-            color: #000;
-            padding: 10px;
-            margin: 0;
-            border-bottom: 1px solid #ddd;
-        }
-        .subnav li a:hover {
-            background-color: #ccc;
-        }
     </style>
 </head>
 <body>
@@ -99,9 +88,9 @@ img{
     <nav class="start1nav navbar navbar-expand-lg bg-body-tertiary">
         <div class="  container-fluid">
 
-          <img class="logo" src="images/actualprojectlogo.jpg" alt="no img" height="80px" width="130px">
+          <img class="logo" src="actualprojectlogo.jpg" alt="no img" height="80px" width="130px">
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+            <span class="navbar-toggler-icon" style="height: 52px; "></span>
           </button>
         
             
@@ -125,51 +114,71 @@ img{
        
       </nav>
 
-      <!-- <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="#">
-            <img src="images/project_logo.jpeg" alt="Logo" style="width:100px;">
-          </a>
-        
-          <ul class="navbar-nav">
-                    
-                    <div style="text-align: center;width: 100%;"> <header>
-                      <h1 class="gradient-text">OFFERS</h1>
-                    </header></div>
-            <li class="nav-item">
-              <a class="nav-link" href="login-signup2.html" >Introduction</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="doctors.html">Doctors</a>
-    
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="medicine.html">Medicines</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="emergency.html">Emergency</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="first_aid.html">First Aid</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="premium.html">Premium</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="offers.html">Offers</a>
-            </li>
-          </ul>
+      <div class="card-container">
+      <% for (let i = 0; i < offers.length; i++) { %>
+        <div class="card">
+          <img src="<%= offers[i].image %>" alt="<%= offers[i].title %>" style="height: 300px;width: auto; ">
+          <div class="card-content">
+          <h3><%= offers[i].title %></h3>
+          <p style="font-size: larger;font-weight:bold;"><%= offers[i].description %><br>
+         </p>
+          <a href="#" class="buy-now-btn">Buy now</a>
+          </div>
+          </div>
+          <% } %>
         </div>
-      </nav> -->
+
+
+      <!-- <div class="card-container">
+        <div class="card">
+          <img src="10percentoff.jpg" alt="offer-1">
+          <div class="card-content">
+            <h3>Offer 1</h3>
+            <p>Get 10% off on your first medicine order<br>
+               Offer expiry : 30/4/2023</p>
+            <a href="#" class="buy-now-btn">Buy now</a>
+          </div>
+        </div>
+        
+        <div class="card">
+          <img src="https://via.placeholder.com/300x200" alt="offer-2">
+          <div class="card-content">
+            <h3>Offer 2</h3>
+            <p>Get 5% off on your allopathy medicine order<br>
+               Offer expiry : 1/5/2023</p>
+            <a href="#" class="buy-now-btn">Buy now</a>
+          </div>
+        </div>
+        
+        <div class="card">
+          <img src="https://via.placeholder.com/300x200" alt="offer-3">
+          <div class="card-content">
+            <h3>Offer 3</h3>
+            <p>Use patyam and get cashback upto ₹1000<br>
+               Offer expiry : 1/5/2023</p>
+            <a href="#" class="buy-now-btn">Buy now</a>
+          </div>
+        </div>
+        
+        <div class="card">
+          <img src="https://via.placeholder.com/300x200" alt="offer-4">
+          <div class="card-content">
+            <h3>Offer 4</h3>
+            <p>Get cashback upto 5% on paying vai cred<br>
+               Offer expiry : 1/5/2023</p>
+            <a href="#" class="buy-now-btn">Buy now</a>
+          </div>
+        </div>
+      </div>
+       -->
 
 
 
 
-    
-   
-
+<!--    
+      <div class="container">
     <div class="offerdiv1" >
-        <img src="images/10percentoff.jpg" alt="no img"  class="percentoffers">
+        <img src="10percentoff.jpg" alt="no img"  class="percentoffers">
         <div><p>Get 10% off on your first medicine order</p><br>
             Offer expiry : 30/4/2023 <br><br>
             <a href="" id="offersanchor">Buy now</a>
@@ -195,6 +204,8 @@ img{
             Offer expiry : 1/5/2023 <br><br>
             <a href="" id="offersanchor">Use now</a></div>
     </div>
+   
+    </div> -->
     
 </body>
 </html>
