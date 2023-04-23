@@ -114,9 +114,7 @@ app.get('/doctor_project_final', (req, res) => {
 app.get('/dashboard', (req, res) => {
     res.render('dashboard')
 })
-app.get('/admin', (req, res) => {
-    res.render('admin_page')
-})
+
 app.get('/doctor_profile', (req, res) => {
     doctor.find({ email: req.session.email }).then(function (perdoc) {
         res.render('doctor_profile', {
@@ -125,20 +123,29 @@ app.get('/doctor_profile', (req, res) => {
 
     })
 })
-app.get('/appointment-page', (req, res) => {
-    doctor.find({ email: req.query.email }).then(function (doct) {
-        res.render('appointment-page', {
-            doc: doct
+app.get('/admin', (req, res) => {
+    // const query = doctor.find();
+    doctor.find({}).then(function (perdoc) {
+        res.render('admin_page', {
+            per: perdoc
         })
 
     })
 })
+// app.get('/appointment-page', (req, res) => {
+//     doctor.find({ email: req.query.email }).then(function (doct) {
+//         res.render('appointment-page', {
+//             doc: doct
+//         })
+
+//     })
+// })
 app.get('/', (req, res) => {
     res.render('introduction')
 })
-app.get('/header', (req, res) => {
+app.get('/login', (req, res) => {
 
-    res.render('header')
+    res.render('login')
 })
 app.get('/doctor_list', (req, res) => {
     const spcl = req.query.Spec
