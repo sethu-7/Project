@@ -197,10 +197,10 @@ router.post("/viewcart_final", async (req, res) => {
                 //product exists in the cart, update the quantity
                 let productItem = cart.[itemIndex];
                 
-                cart.products[itemIndex] = productItem;
+                cart.[itemIndex] = productItem;
             } else {
                 //product does not exists in cart, add new item
-                cart.products.push({ name, m_id, cost });
+                cart.push({ name, m_id, cost });
             }
             cart = await cart.save();
             return res.status(201).send(cart);
