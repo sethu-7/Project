@@ -59,6 +59,7 @@ const mongoose = require('mongoose');
 const multer = require('multer');
 const bodyParser = require('body-parser');
 const doctor = require('./model/doctor')
+const medicines = require('./model/medicines')
 const app = express();
 app.use(bodyParser.urlencoded({ extended: true }))
 app.set("view engine", "ejs")
@@ -92,7 +93,7 @@ db.once('open', function () {
 
 
 app.get('/doctor_project_final', (req, res) => {
-    doctor.find({experience:{$gte:9}}).then( function (doctors) {
+    doctor.find({ experience: { $gte: 9 } }).then(function (doctors) {
         // if (err) {
         //     console.error(err);
         //     return res.status(500).send('Error occurred');
@@ -109,9 +110,9 @@ app.get('/doctor_profile', (req, res) => {
     res.render('doctor_profile')
 })
 app.get('/appointment-page', (req, res) => {
-    doctor.find({email:req.query.email}).then(function(doct){
-        res.render('appointment-page',{
-            doc:doct
+    doctor.find({ email: req.query.email }).then(function (doct) {
+        res.render('appointment-page', {
+            doc: doct
         })
 
     })
@@ -120,20 +121,45 @@ app.get('/', (req, res) => {
     res.render('introduction')
 })
 app.get('/header', (req, res) => {
-    
+
     res.render('header')
 })
 app.get('/doctor_list', (req, res) => {
-    const spcl=req.query.Spec
-    
-    doctor.find({Specialization:spcl}).then(function(doctorss) {
-        res.render('doctor_list',{
-            list:doctorss
+    const spcl = req.query.Spec
+
+    doctor.find({ Specialization: spcl }).then(function (doctorss) {
+        res.render('doctor_list', {
+            list: doctorss
         })
-        
-        
+
+
     })
 })
+app.get('/project_final', (req, res) => {
+    medicines.find({ name: req.query.name }).then(function (medi) {
+        res.render('project_final', {
+            med: medi
+            // use med in ejs file
+        })
+
+    })
+})
+app.get('/medicines', (req, res) => {
+    medicines.find({}).then(function (medic) {
+        res.render('medicines', {
+            me: medic
+        })
+
+
+    })
+  
+})
+app.get('/viewcart_final', (req, res) => {
+    
+    res.render('viewcart_final')
+})
+
+
 
 app.post('/login', (req, res) => {
     try {
@@ -170,9 +196,9 @@ app.post('/submit', upload.single('file'), async (req, res) => {
             district: req.body.district,
             Specialization: req.body.Specialization,
             experience: req.body.experience,
-            timeslot1:req.body.timeslot1,
-            timeslot2:req.body.timeslot2,
-            timeslot3:req.body.timeslot3,
+            timeslot1: req.body.timeslot1,
+            timeslot2: req.body.timeslot2,
+            timeslot3: req.body.timeslot3,
             file: req.body.file
 
 

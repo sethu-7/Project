@@ -17,648 +17,382 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"
         integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/"
         crossorigin="anonymous"></script>
-    <!-- <script type="text/javascript" src="viewcart_final.js"></script> -->
     <style>
-        .navbar {
+     
+/* Global "table" column settings */
+.product-image { float: left; width: 20%; }
+.product-details { float: left; width: 37%; }
+.product-price { float: left; width: 12%; }
+.product-quantity { float: left; width: 10%; }
+.product-removal { float: left; width: 9%; }
+.product-line-price { float: left; width: 12%; text-align: right; }
 
-            background-color: rgb(41, 41, 41);
-            position: relative;
-            /* border-radius: 40px; */
 
-        }
-
-        .navbar::before {
-            content: '';
-            background-color: white;
-            position: absolute;
-            height: 100%;
-            width: 100%;
-            z-index: -1;
-            opacity: 0.4;
-        }
-
-        .navbar ul {
-            margin: 1px;
-            overflow: auto;
-        }
-
-        .navbar li {
-            float: left;
-            list-style: none;
-            margin: 20px 20px;
-        }
-
-        .navbar li a {
-            padding: 3px 3px;
-            color: white;
-            list-style: none;
-            text-decoration: none;
-        }
+/* This is used as the traditional .clearfix class */
 
 
 
-        /* .footer li a:hover {
-color: gold;
-
-} */
-
-
-
-        #logo {
-            /* padding: 10px; */
-            width: 135px;
-            float: right;
+/* Apply clearfix in a few places */
+.shopping-cart, .column-labels, .product, .totals-item {
+  @extend .group;
+}
 
 
-        }
+/* Apply dollar signs */
+.product .product-price:before, .product .product-line-price:before, .totals-value:before {
+  content: '$';
+}
 
-        .navbar ul li a {
-
-            display: block;
-            /* padding: 3px 22px; */
-            border-radius: 20px;
-
-        }
-
-        @import url('https://fonts.googleapis.com/css2?family=Mulish:wght@300&display=swap');
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Mulish', sans-serif;
-
-        }
-
-        :root {
-            --text-clr: #4f4f4f;
-        }
-
-        p {
-            color: #6c757d;
-        }
-
-        .discount_code a {
-            text-decoration: none;
-            color: var(--text-clr);
-        }
-
-        .discount_code a:hover {
-            text-decoration: none;
-            color: var(--text-clr);
-        }
-
-        h2 {
-            color:
-                var(--text-clr);
-            font-size: 1.5rem;
-        }
-
-        .main_cart {
-            background: #fff;
-        }
-
-        .card {
-
-            border: none;
-        }
-
-        .product_img img {
-            min-width: 200px;
-            max-height: 200px;
-        }
-
-        .product_name {
-            color: black;
-            font-size: 1.4rem;
-            text-transform: capitalize;
-            font-weight: 500;
-        }
-
-        .card-title p {
-            font-size: 0.9rem;
-            font-weight: 500;
-        }
-
-        .remove-and-wish p {
-            font-size: 0.8rem;
-            margin-bottom: 0;
-        }
-
-        .price-money h3 {
-            font-size: 1rem;
-            font-weight: 600;
-        }
-
-        .set_quantity {
-            position: relative;
-        }
-
-        .set_quantity::after {
-            content: "(Note, 1 piece)";
-            width: auto;
-            height: auto;
-            text-align: center;
-            position: absolute;
-            bottom: -20px;
-            right: 1.5rem;
-            font-size: 0.8rem;
-        }
-
-        .page-link {
-            line-height: 16px;
-            width: 45px;
-            font-size: 1rem;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: #495057;
-        }
-
-        .haha {
-            padding: 10px;
-            border: 1px solid rgb(22, 22, 22);
-            width: 100%;
-        }
-
-        .page-item input {
-            line-height: 22px;
-            padding: 3px;
-            font-size: 15px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-        }
-
-        .page-link:hover {
-            text-decoration: none;
-            color: #495057;
-            outline: none !important;
-        }
-
-        .page-link:focus {
-            box-shadow:
-                none;
-        }
-
-        .price_indiv p {
-            font-size: 1.1rem;
-        }
-
-        .fa-heart:hover {
-            color: red;
+        body {
+            padding: 0px 30px 30px 20px;
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: 100;
         }
 
         h1 {
-            padding-top: 20px;
+            font-weight: 100;
+        }
+
+        label {
+            color: rgb(19, 19, 18);
+        }
+
+        .shopping-cart {
+            margin-top: -45px;
+        }
+
+
+        /* Column headers */
+
+        .column-labels label {
+            padding-bottom: 15px;
+            margin-bottom: 15px;
+            border-bottom: 1px solid black;
+        }
+
+        .product-image,
+        .product-details,
+        .product-removal {
+            text-indent: -9999px;
+        }
+
+
+
+        /* Product entries */
+        .product {
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid black;
+        }
+
+        .product-image {
             text-align: center;
         }
 
-        .footer li a:hover {
-            color: gold;
+        .product-image img {
+            width: 100px;
+        }
+
+        .product-details .product-title {
+            margin-right: 20px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .product-details.product-description {
+            margin: 5px 20px 5px 0;
+            line-height: 1.4em;
+        }
+
+        .product-quantity input {
+
+            width: 40px;
+
 
         }
 
-        .footer li a {
-
-
-            border-radius: 20px;
-
+        .remove-product {
+            border: 0;
+            padding: 4px 8px;
+            background-color: #c66;
+            color: #fff;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 12px;
+            border-radius: 3px;
         }
 
-        .footer {
-            background-color: black;
-            color: aliceblue;
-
-            align-items: center;
+        .remove-product:hover {
+            background-color: #a44;
+        }
 
 
-            color: #FCF8E8;
-            display: flex;
-            justify-content: space-around;
 
+        /* Totals section */
+        .totals .totals-item {
+
+            float: right;
+            clear: both;
             width: 100%;
+            margin-bottom: 10px;
+        }
 
-            flex-wrap: wrap;
-            flex-grow: inherit;
+        .totals label {
+            float: left;
+            clear: both;
+            width: 79%;
+            text-align: right;
+        }
+
+
+
+        .totals .totals-value {
+            float: right;
+            width: 21%;
+            text-align: right;
+        }
+
+
+        .totals-item-total {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        
+
+        .checkout {
+            float: right;
+            border: 0;
+            margin-top: 20px;
+            padding: 6px 25px;
+            background-color: #6b6;
+            color: #fff;
+            font-size: 25px;
+            border-radius: 3px;
+        }
+
+        .checkout:hover {
+            background-color: #494;
+        }
+
+        /* Make adjustments for tablet */
+        @media screen and (max-width: 650px) {
+
+            .shopping-cart {
+                margin: 0;
+                padding-top: 20px;
+                border-top: 1px solid Arial, Helvetica, sans-serif;
+            }
+
+            .column-labels {
+                display: none;
+            }
+
+            .product-image {
+                float: right;
+                width: auto;
+
+              
+            }
+            .product-image img {
+                    margin: 0 0 10px 10px;
+                }
+
+            .product-details {
+                float: none;
+                margin-bottom: 10px;
+                width: auto;
+            }
+
+            .product-price {
+                clear: both;
+                width: 70px;
+            }
+
+            .product-quantity {
+                width: 100px;
+
+               
+            }
+            .product-quantity  input {
+                    margin-left: 20px;
+                }
+
+            .product-quantity:before {
+                content: 'x';
+            }
+
+            .product-removal {
+                width: auto;
+            }
+
+            .product-line-price {
+                float: right;
+                width: 70px;
+            }
 
         }
 
-        .footer li a {
-            color: grey;
-        }
 
-        .footer h4 {
-            color: white;
-        }
+        /* Make more adjustments for phone */
+        @media screen and (max-width: 350px) {
 
-        .footer div {
-            margin: 10px;
-            padding: 20px;
+            .product-removal {
+                float: right;
+            }
 
+            .product-line-price {
+                float: right;
+                clear: left;
+                width: auto;
+                margin-top: 10px;
+            }
+
+            .product .product-line-price:before {
+                content: 'Item Total: $';
+            }
+
+            .totals .totals-item label {
+
+                width: 60%;
+            }
+
+            .totals .totals-value {
+                width: 40%;
+            }
         }
     </style>
-    <!-- <script>
-        var product_total_amt = document.getElementById('product_total_amt');
-        var shipping_charge = document.getElementById('shipping_charge');
-        var total_cart_amt = document.getElementById('total_cart_amt');
-        var discountCode = document.getElementById('discount_code1');
-        var expected_date = document.getElementById('date');
-        const decreaseNumber = (incdec, itemprice) => {
-            var itemval = document.getElementById(incdec);
-            var itemprice = document.getElementById(itemprice);
-            console.log(itemprice.innerHTML);
-            // console.log(itemval.value);
-            if (itemval.value <= 0) {
-                itemval.value = 0;
-                alert('Negative quantity not allowed');
-            } else {
-                itemval.value = parseInt(itemval.value) - 1;
-                itemval.style.background = '#fff';
-                itemval.style.color = '#000';
-                itemprice.innerHTML = parseInt(itemprice.innerHTML) - 15;
-                product_total_amt.innerHTML = parseInt(product_total_amt.innerHTML) - 15;
-                total_cart_amt.innerHTML = parseInt(product_total_amt.innerHTML) + parseInt(shipping_charge.innerHTML);
-            }
-        }
-        const increaseNumber = (incdec, itemprice) => {
-            var itemval = document.getElementById(incdec);
-            var itemprice = document.getElementById(itemprice);
-            // console.log(itemval.value);
-            if (itemval.value >= 5) {
-                itemval.value = 5;
-                alert('max 5 allowed');
-                itemval.style.background = 'red';
-                itemval.style.color = '#fff';
-            } else {
-                itemval.value = parseInt(itemval.value) + 1;
-                itemprice.innerHTML = parseInt(itemprice.innerHTML) + 15;
-                product_total_amt.innerHTML = parseInt(product_total_amt.innerHTML) + 15;
-                total_cart_amt.innerHTML = parseInt(product_total_amt.innerHTML) + parseInt(shipping_charge.innerHTML);
-            }
-        }
-        const discount_code = () => {
-            let totalamtcurr = parseInt(total_cart_amt.innerHTML);
-            let error_trw = document.getElementById('error_trw');
-            if (discountCode.value === 'NEW100') {
-                let newtotalamt = totalamtcurr - 15;
-                total_cart_amt.innerHTML = newtotalamt;
-                error_trw.innerHTML = "Hurray! code is valid";
-            } else {
-                error_trw.innerHTML = "Invalid code";
-            }
-        }
-        var expectedDate = () => {
-            var today = new Date();
-            var dd = String(today.getDate()).padStart(2, "0"); // get the date padStart => 01
-            var mm = String(today.getMonth() + 1).padStart(2, "0"); //January is 0!
-            var yyyy = today.getFullYear();
-            var fullDate = dd + "." + mm + "." + yyyy;
+    <!-- <script type="text/javascript" src="viewcart_final.js"></script> -->
+    <script>
 
-            var someDate = new Date();
-            var numberOfDaysToAdd = 6;
-            someDate.setDate(someDate.getDate() + numberOfDaysToAdd);
+        var taxRate = 0.05;
+        var shippingRate = 15.00;
+        var fadeTime = 300;
 
-            var dd = String(someDate.getDate()).padStart(2, "0");
-            var mm = String(someDate.getMonth() + 1).padStart(2, "0");
-            var y = someDate.getFullYear();
 
-            var someFormattedDate = dd + "." + mm + "." + y;
+        /* Assign actions */
+        $('.product-quantity input').change(function () {
+            updateQuantity(this);
+        });
 
-            today = fullDate + " to " + someFormattedDate;
-            document.getElementById("m-date").innerHTML = today;
-            expected_date.innerHTML = today;
+        $('.product-removal button').click(function () {
+            removeItem(this);
+        });
 
+
+        /* Recalculate cart */
+        function recalculateCart() {
+            var subtotal = 0;
+
+            /* Sum up row totals */
+            $('.product').each(function () {
+                subtotal += parseFloat($(this).children('.product-line-price').text());
+            });
+
+            /* Calculate totals */
+            var tax = subtotal * taxRate;
+            var shipping = (subtotal > 0 ? shippingRate : 0);
+            var total = subtotal + tax + shipping;
+
+            /* Update totals display */
+            $('.totals-value').fadeOut(fadeTime, function () {
+                $('#cart-subtotal').html(subtotal.toFixed(2));
+                $('#cart-tax').html(tax.toFixed(2));
+                $('#cart-shipping').html(shipping.toFixed(2));
+                $('#cart-total').html(total.toFixed(2));
+                if (total == 0) {
+                    $('.checkout').fadeOut(fadeTime);
+                } else {
+                    $('.checkout').fadeIn(fadeTime);
+                }
+                $('.totals-value').fadeIn(fadeTime);
+            });
         }
 
 
-    </script> -->
+        /* Update quantity */
+        function updateQuantity(quantityInput) {
+            /* Calculate line price */
+            var productRow = $(quantityInput).parent().parent();
+            var price = parseFloat(productRow.children('.product-price').text());
+            var quantity = $(quantityInput).val();
+            var linePrice = price * quantity;
+
+            /* Update line price display and recalc cart totals */
+            productRow.children('.product-line-price').each(function () {
+                $(this).fadeOut(fadeTime, function () {
+                    $(this).text(linePrice.toFixed(2));
+                    recalculateCart();
+                    $(this).fadeIn(fadeTime);
+                });
+            });
+        }
+
+
+        /* Remove item from cart */
+        function removeItem(removeButton) {
+            /* Remove row from DOM and recalc cart total */
+            var productRow = $(removeButton).parent().parent();
+            productRow.slideUp(fadeTime, function () {
+                productRow.remove();
+                recalculateCart();
+            });
+        }
+    </script>
 
 </head>
 
-<body class="bg-light">
+<body>
+    <h1>Shopping Cart</h1>
 
-    <header>
-        <nav class="navbar">
+    <div class="shopping-cart">
 
-            <ul>
-                <li><img src="/ffsdprojectopiherb.jpg" alt="opiherb" id="logo">
-                </li>
-                <li></li>
-                <li></li>
-                <li></li>
+        <div class="column-labels">
+            <label class="product-image">Image</label>
+            <label class="product-details">Product</label>
+            <label class="product-price">Price</label>
+            <label class="product-quantity">Quantity</label>
+            <label class="product-removal">Remove</label>
+            <label class="product-line-price">Total</label>
+        </div>
 
-                <li><a href="/login_signup2">Login</a></li>
-                <li><a href="/login_signup2">Sign Up</a></li>
-                <li><a href="">Introduction</a></li>
-                <li><a href="">Doctors</a></li>
-                <li><a href="">Medicines</a></li>
-                <!-- <li><a href="">Emergency</a></li> -->
-                <li><a href="">First Aid/Emergency</a></li>
-                <li><a href="">Premium</a></li>
-                <li><a href="">Offers</a></li>
+        <div class="product">
+            <div class="product-image">
+                <img src="https://s.cdpn.io/3/dingo-dog-bones.jpg">
+            </div>
+            <div class="product-details">
+                <div class="product-title">Dingo Dog Bones</div>
+                <p class="product-description">The best dog bones of all time. Holy crap. Your dog will be begging for
+                    these things! I got curious once and ate one myself. I'm a fan.</p>
+            </div>
+            <div class="product-price">12.99</div>
+            <div class="product-quantity">
+                <input type="number" value="2" min="1">
+            </div>
+            <div class="product-removal">
+                <button class="remove-product">
+                    Remove
+                </button>
+            </div>
+            <div class="product-line-price">25.98</div>
+        </div>
 
-                <!-- <li><button type="button" class="btn btn-info" id="logo">Sign in/Sign up</button></li> -->
-
-            </ul>
-        </nav>
-    </header>
-    <h1>CART</h1>
-    <!-- <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-		<div class="container-fluid">
-			<a class="navbar-brand" href="#">
-				<img src="logo.jpg" alt="Logo" style="width:100px;">
-			</a>
-			<ul class="navbar-nav">
-				<li class="nav-item">
-                    <a class="nav-link" href="#" data-toggle="modal" data-target="#loginModal">Login</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#" data-toggle="modal" data-target="#signupModal">Sign Up</a>
-                </li>
-				<li class="nav-item">
-					<a class="nav-link" href="1.html">Introduction</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="doctors.html">Doctors</a>
-					<ul class="subnav">
-						<li><a href="#">Online Consultation</a></li>
-						
-						<li><a href="#">Offline Consultation</a></li>
-					</ul>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="medicine.html">Medicines</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="emergency.html">Emergency</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="first_aid.html">First Aid</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="premium.html">Premium</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="offers.html">Offers</a>
-				</li>
-			</ul>
-		</div>
-	</nav> -->
-
-    <div class="container-fluid">
-
-        <div class="row">
-
-            <div class="col-md-10 col-11 mx-auto">
-
-                <div class="row mt-5 gx-3">
-
-                    <!-- left side div -->
-                    <div class="col-md-12 col-lg-8 col-11 mx-auto main_cart mb-lg-0 mb-5 shadow">
-
-                        <%for(m of model){%>
-                            <div class="card p-4">
-
-                                <div class="row">
-                                    <!-- cart images div -->
-                                    <div
-                                        class="col-md-5 col-11 mx-auto bg-light d-flex justify-content-center align-items-center shadow product_img">
-                                        <img src="./images/PAR.webp" class="img-fluid" alt="cart img">
-                                    </div>
-                                    <!-- cart product details -->
-                                    <div class="col-md-7 col-11 mx-auto px-4 mt-2">
-                                        <div class="row">
-                                            <!-- product name  -->
-                                            <div class="col-6 card-title">
-                                                <h5 class="mb-4 product_name">
-                                                    <%=m.name%>
-                                                </h5>
-                                                <p class="mb-2">
-                                                    <%=m.cost%> rps
-                                                </p>
-                                                <p class="mb-2">
-                                                    <%=m.description%>
-                                                </p>
-
-
-                                            </div>
-                                            <!-- quantity inc dec -->
-                                            <!-- <div class="col-6">
-                                                <ul class="pagination justify-content-end set_quantity">
-                                                    <li class="page-item">
-                                                        <button class="page-link "
-                                                            onclick="decreaseNumber('textbox','itemval')">
-                                                            <i class="fas fa-minus"></i> </button>
-                                                    </li>
-                                                    <li class="page-item"><input type="text" name="" class="page-link"
-                                                            value="0" id="textbox">
-                                                    </li>
-                                                    <li class="page-item">
-                                                        <button class="page-link"
-                                                            onclick="increaseNumber('textbox','itemval')"> <i
-                                                                class="fas fa-plus"></i></button>
-                                                    </li>
-                                                </ul>
-                                            </div> -->
-                                            <!-- </div> -->
-                                            <!-- //remover move and price -->
-                                            <!-- <div class="row">
-                                        <div class="col-8 d-flex ">
-                                            <p><i class="fas fa-trash-alt"></i> REMOVE ITEM</p>
-
-                                        </div>
-                                        <div class="col-4 d-flex">
-                                            <h3>$<span id="itemval">00.00 </span></h3>
-                                        </div>
-                                    </div> -->
-                                        </div>
-                                    </div>
-                                </div>
-                                <%}%>
-                                    <hr />
-                                    <!-- 2nd cart product -->
-                                    <!-- <div class="card p-4">
-                            <div class="row">
-                                
-                                <div
-                                    class="col-md-5 col-11 mx-auto bg-light d-flex justify-content-center align-items-center shadow product_img">
-                                    <img src="images/AZI.jpg" class="img-fluid" alt="cart img">
-                                </div>
-
-                            
-                                <div class="col-md-7 col-11 mx-auto px-4 mt-2">
-                                    <div class="row">
-                                     
-                                        <div class="col-6 card-title">
-                                            <h5 class="mb-4 product_name">Azithromycin</h5>
-                                            
-                                            <p class="mb-2">STRIP:1</p>
-                                            <p class="mb-3">TABLETS:15</p>
-                                        </div>
-                                     
-                                        <div class="col-6">
-                                            <ul class="pagination justify-content-end set_quantity">
-                                                <li class="page-item">
-                                                    <button class="page-link "
-                                                        onclick="decreaseNumber('textbox1','itemval1')"> <i
-                                                            class="fas fa-minus"></i> </button>
-                                                </li>
-                                                <li class="page-item"><input type="text" name="" class="page-link"
-                                                        value="0" id="textbox1">
-                                                </li>
-                                                <li class="page-item">
-                                                    <button class="page-link"
-                                                        onclick="increaseNumber('textbox1','itemval1')"> <i
-                                                            class="fas fa-plus"></i></button>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="row">
-                                        <div class="col-8 d-flex ">
-                                            <p><i class="fas fa-trash-alt"></i> REMOVE ITEM</p>
-                                            
-                                        </div>
-                                        <div class="col-4 d-flex justify-content-end price_money">
-                                            <h3>$<span id="itemval1">00.00 </span> </h3>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div> -->
-                                    <!-- right side div -->
-
-                                    <div>
-                                        <div class=" haha shadow bg-white">
-                                            <h2 class="product_name mb-5  ">The Total Amount Of</h2>
-                                            <div class="price_indiv d-flex justify-content-between">
-                                                <p>Product amount</p>
-                                                <p><span id="product_total_amt">220.87 rps</span></p>
-                                            </div>
-                                            <div class="price_indiv d-flex justify-content-between">
-                                                <p>Shipping Charge</p>
-                                                <p><span id="shipping_charge">50.00 rps</span></p>
-                                            </div>
-                                            <hr />
-                                            <div class="total-amt d-flex justify-content-between font-weight-bold">
-                                                <p>The total amount of (including VAT)</p>
-                                                <p><span id="total_cart_amt">270.87 rps</span></p>
-                                            </div>
-                                            <button class="btn btn-primary text-uppercase">Checkout</button>
-                                        </div>
-                                        <!-- discount code part -->
-                                        <div class="haha discount_code mt-3 shadow">
-                                            <div class="card">
-                                                <div class="card-body">
-                                                    <a class="d-flex justify-content-between" data-toggle="collapse"
-                                                        href="#collapseExample" aria-expanded="false"
-                                                        aria-controls="collapseExample">
-                                                        Add a discount code (optional)
-                                                        <span><i class="fas fa-chevron-down pt-1"></i></span>
-                                                    </a>
-                                                    <div class="collapse" id="collapseExample">
-                                                        <div class="mt-3">
-                                                            <input type="text" name="" id="discount_code1"
-                                                                class="form-control font-weight-bold"
-                                                                placeholder="Enter the discount code">
-                                                            <small id="error_trw" class="text-dark mt-3"></small>
-                                                        </div>
-                                                        <button class="btn btn-primary btn-sm mt-3"
-                                                            onclick="discount_code()">Apply</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-
-
-
-                                        <!-- discount code ends -->
-                                        <div class="haha mt-3 shadow p-3 bg-white">
-                                            <div class="pt-4">
-                                                <h5 class="mb-4">Expected delivery date</h5>
-                                                <p><span id="date"></span></p>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                            </div>
-                    </div>
-                </div>
+        <div class="totals">
+            <div class="totals-item">
+                <label>Subtotal</label>
+                <div class="totals-value" id="cart-subtotal">71.97</div>
+            </div>
+            <div class="totals-item">
+                <label>Tax (5%)</label>
+                <div class="totals-value" id="cart-tax">3.60</div>
+            </div>
+            <div class="totals-item">
+                <label>Shipping</label>
+                <div class="totals-value" id="cart-shipping">15.00</div>
+            </div>
+            <div class="totals-item totals-item-total">
+                <label>Grand Total</label>
+                <div class="totals-value" id="cart-total">90.57</div>
             </div>
         </div>
+
+        <button class="checkout">Checkout</button>
+
     </div>
-    <!-- <footer class="site-footer">
-
-
-
-        <div class="foot1 d-flex">
-            <div class="d-inline-block">
-                <h6>Know us</h6>
-
-
-                <ul class="footer-links">
-                    <li><a href="./1">About Us</a></li>
-                    <li><a href="./S20210010127_contact_us.html">Contact Us</a></li>
-                    <li><a href="">Business</a></li>
-                    <li><a href="">Partnerships</a></li>
-
-                </ul>
-            </div>
-
-
-            <div class="d-inline-block">
-                <h6> Our policies</h6>
-                <ul class="footer-links">
-                    <li><a href="">Privacy Policy</a>
-                    </li>
-                    <li><a href="">Grievance Redressal</a></li>
-                    <li><a href="">Fake jobs and Frauds</a></li>
-
-                </ul>
-            </div>
-
-            <div class="d-inline-block">
-                <h6>Services</h6>
-                <ul class="footer-links">
-                    <li><a href="">Order Medicines</a>
-                    </li>
-                    <li><a href="">Consult a Doctor</a></li>
-                    <li><a href="">Articles</a></li>
-                    <li><a href="/payments">payments</a></li>
-
-                </ul>
-            </div>
-
-            <div class="d-inline-block">
-                <h6> Social Media</h6>
-                <ul class="footer-links">
-                    <li>
-
-                        <a href="#" class="fab fa-facebook-f"> facebook</a>
-                    </li>
-                    <li>
-
-                        <a href="#" class="fab fa-twitter"> twitter</a>
-                    </li>
-                    <li>
-
-                        <a href="#" class="fab fa-instagram"> instagram</a>
-                    </li>
-
-                </ul>
-            </div>
-
-        </div>
-
-
-
-
-
-
-
-    </footer> -->
+</body>

@@ -8,128 +8,44 @@
   <link rel="stylesheet" href="https://www.myschools.com/mycss/4/my.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Karma">
   <style>
-    /* body,
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6 {
-      font-family: "Karma", sans-serif
-    }
-
-    .my-bar-block .my-bar-item {
-      padding: 20px;
-      display: flex;
-    }
-
-    .my-center {
-      width: 100%;
-      height: 20%;
-      font-size: 40px;
-      text-align: center;
-
-      color: black;
-    }
-
-    .my-main {
-
-      display: flex;
-      justify-content: space-between;
-
-    }
-
-    .my-quarter {
-      border: 1px solid black;
-    } */
-
-    .navbar {
-
-      background-color: rgb(41, 41, 41);
-      position: relative;
-      /* border-radius: 40px; */
-
-    }
-
-
-    .navbar::before {
-      content: '';
-      background-color: white;
-      position: absolute;
-      height: 100%;
-      width: 100%;
-      z-index: -1;
-      opacity: 0.4;
-    }
-
-    .navbar ul {
-      margin: 1px;
-      overflow: auto;
-    }
-
-    .navbar li {
-      float: left;
-      list-style: none;
-      margin: 20px 20px;
-    }
-
-    .navbar li a {
-      padding: 3px 3px;
-      color: white;
-      list-style: none;
-      text-decoration: none;
-    }
-
-
-
-
-
-
-
-    #logo {
-      /* padding: 10px; */
-      width: 135px;
-      float: right;
-
-
-    }
-
-    .navbar ul li a {
-
-      display: block;
-      /* padding: 3px 22px; */
-      border-radius: 20px;
-
-    }
+   body{
+    background-color: beige;
+   }
+    
     .container {
-			display: flex;
-			flex-wrap: wrap;
-			justify-content: center;
-		}
-		.card {
-			margin: 10px;
-			padding: 10px;
-			border: 1px solid #ccc;
-			border-radius: 5px;
-			box-shadow: 0 2px 5px rgba(0,0,0,0.3);
-			width: 300px;
-			text-align: center;
-		}
-		.card img {
-			max-width: 100%;
-			height: auto;
-			border-radius: 5px;
-			margin-bottom: 10px;
       display: flex;
-		}
-		.card h2 {
-			font-size: 20px;
-			margin-bottom: 10px;
-		}
-		.card p {
-			font-size: 16px;
-			line-height: 1.5;
-		}
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .card {
+      margin: 10px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+      width: 300px;
+      text-align: center;
+    }
+
+    .card img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 5px;
+      margin-bottom: 10px;
+      display: flex;
+    }
+
+    .card h2 {
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      font-size: 16px;
+      line-height: 1.5;
+    }
+
     .footer li a:hover {
       color: gold;
 
@@ -173,132 +89,245 @@
       padding: 20px;
 
     }
+
+    article {
+      
+      --img-scale: 1.001;
+      --title-color: black;
+      --link-icon-translate: -20px;
+      --link-icon-opacity: 0;
+      position: relative;
+      border-radius: 16px;
+      box-shadow: none;
+      background: #fff;
+      transform-origin: center;
+      transition: all 0.4s ease-in-out;
+      overflow: hidden;
+    }
+
+    article a::after {
+      position: absolute;
+      inset-block: 0;
+      inset-inline: 0;
+      cursor: pointer;
+      content: "";
+    }
+
+    /* basic article elements styling */
+    article h2 {
+      margin: 0 0 18px 0;
+      font-family: "Bebas Neue", cursive;
+      font-size: 1.9rem;
+      letter-spacing: 0.06em;
+      color: var(--title-color);
+      transition: color 0.3s ease-out;
+    }
+
+    figure {
+      margin: 0;
+      padding: 0;
+      aspect-ratio: 16 / 9;
+      overflow: hidden;
+    }
+
+    article img {
+      max-width: 100%;
+      transform-origin: center;
+      transform: scale(var(--img-scale));
+      transition: transform 0.4s ease-in-out;
+    }
+
+    .article-body {
+      padding: 24px;
+    }
+
+    article a {
+      display: inline-flex;
+      align-items: center;
+      text-decoration: none;
+      color: #28666e;
+    }
+
+    article a:focus {
+      outline: 1px dotted #28666e;
+    }
+
+    article a .icon {
+      min-width: 24px;
+      width: 24px;
+      height: 24px;
+      margin-left: 5px;
+      transform: translateX(var(--link-icon-translate));
+      opacity: var(--link-icon-opacity);
+      transition: all 0.3s;
+    }
+
+    /* using the has() relational pseudo selector to update our custom properties */
+    article:has(:hover, :focus) {
+      --img-scale: 1.1;
+      --title-color: #28666e;
+      --link-icon-translate: 0;
+      --link-icon-opacity: 1;
+      box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+    }
+
+
+    /************************ 
+Generic layout (demo looks)
+**************************/
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 48px 0;
+      font-family: "Figtree", sans-serif;
+      font-size: 1.2rem;
+      line-height: 1.6rem;
+      background-image: linear-gradient(45deg, #7c9885, #b5b682);
+      min-height: 100vh;
+    }
+
+    .articles {
+      display: grid;
+      max-width: 1200px;
+      margin-inline: auto;
+      padding-inline: 24px;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 24px;
+    }
+
+    @media screen and (max-width: 960px) {
+      article {
+        container: card/inline-size;
+      }
+
+      .article-body p {
+        display: none;
+      }
+    }
+
+    @container card (min-width: 380px) {
+      .article-wrapper {
+        display: grid;
+        grid-template-columns: 100px 1fr;
+        gap: 16px;
+      }
+
+      .article-body {
+        padding-left: 0;
+      }
+
+      figure {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+      }
+
+      figure img {
+        height: 100%;
+        aspect-ratio: 1;
+        object-fit: cover;
+      }
+    }
+
+    .sr-only:not(:focus):not(:active) {
+      clip: rect(0 0 0 0);
+      clip-path: inset(50%);
+      height: 1px;
+      overflow: hidden;
+      position: absolute;
+      white-space: nowrap;
+      width: 1px;
+    }
+   
+    .read-more button{
+      background-color: rgb(91, 110, 139);
+      font-size:22px;
+      border: none;
+    }
   </style>
 </head>
 
 <body>
 
-  <header>
-    <nav class="navbar">
+  <%-include("header") -%>
 
-      <ul>
-        <li><img src="/ffsdprojectopiherb.jpg" alt="opiherb" id="logo">
-        </li>
-        <li></li>
-        
+  <section class="articles">
+    <%me.forEach(function(medicines){%>
+    <article>
+      <div class="article-wrapper">
+        <figure>
+          <img src="/paracetomol.webp" alt="paracetomol" />
+        </figure>
+        <div class="article-body">
+          <h2><%=medicines.name%></h2><br>
+          <p>
+            Cost : <%=medicines.cost%> rps<br>
+            <%=medicines.description%>
 
-        <li><a href="/login_signup2">Login</a></li>
-        <li><a href="/login_signup2">Sign Up</a></li>
-        <li><a href="after-login">Introduction</a></li>
-        <li><a href="doctor_project_final">Doctors</a></li>
-            <li><a href="project_final">Medicines</a></li>
-            <!-- <li><a href="">Emergency</a></li> -->
-            <li><a href="fsd">First Aid/Emergency</a></li>
-            <li><a href="index">Premium</a></li>
-            <li><a href="offers">Offers</a></li>
-
-        <!-- <li><button type="button" class="btn btn-info" id="logo">Sign in/Sign up</button></li> -->
-
-      </ul>
-    </nav>
-  </header>
-  <!-- Top menu -->
-  <!-- <div class="my-top">
-    <div class="my-white my-xlarge" style="max-width:1200px;margin:auto">
-
-
-      <div class="my-center ">MEDICINES</div>
-    </div>
-  </div>
-
-  
-  <div class="my-main my-content my-padding" style="max-width:1200px;margin-top:100px">
-
-   
-    <%for(m of model){%>
-      <div class="my-row-padding my-padding-16 " id="med">
-        <div class="my-quarter">
-          <img src="img1.jpg" alt="med pic">
-          <h5 class="product_name">
-            <%=m.name%>
-          </h5>
-          <p class="cost">
-            <%=m.cost%>
           </p>
-          <p class="desc">
-            <%=m.description%>
-          </p>
+          <a href="#" class="read-more">
+          
+            <button onclick="window.location.href='b.php'"> Read more <span class="sr-only">about this is some title</span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd"
+                d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z"
+                clip-rule="evenodd" />
+            </svg>
+          </button>
+          </a>
         </div>
-
       </div>
-      <%}%>
-        <br> -->
-        <%for(m of model){%>
-        <div class="container">
-          <div class="card">
-            <img src="medicine1.jpg" alt="Medicine 1">
-            <h2> <%=m.name%></h2>
-            <h5><%=m.cost%></h5>
-            <h5><%=m.description%></h5>
+    </article>
+    <%})%> 
+  </section>
+
+      <footer>
+        <div class="footer">
+
+          <div>
+            <h4>Know us</h4>
+            <li><a href="">About</a></li>
+            <li><a href="">Contact</a></li>
+            <li><a href="">Business</a></li>
+            <li><a href="">Partnership</a></li>
+
           </div>
-          <!-- <div class="card">
-            <img src="medicine2.jpg" alt="Medicine 2">
-            <h2>Medicine 2</h2>
-            <p>Nullam nec nunc eu odio dignissim suscipit. Nam laoreet diam vel tortor hendrerit, ac tristique augue tempus.</p>
+          <div>
+            <h4>Our Policies</h4>
+            <li><a href="">Privacy Policy</a></li>
+            <li><a href="">Grievance Redressal</a></li>
+            <li><a href="">Fake jobs and Frauds</a></li>
           </div>
-          <div class="card">
-            <img src="medicine3.jpg" alt="Medicine 3">
-            <h2>Medicine 3</h2>
-            <p>Mauris id mauris mauris. Nunc tristique augue vel tellus malesuada, in feugiat mi mattis.</p>
+          <div>
+            <h4>Our Services</h4>
+            <li><a href="">Order Medicines</a></li>
+            <li><a href="">Consult a Doctor</a></li>
+            <li><a href="">Articles</a></li>
           </div>
-          <div class="card">
-            <img src="medicine4.jpg" alt="Medicine 4">
-            <h2>Medicine 4</h2>
-            <p>Curabitur vel tincidunt mauris. In porttitor metus sit amet nisi hendrerit, sed aliquam velit placerat.</p>
-          </div> -->
+          <div>
+            <h4>Connect with Us</h4>
+            <li>
+
+              <a href="#" class="fab fa-facebook-f"> facebook</a>
+            </li>
+            <li>
+
+              <a href="#" class="fab fa-twitter"> twitter</a>
+            </li>
+            <li>
+
+              <a href="#" class="fab fa-instagram"> instagram</a>
+            </li>
+
+
+          </div>
+
+
         </div>
-        <%}%>
-        <footer>
-          <div class="footer">
-
-            <div>
-              <h4>Know us</h4>
-              <li><a href="">About</a></li>
-              <li><a href="">Contact</a></li>
-              <li><a href="">Business</a></li>
-              <li><a href="">Partnership</a></li>
-
-            </div>
-            <div>
-              <h4>Our Policies</h4>
-              <li><a href="">Privacy Policy</a></li>
-              <li><a href="">Grievance Redressal</a></li>
-              <li><a href="">Fake jobs and Frauds</a></li>
-            </div>
-            <div>
-              <h4>Our Services</h4>
-              <li><a href="">Order Medicines</a></li>
-              <li><a href="">Consult a Doctor</a></li>
-              <li><a href="">Articles</a></li>
-            </div>
-            <div>
-              <h4>Connect with Us</h4>
-              <li>
-
-                <a href="#" class="fab fa-facebook-f"> facebook</a>
-              </li>
-              <li>
-
-                <a href="#" class="fab fa-twitter"> twitter</a>
-              </li>
-              <li>
-
-                <a href="#" class="fab fa-instagram"> instagram</a>
-              </li>
-
-
-            </div>
-
-
-          </div>
-        </footer>
+      </footer>
