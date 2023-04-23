@@ -256,7 +256,7 @@
     <title>Add New Offer</title>
     <style>
       /* Basic styling for the form */
-      form {
+      .offers{
         max-width: 600px;
         margin: 0 auto;
         padding: 20px;
@@ -282,7 +282,7 @@
         box-sizing: border-box;
         font-size: 16px;
       }
-      input[type="submit"] {
+      #offersub {
         display: block;
         background-color: #4CAF50;
         color: #fff;
@@ -294,7 +294,7 @@
         margin-top: 1rem;
         margin-bottom: 1rem;
       }
-      input[type="submit"]:hover {
+      #offersub:hover {
         background-color: #3e8e41;
       }
       /* Responsive styling for smaller screens */
@@ -308,23 +308,23 @@
   <div class="container">
   <div>
     <h2 style="text-align: center;">Add New Offer</h2>
-    <form action="/offers" method="POST">
+    <form action="/offers" method="POST" class="offers">
       <label for="image">Image URL:</label>
       <input type="text" id="image" name="image" required>
       <label for="title">Title:</label>
       <input type="text" id="title" name="title" required>
       <label for="description">Description:</label>
       <textarea id="description" name="description" required></textarea>
-      <input type="submit" value="Submit">
+      <input type="submit" value="Submit" id="offersub">
     </form>
   </div>
   <div>
     <h2 style="text-align: center;">Delete An Offer By Title</h2>
   
-    <form id="delete-offer-form">
+    <form id="delete-offer-form" class="offers">
       <label for="title">Title:</label>
       <input type="text" id="title" name="title" required>
-      <button type="submit">Delete offer</button>
+      <button type="submit" id="offersub">Delete offer</button>
     </form>
   
     <script>
@@ -373,11 +373,11 @@
 </script> -->
 
 <script>
-  const form = document.getElementById('docdel');
-      form.addEventListener('submit', async (event) => {
+  const docform = document.getElementById('docdel');
+      docform.addEventListener('submit', async (event) => {
         event.preventDefault();
     
-        const email = form.email.value;
+        const email = docform.email.value;
     
         try {
           // Send a DELETE request to the server with the offer title in the URL path

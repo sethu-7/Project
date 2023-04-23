@@ -200,6 +200,10 @@ app.get('/doctor_profile', (req, res) => {
 app.get('/admin', (req, res) => {
     // const query = doctor.find();
     doctor.find({email:req.query.email}).then(function (perdoc) {
+        // if(!req.query.email){
+        //     alert("doctor not present")
+        // }
+        
         res.render('admin_page', {
             per: perdoc
         })
