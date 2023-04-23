@@ -359,6 +359,7 @@
     </header>
 
     <div class="content-profile-page">
+        <%per.forEach(function(docper){%>
         <div class="profile-user-page card">
             <div class="img-user-profile">
                 <img class="profile-bgHome" src="https://i.pinimg.com/564x/7f/6a/47/7f6a47acb64c3fc67bc03c1125a33eba.jpg" />
@@ -366,19 +367,18 @@
                     src="https://thumbs.dreamstime.com/b/indian-doctor-mature-male-medical-standing-isolated-white-background-handsome-model-portrait-31871541.jpg"
                     alt="jofpin" />
             </div>
-            <!-- <button>Follow</button> -->
             <div class="user-profile-data">
-                <h1>Doctor 1</h1>
-                <p>doctor1@gmail.com</p>
+                <h1><%=docper.name%></h1>
+                <p><%=docper.email%></p>
             </div>
-            <div class="description-profile">MBBS| MD | Speacialization eye | Ophthalmologist | Available from 10:00 am
-                to 5:00 pm everyday</div>
+            <div class="description-profile">MBBS| MD | <%=docper.Specialization%> | Available from <%=docper.timeslot1%> everyday</div>
             <ul class="data-user">
                 <li><a><strong>339</strong><span>Visits</span></a></li>
                 <li><a><strong>128</strong><span>Days</span></a></li>
                 <li><a><strong>4</strong><span>Average visits per day</span></a></li>
             </ul>
         </div>
+        <%})%>
     </div>
 
 

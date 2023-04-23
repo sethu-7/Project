@@ -538,18 +538,46 @@
             font-size: 1.2rem;
         }
 
-        .search {
+        
 
-            width: 150%;
-            position: relative;
+        .search {
+            /* margin-top: 50px; */
+            width: 100%;
+            position: absolute;
+            /* bottom: 416px;
+            left: 320px;
+            height: 36px; */
             text-align: center;
+            width: 50%;
             border-radius: 40px;
             padding: 6px 20px 5px 30px;
             overflow: auto;
             display: flex;
+
+
+            /* width: 100%; */
+            /* justify-content: center; */
             flex-wrap: wrap;
             flex-grow: inherit;
+            /* display: flex; */
 
+
+
+        }
+
+        #logo {
+            /* padding: 10px; */
+            width: 135px;
+            float: right;
+
+
+        }
+
+        .navbar ul li a {
+
+            display: block;
+            /* padding: 3px 22px; */
+            border-radius: 20px;
 
         }
     </style>
@@ -557,131 +585,131 @@
 
 <body>
     <header>
-        <%-include('header')-%>
+        <!-- <%-include('header')-%> -->
 
-            <div class="modal fade" id="signupdocModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-                aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Sign Up</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <form class="signup-form" action="/submit" method="post">
-                                <div class="form-group">
-                                    <label for="name">Name</label>
-                                    <input type="text" class="form-control" id="name" name="name"
-                                        placeholder="Enter your name" required>
-                                </div>
-                                <div>
-                                    <label for="password">Password:</label>
-                                    <p><input type="password" id="password" name="password" placeholder="Enter Password"
-                                            required /></p>
-                                    <span class="form-error"></span>
-                                </div>
-
-
-                                <div class="form-group">
-                                    <label for="phoneNumber">Phone Number</label>
-                                    <input type="tel" class="form-control" id="phoneNumber" name="phoneNumber"
-                                        placeholder="Enter your phone number" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="email">Email Address</label>
-                                    <input type="email" class="form-control" id="email" name="email"
-                                        placeholder="Enter your email address" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="district">District</label>
-                                    <input type="text" class="form-control" id="district" name="district"
-                                        placeholder="Enter your district" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="Specialization">Specialization</label>
-                                    <input type="text" class="form-control" name="Specialization"
-                                        placeholder="Enter your Specialization" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="experience">Experience</label>
-                                    <input type="text" class="form-control" id="experience" name="experience"
-                                        placeholder="Enter your experience" required>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="timeslot">Time Slot1</label>
-                                    <select class="form-control" id="timeslot" name="timeslot" required>
-                                        <option value="">Select a time slot</option>
-                                        <option value="9:00 AM - 10:00 AM">9:00 AM - 10:00 AM</option>
-                                        <option value="10:00 AM - 11:00 AM">10:00 AM - 11:00 AM</option>
-                                        <option value="11:00 AM - 12:00 PM">11:00 AM - 12:00 PM</option>
-                                        <option value="12:00 PM - 1:00 PM">12:00 PM - 1:00 PM</option>
-                                        <option value="1:00 PM - 2:00 PM">1:00 PM - 2:00 PM</option>
-                                        <option value="2:00 PM - 3:00 PM">2:00 PM - 3:00 PM</option>
-                                        <option value="3:00 PM - 4:00 PM">3:00 PM - 4:00 PM</option>
-                                        <option value="4:00 PM - 5:00 PM">4:00 PM - 5:00 PM</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label for="timeslot2">Time Slot1</label>
-                                    <select class="form-control" id="timeslot2" name="timeslot2" required>
-                                        <option value="">Select a time slot</option>
-                                        <option value="9:00 AM - 10:00 AM">9:00 AM - 10:00 AM</option>
-                                        <option value="10:00 AM - 11:00 AM">10:00 AM - 11:00 AM</option>
-                                        <option value="11:00 AM - 12:00 PM">11:00 AM - 12:00 PM</option>
-                                        <option value="12:00 PM - 1:00 PM">12:00 PM - 1:00 PM</option>
-                                        <option value="1:00 PM - 2:00 PM">1:00 PM - 2:00 PM</option>
-                                        <option value="2:00 PM - 3:00 PM">2:00 PM - 3:00 PM</option>
-                                        <option value="3:00 PM - 4:00 PM">3:00 PM - 4:00 PM</option>
-                                        <option value="4:00 PM - 5:00 PM">4:00 PM - 5:00 PM</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label for="timeslot3">Time Slot1</label>
-                                    <select class="form-control" id="timeslot3" name="timeslot3" required>
-                                        <option value="">Select a time slot</option>
-                                        <option value="9:00 AM - 10:00 AM">9:00 AM - 10:00 AM</option>
-                                        <option value="10:00 AM - 11:00 AM">10:00 AM - 11:00 AM</option>
-                                        <option value="11:00 AM - 12:00 PM">11:00 AM - 12:00 PM</option>
-                                        <option value="12:00 PM - 1:00 PM">12:00 PM - 1:00 PM</option>
-                                        <option value="1:00 PM - 2:00 PM">1:00 PM - 2:00 PM</option>
-                                        <option value="2:00 PM - 3:00 PM">2:00 PM - 3:00 PM</option>
-                                        <option value="3:00 PM - 4:00 PM">3:00 PM - 4:00 PM</option>
-                                        <option value="4:00 PM - 5:00 PM">4:00 PM - 5:00 PM</option>
-                                    </select>
-                                </div>
-
-                                <div>
-                                    <label for="file" class="form-label">Upload Doctors License</label>
-                                    <input class="form-control form-control-lg" id="file" name="file" type="file" />
-                                             
-                                </div>
-                                <button type="submit" class="btn btn-primary" id="submitButton">Sign Up</button>
-                            </form>
+        <div class="modal fade" id="signupdocModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Sign Up</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form class="signup-form" action="/submit" method="post">
+                            <div class="form-group">
+                                <label for="name">Name</label>
+                                <input type="text" class="form-control" id="name" name="name"
+                                    placeholder="Enter your name" required>
+                            </div>
+                            <div>
+                                <label for="password">Password:</label>
+                                <p><input type="password" id="password" name="password" placeholder="Enter Password"
+                                        required /></p>
+                                <span class="form-error"></span>
+                            </div>
 
 
+                            <div class="form-group">
+                                <label for="phoneNumber">Phone Number</label>
+                                <input type="tel" class="form-control" id="phoneNumber" name="phoneNumber"
+                                    placeholder="Enter your phone number" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email Address</label>
+                                <input type="email" class="form-control" id="email" name="email"
+                                    placeholder="Enter your email address" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="district">District</label>
+                                <input type="text" class="form-control" id="district" name="district"
+                                    placeholder="Enter your district" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="Specialization">Specialization</label>
+                                <input type="text" class="form-control" name="Specialization"
+                                    placeholder="Enter your Specialization" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="experience">Experience</label>
+                                <input type="text" class="form-control" id="experience" name="experience"
+                                    placeholder="Enter your experience" required>
+                            </div>
 
-                        </div>
+                            <div class="form-group">
+                                <label for="timeslot">Time Slot1</label>
+                                <select class="form-control" id="timeslot" name="timeslot" required>
+                                    <option value="">Select a time slot</option>
+                                    <option value="9:00 AM - 10:00 AM">9:00 AM - 10:00 AM</option>
+                                    <option value="10:00 AM - 11:00 AM">10:00 AM - 11:00 AM</option>
+                                    <option value="11:00 AM - 12:00 PM">11:00 AM - 12:00 PM</option>
+                                    <option value="12:00 PM - 1:00 PM">12:00 PM - 1:00 PM</option>
+                                    <option value="1:00 PM - 2:00 PM">1:00 PM - 2:00 PM</option>
+                                    <option value="2:00 PM - 3:00 PM">2:00 PM - 3:00 PM</option>
+                                    <option value="3:00 PM - 4:00 PM">3:00 PM - 4:00 PM</option>
+                                    <option value="4:00 PM - 5:00 PM">4:00 PM - 5:00 PM</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="timeslot2">Time Slot1</label>
+                                <select class="form-control" id="timeslot2" name="timeslot2" required>
+                                    <option value="">Select a time slot</option>
+                                    <option value="9:00 AM - 10:00 AM">9:00 AM - 10:00 AM</option>
+                                    <option value="10:00 AM - 11:00 AM">10:00 AM - 11:00 AM</option>
+                                    <option value="11:00 AM - 12:00 PM">11:00 AM - 12:00 PM</option>
+                                    <option value="12:00 PM - 1:00 PM">12:00 PM - 1:00 PM</option>
+                                    <option value="1:00 PM - 2:00 PM">1:00 PM - 2:00 PM</option>
+                                    <option value="2:00 PM - 3:00 PM">2:00 PM - 3:00 PM</option>
+                                    <option value="3:00 PM - 4:00 PM">3:00 PM - 4:00 PM</option>
+                                    <option value="4:00 PM - 5:00 PM">4:00 PM - 5:00 PM</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="timeslot3">Time Slot1</label>
+                                <select class="form-control" id="timeslot3" name="timeslot3" required>
+                                    <option value="">Select a time slot</option>
+                                    <option value="9:00 AM - 10:00 AM">9:00 AM - 10:00 AM</option>
+                                    <option value="10:00 AM - 11:00 AM">10:00 AM - 11:00 AM</option>
+                                    <option value="11:00 AM - 12:00 PM">11:00 AM - 12:00 PM</option>
+                                    <option value="12:00 PM - 1:00 PM">12:00 PM - 1:00 PM</option>
+                                    <option value="1:00 PM - 2:00 PM">1:00 PM - 2:00 PM</option>
+                                    <option value="2:00 PM - 3:00 PM">2:00 PM - 3:00 PM</option>
+                                    <option value="3:00 PM - 4:00 PM">3:00 PM - 4:00 PM</option>
+                                    <option value="4:00 PM - 5:00 PM">4:00 PM - 5:00 PM</option>
+                                </select>
+                            </div>
+
+                            <div>
+                                <label for="file" class="form-label">Upload Doctors License</label>
+                                <input class="form-control form-control-lg" id="file" name="file" type="file" />
+                                         
+                            </div>
+                            <button type="submit" class="btn btn-primary" id="submitButton">Sign Up</button>
+                        </form>
+
+
+
                     </div>
                 </div>
-                    
             </div>
+                
+        </div>
 
     </header>
 
     <section>
         <div class="container">
             <h1 id="heading">FIND YOUR NEAREST DOCTOR NOW</h1><br>
-            <div>
-                <form action="doctor_list">
+            
+                <form action="doctor_list" style="padding-right: 650px;">
                     <!-- <i class="fas fa-search" aria-hidden="true"></i> -->
                     <input class="search" type="text" id="Spec" name="Spec"
-                        placeholder="Search for doctor Specializations">
+                        placeholder="Search for specializations or dictrict">
                 </form>
 
-            </div>
+            
 
         </div>
 

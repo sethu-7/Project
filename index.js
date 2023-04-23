@@ -60,10 +60,17 @@ const multer = require('multer');
 const bodyParser = require('body-parser');
 const doctor = require('./model/doctor')
 const app = express();
+const session=require('express-session')
 app.use(bodyParser.urlencoded({ extended: true }))
 app.set("view engine", "ejs")
 app.use(express.static('public/images'));
 const upload = multer({ dest: 'public/files/' });
+app.use(session({
+    secret:"secret-key",
+    resave:false,
+    saveUninitialized:false,
+
+}));
 
 mongoose.connect('mongodb+srv://sethu:geethu@cluster0.ngvcutp.mongodb.net/ffsd', { useNewUrlParser: true }, { useUnofiedToppology: true });
 const db = mongoose.connection;
@@ -106,7 +113,12 @@ app.get('/dashboard', (req, res) => {
     res.render('dashboard')
 })
 app.get('/doctor_profile', (req, res) => {
-    res.render('doctor_profile')
+    doctor.find({email:req.session.email}).then(function(perdoc){
+        res.render('doctor_profile',{
+            per:perdoc
+        })
+
+    })
 })
 app.get('/appointment-page', (req, res) => {
     doctor.find({email:req.query.email}).then(function(doct){
@@ -126,7 +138,7 @@ app.get('/header', (req, res) => {
 app.get('/doctor_list', (req, res) => {
     const spcl=req.query.Spec
     
-    doctor.find({Specialization:spcl}).then(function(doctorss) {
+    doctor.find({$or:[{Specialization:spcl},{district:req.query.Spec}]}).then(function(doctorss) {
         res.render('doctor_list',{
             list:doctorss
         })
@@ -135,21 +147,24 @@ app.get('/doctor_list', (req, res) => {
     })
 })
 
-app.post('/login', (req, res) => {
+app.post('/login', async(req, res,next) => {
+    console.log('useremail')
     try {
-        // const email = req.body.email
-        const password = req.body.password
-        console.log('useremail')
+        const user=await doctor.findOne({
+
+            email : req.body.email,
+            password : req.body.password
+        })
 
 
-        const useremail = doctor.findOne({ email: req.body.email });
-        if (useremail.password === password) {
-            res.redirect('introduction');
+        // const useremail = doctor.findOne({ email: req.body.email });
+        if (user) {
+            res.redirect('/dashboard');
 
         }
         else {
             send("password incorrect")
-            res.redirect('introduction')
+            // res.redirect('introduction')
         }
     }
     catch (error) {
@@ -187,9 +202,9 @@ app.post('/submit', upload.single('file'), async (req, res) => {
         // const result = db.collection('doctor').insertOne(file);
         // console.log('File saved to database:', result.insertedId);
         await newdoctor.save();
+        req.session.email=newdoctor.email;
 
-
-        res.redirect('/dashboard')
+        res.redirect('/doctor_profile')
 
         // res.status(201).send('doctor created successfully');
     } catch {
