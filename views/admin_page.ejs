@@ -64,10 +64,11 @@
       background-color: #dc3545;
     }
 
-    .tables{
+    .tables {
       padding: 20px;
     }
-    #email{
+
+    #email {
       size: 30px;
     }
   </style>
@@ -85,7 +86,7 @@
             <th>Name</th>
             <th>Email</th>
             <th>Phone</th>
-            
+
           </tr>
         </thead>
         <tbody>
@@ -107,7 +108,8 @@
       </table>
       <div>
         <form action="">
-          <input type="email" name="email" id="email" placeholder="Enter email of doctor to delete" style="height: 25px;  width: 300px;">
+          <input type="email" name="email" id="email" placeholder="Enter email of doctor to delete"
+            style="height: 25px;  width: 300px;">
 
           <button class="remove-button">Remove</button>
 
@@ -123,19 +125,25 @@
             <th>Name</th>
             <th>Specialization</th>
             <th>Phone</th>
-            
+
           </tr>
         </thead>
         <tbody>
           <%per.forEach(function(doctor) {%>
-          <tr>
-            <td><%=doctor.name%></td>
-            <td><%=doctor.Specialization%></td>
-            <td><%=doctor.phoneNumber%></td>
-  
-          </tr>
-          <%})%>
-          <!-- <tr>
+            <tr>
+              <td>
+                <%=doctor.name%>
+              </td>
+              <td>
+                <%=doctor.Specialization%>
+              </td>
+              <td>
+                <%=doctor.phoneNumber%>
+              </td>
+
+            </tr>
+            <%})%>
+              <!-- <tr>
             <td>Dr. Jane Doe</td>
             <td>Neurology</td>
             <td>555-5678</td>
@@ -144,14 +152,26 @@
         </tbody>
       </table>
       <div>
-        <form action="">
-          <input type="email" name="email" id="email" placeholder="Enter email of doctor to delete" style="height: 25px;  width: 300px;">
+        <form action="" style="padding-bottom: 10px;">
+          <input type="email" name="email" id="email" placeholder="Enter email of doctor to search"
+            style="height: 25px;  width: 300px;">
 
-          <button class="remove-button">Remove</button>
+          <button class="add-button">Search</button>
 
         </form>
-  
-        
+
+
+      </div>
+      <div>
+        <form id="docdel" action="" method="">
+          <input type="email" name="email" id="email" placeholder="Enter email of doctor to delete"
+            style="height: 25px;  width: 300px;">
+
+          <button class="remove-button" type="submit">Remove</button>
+
+        </form>
+
+
       </div>
     </div>
     <div class="tables">
@@ -162,7 +182,7 @@
             <th>Name</th>
             <th>Description</th>
             <th>Price</th>
-            
+
           </tr>
         </thead>
         <tbody>
@@ -170,20 +190,21 @@
             <td>Aspirin</td>
             <td>Pain relief</td>
             <td>$5.00</td>
-  
+
           </tr>
           <tr>
             <td>Tylenol</td>
             <td>Headache relief</td>
             <td>$8.00</td>
-  
+
           </tr>
         </tbody>
       </table>
       <div>
-  
+
         <form action="">
-          <input type="email" name="email" id="email" placeholder="Enter email of doctor to delete" style="height: 25px;  width: 300px;">
+          <input type="email" name="email" id="email" placeholder="Enter email of doctor to delete"
+            style="height: 25px;  width: 300px;">
 
           <button class="remove-button">Remove</button>
           <button class="add-button">Add</button>
@@ -199,7 +220,7 @@
             <th>Name</th>
             <th>Description</th>
             <th>Price</th>
-            
+
           </tr>
         </thead>
         <tbody>
@@ -207,20 +228,21 @@
             <td>Aspirin</td>
             <td>Pain relief</td>
             <td>$5.00</td>
-  
+
           </tr>
           <tr>
             <td>Tylenol</td>
             <td>Headache relief</td>
             <td>$8.00</td>
-  
+
           </tr>
         </tbody>
       </table>
       <div>
-  
-        <form action="">
-          <input type="email" name="email" id="email" placeholder="Enter email of doctor to delete" style="height: 25px;  width: 300px;">
+
+        <form >
+          <input type="email" name="email" id="email" placeholder="Enter email of doctor to delete"
+            style="height: 25px;  width: 300px;">
 
           <button class="remove-button">Remove</button>
           <button class="add-button">Add</button>
@@ -230,5 +252,46 @@
     </div>
   </div>
 </body>
+<!-- <script>
+  function del(email) {
+    const deleteField = async (id, key) => {
+      try {
+        const response = await fetch(`/admin/${email}}`, {
+          method: 'DELETE',
+        });
+
+      }catch(error){
+        console.log(error)
+      }
+    }
+  }
+
+</script> -->
+
+<script>
+  const form = document.getElementById('docdel');
+      form.addEventListener('submit', async (event) => {
+        event.preventDefault();
+    
+        const email = form.email.value;
+    
+        try {
+          // Send a DELETE request to the server with the offer title in the URL path
+          const response = await fetch(`/admin/${email}`, { method: 'DELETE' });
+    
+          if (response.ok) {
+            alert('doctor deleted successfully');
+            // Reload the page to update the offer list
+            location.reload();
+          } else {
+            const errorMessage = await response.text();
+            throw new Error(errorMessage);
+          }
+        } catch (err) {
+          console.error('Error deleting doctor:', err);
+          alert('An error occurred while deleting the doctor');
+        }
+      });
+</script>
 
 </html>
