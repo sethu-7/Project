@@ -1,70 +1,23 @@
-// const express=require('express')
-// const app=express()
-// const mongoose=require('mongoose');
-// const morgan = require('morgan');
-// // const doctor=require('../Project/model/doctor')
-// const bd=require('body-parser')
-// const path=require('path');
-// const authroute=require('./route/authrouet');
-// const e = require('express');
-// const bodyParser = require('body-parser');
-
-// app.set("view engine","ejs")
-// app.use(express.static(path.join(__dirname,'public/images')))
-// mongoose.connect('mongodb+srv://sethu:geethu@cluster0.ngvcutp.mongodb.net/?retryWrites=true&w=majority',{useNewUrlParser:true},{useNewTopology:true})
-// const db= mongoose.connection
-
-
-// db.on('error',(err)=>{
-//     console.log(err)
-// })
-
-// db.once('open',()=>{
-//     console.log("connection established")
-// })
-
-// app.use(morgan('dev'))
-// app.use(bodyParser.urlencoded({extended:true}))
-// app.use(bodyParser.json())
-
-
-// // app.get('/doctor_project_final',(req,res)=>{
-// //     res.render('doctor_project_final')
-// // })
-
-// // app.post('/doctor_project_final',(req,res)=>{
-// //     let newdoc=new doctor({
-// //         Name:req.body.doc_name,
-// //         Password:req.body.doc_id,
-// //         PhoneNumber:req.body.ph_no,
-// //         Adress:req.body.address,
-// //         Specialization:req.body.spcl,
-// //         Experience:req.body.exp,
-// //         Email:req.body.email,
-// //     });
-// //     newdoc.save();
-// //     res.redirect('/dashboard');
-
-// // })
-
-// const port=5000;
-// app.listen(port,()=>{
-//     console.log("connected")
-// })
-
-// app.use('../route',authroute)
-
 const express = require('express');
 const mongoose = require('mongoose');
 const multer = require('multer');
 const bodyParser = require('body-parser');
 const doctor = require('./model/doctor')
-const medicines = require('./model/medicines')
+const patient = require('./model/patient')
+
 const app = express();
+const session = require('express-session')
 app.use(bodyParser.urlencoded({ extended: true }))
+app.use(express.json());
 app.set("view engine", "ejs")
 app.use(express.static('public/images'));
 const upload = multer({ dest: 'public/files/' });
+app.use(session({
+    secret: "secret-key",
+    resave: false,
+    saveUninitialized: false,
+
+}));
 
 mongoose.connect('mongodb+srv://sethu:geethu@cluster0.ngvcutp.mongodb.net/ffsd', { useNewUrlParser: true }, { useUnofiedToppology: true });
 const db = mongoose.connection;
@@ -74,6 +27,9 @@ db.once('open', function () {
     console.log('Connected to MongoDB database');
 
 });
+
+
+
 
 
 
@@ -91,9 +47,142 @@ db.once('open', function () {
 // const upload = multer({ storage: storage });
 
 
+// Render offers in EJS file
+
+const offerSchema = new mongoose.Schema({
+    image:String,
+    title:String,
+    description:String
+     
+   });
+   
+   const Offer=mongoose.model("Offer",offerSchema);
+
+app.get('/offers', async (req, res) => {
+    try {
+      const offers = await Offer.find();
+      res.render('offers', { offers });
+    } catch (err) {
+      console.error('Error retrieving offers:', err);
+      res.status(500).send('Internal server error');
+    }
+  });
+
+
+  // Handle form submission
+  app.post('/offers', async (req, res) => {
+    try {
+      const { title, description, image } = req.body;
+  
+      // Create a new offer object and set its properties
+      const offer = new Offer({
+        title,
+        description,
+         image // set the image field to the imageUrl from the req.body
+      });
+  
+      // Save the offer object to the database
+      await offer.save();
+  
+      res.status(201).json({ message: 'Offer added successfully' });
+    } catch (err) {
+      console.error('Error adding offer:', err);
+      res.status(500).json({ error: 'Internal server error' });
+    }
+  });
+
+
+
+
+  //deletion
+// Handle DELETE request to delete an offer by its title
+app.delete('/offers/:title', async (req, res) => {
+    try {
+      const title = req.params.title;
+  
+      // Find the offer with the matching title and delete it
+      const deletedOffer = await Offer.findOneAndDelete({ title });
+  
+      if (!deletedOffer) {
+        // If no offer with the matching title was found, return a 404 Not Found error
+        res.status(404).send('Offer not found');
+        return;
+      }
+  
+      res.status(204).send();
+    } catch (err) {
+      console.error('Error deleting offer:', err);
+      res.status(500).send('Internal server error');
+    }
+  });
+  
+
+  app.get('/medicines', async (req, res) => {
+    try {
+      const medicines = await medicines.find();
+      res.render('medicines', { medicines});
+    } catch (err) {
+      console.error('Error retrieving medicines:', err);
+      res.status(500).send('Internal server error');
+    }
+  });
+
+
+  // Handle form submission
+  app.post('/medicines', async (req, res) => {
+    try {
+      const { name, m_id,cost,description, added  } = req.body;
+  
+      // Create a new offer object and set its properties
+      const med = new medicines({
+       name,
+       m_id,
+       cost,
+        description,
+        added
+        // set the image field to the imageUrl from the req.body
+      });
+  
+      // Save the offer object to the database
+      await med.save();
+  
+      res.status(201).json({ message: 'Medicine added successfully' });
+    } catch (err) {
+      console.error('Error adding medicine:', err);
+      res.status(500).json({ error: 'Internal server error' });
+    }
+  });
+
+
+
+
+  //deletion
+// Handle DELETE request to delete an offer by its title
+app.delete('/medicines/:name', async (req, res) => {
+    try {
+      const name = req.params.name;
+  
+      // Find the offer with the matching title and delete it
+      const deleted_med = await medicines.findOneAndDelete({ name });
+  
+      if (!deleted_med) {
+       
+        res.status(404).send('medicine not found');
+        return;
+      }
+  
+      res.status(204).send();
+    } catch (err) {
+      console.error('Error deleting medicine:', err);
+      res.status(500).send('Internal server medicine');
+    }
+  });
+  
+
+
 
 app.get('/doctor_project_final', (req, res) => {
-    doctor.find({ experience: { $gte: 9 } }).then(function (doctors) {
+    doctor.find({ experience: { $gte: 14 } }).then(function (doctors) {
         // if (err) {
         //     console.error(err);
         //     return res.status(500).send('Error occurred');
@@ -106,76 +195,72 @@ app.get('/doctor_project_final', (req, res) => {
 app.get('/dashboard', (req, res) => {
     res.render('dashboard')
 })
+
 app.get('/doctor_profile', (req, res) => {
-    res.render('doctor_profile')
-})
-app.get('/appointment-page', (req, res) => {
-    doctor.find({ email: req.query.email }).then(function (doct) {
-        res.render('appointment-page', {
-            doc: doct
+    doctor.find({ email: req.session.email }).then(function (perdoc) {
+        res.render('doctor_profile', {
+            per: perdoc
         })
 
     })
 })
+app.get('/admin', (req, res) => {
+    // const query = doctor.find();
+    doctor.find({}).then(function (perdoc) {
+        res.render('admin_page', {
+            per: perdoc
+        })
+
+    })
+})
+
+// app.get('/appointment-page', (req, res) => {
+//     doctor.find({ email: req.query.email }).then(function (doct) {
+//         res.render('appointment-page', {
+//             doc: doct
+//         })
+
+//     })
+// })
 app.get('/', (req, res) => {
     res.render('introduction')
 })
-app.get('/header', (req, res) => {
+app.get('/login', (req, res) => {
 
-    res.render('header')
+    res.render('login')
 })
 app.get('/doctor_list', (req, res) => {
     const spcl = req.query.Spec
 
-    doctor.find({ Specialization: spcl }).then(function (doctorss) {
+    doctor.find({ $or: [{ Specialization: spcl }, { district: req.query.Spec }] }).then(function (doctorss) {
         res.render('doctor_list', {
             list: doctorss
         })
 
 
     })
-})
-app.get('/project_final', (req, res) => {
-    medicines.find({ name: req.query.name }).then(function (medi) {
-        res.render('project_final', {
-            med: medi
-            // use med in ejs file
-        })
 
-    })
-})
-app.get('/medicines', (req, res) => {
-    medicines.find({}).then(function (medic) {
-        res.render('medicines', {
-            me: medic
-        })
-
-
-    })
-  
-})
-app.get('/viewcart_final', (req, res) => {
-    
-    res.render('viewcart_final')
 })
 
-
-
-app.post('/login', (req, res) => {
+app.post('/login', async (req, res, next) => {
     try {
-        // const email = req.body.email
-        const password = req.body.password
-        console.log('useremail')
+        const user = await doctor.findOne({
 
+            email: req.body.email,
+            password: req.body.password
+        })
 
-        const useremail = doctor.findOne({ email: req.body.email });
-        if (useremail.password === password) {
-            res.redirect('introduction');
+       
 
+        
+        if (user) {
+            req.session.email = user.email;
+
+            res.redirect('/doctor_profile')
         }
         else {
             send("password incorrect")
-            res.redirect('introduction')
+            // res.redirect('introduction')
         }
     }
     catch (error) {
@@ -213,9 +298,9 @@ app.post('/submit', upload.single('file'), async (req, res) => {
         // const result = db.collection('doctor').insertOne(file);
         // console.log('File saved to database:', result.insertedId);
         await newdoctor.save();
+        req.session.email = newdoctor.email;
 
-
-        res.redirect('/dashboard')
+        res.redirect('/doctor_profile')
 
         // res.status(201).send('doctor created successfully');
     } catch {
@@ -224,12 +309,55 @@ app.post('/submit', upload.single('file'), async (req, res) => {
 });
 
 
+// app.listen(5000, () => {
+//     console.log('Server listening on port 5000');
+// });
+
+
+app.get('/admin_page', (req, res) => {
+    res.render('admin_page')
+})
+
+app.get('/index', (req, res) => {
+    res.render('index')
+})
+
+
+
+app.get('/payments', (req, res) => {
+    res.render('payments')
+})
+
+
+
+
+app.post('/signup', async (req, res) => {
+    try {
+
+        let newpatient = new patient({
+            patient_name: req.body.patient_name,
+            patient_password: req.body.patient_password,
+            patient_phoneNumber: req.body.patient_phoneNumber,
+            patient_email: req.body.patient_email,
+            patient_address: req.body.patient_address,
+            patient_emergencyNumber: req.body.patient_emergencyNumber
+
+        });
+
+        await newpatient.save();
+
+
+        res.redirect('/after-login')
+
+    } catch {
+        res.status(500).send('Error creating patient');
+    }
+});
 
 
 
 
 
-
-app.listen(5000, () => {
-    console.log('Server listening on port 5000');
+app.listen(5500, () => {
+    console.log('Server listening on port 5500');
 });
