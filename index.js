@@ -64,6 +64,7 @@ const patient = require('./model/patient')
 const app = express();
 const session = require('express-session')
 app.use(bodyParser.urlencoded({ extended: true }))
+app.use(express.json());
 app.set("view engine", "ejs")
 app.use(express.static('public/images'));
 const upload = multer({ dest: 'public/files/' });
@@ -86,6 +87,9 @@ db.once('open', function () {
 
 
 
+
+
+
 // app.use(bodyParser.json());
 // const storage = multer.diskStorage({
 //     destination: (req, file, cb) => {
@@ -98,6 +102,76 @@ db.once('open', function () {
 
 // const upload = multer({ storage: storage });
 
+
+// Render offers in EJS file
+
+const offerSchema = new mongoose.Schema({
+    image:String,
+    title:String,
+    description:String
+     
+   });
+   
+   const Offer=mongoose.model("Offer",offerSchema);
+
+app.get('/offers', async (req, res) => {
+    try {
+      const offers = await Offer.find();
+      res.render('offers', { offers });
+    } catch (err) {
+      console.error('Error retrieving offers:', err);
+      res.status(500).send('Internal server error');
+    }
+  });
+
+
+  // Handle form submission
+  app.post('/offers', async (req, res) => {
+    try {
+      const { title, description, image } = req.body;
+  
+      // Create a new offer object and set its properties
+      const offer = new Offer({
+        title,
+        description,
+         image // set the image field to the imageUrl from the req.body
+      });
+  
+      // Save the offer object to the database
+      await offer.save();
+  
+      res.status(201).json({ message: 'Offer added successfully' });
+    } catch (err) {
+      console.error('Error adding offer:', err);
+      res.status(500).json({ error: 'Internal server error' });
+    }
+  });
+
+
+
+
+  //deletion
+// Handle DELETE request to delete an offer by its title
+app.delete('/offers/:title', async (req, res) => {
+    try {
+      const title = req.params.title;
+  
+      // Find the offer with the matching title and delete it
+      const deletedOffer = await Offer.findOneAndDelete({ title });
+  
+      if (!deletedOffer) {
+        // If no offer with the matching title was found, return a 404 Not Found error
+        res.status(404).send('Offer not found');
+        return;
+      }
+  
+      res.status(204).send();
+    } catch (err) {
+      console.error('Error deleting offer:', err);
+      res.status(500).send('Internal server error');
+    }
+  });
+  
 
 
 app.get('/doctor_project_final', (req, res) => {
@@ -289,7 +363,19 @@ app.post('/submit', upload.single('file'), async (req, res) => {
 // });
 
 
+app.get('/admin_page', (req, res) => {
+    res.render('admin_page')
+})
 
+app.get('/index', (req, res) => {
+    res.render('index')
+})
+
+
+
+app.get('/payments', (req, res) => {
+    res.render('payments')
+})
 
 
 
@@ -316,6 +402,9 @@ app.post('/signup', async (req, res) => {
         res.status(500).send('Error creating patient');
     }
 });
+
+
+
 
 
 app.listen(5500, () => {
