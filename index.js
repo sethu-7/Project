@@ -59,6 +59,8 @@ const mongoose = require('mongoose');
 const multer = require('multer');
 const bodyParser = require('body-parser');
 const doctor = require('./model/doctor')
+const patient = require('./model/patient')
+
 const app = express();
 const session=require('express-session')
 app.use(bodyParser.urlencoded({ extended: true }))
@@ -213,12 +215,40 @@ app.post('/submit', upload.single('file'), async (req, res) => {
 });
 
 
-
-
-
-
-
-
 app.listen(5000, () => {
     console.log('Server listening on port 5000');
+});
+
+
+
+
+
+
+
+app.post('/signup', async (req, res) => {
+    try {
+
+        let newpatient = new patient({
+            patient_name: req.body.patient_name,
+            patient_password: req.body.patient_password,
+            patient_phoneNumber: req.body.patient_phoneNumber,
+            patient_email: req.body.patient_email,
+            patient_address: req.body.patient_address,
+            patient_emergencyNumber: req.body.patient_emergencyNumber
+
+        });
+
+        await newpatient.save();
+
+
+        res.redirect('/after-login')
+
+    } catch {
+        res.status(500).send('Error creating patient');
+    }
+});
+
+
+app.listen(5500, () => {
+    console.log('Server listening on port 5500');
 });
