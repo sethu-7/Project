@@ -1,44 +1,260 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-	<title>Login Page</title>
-	<style>
-		form {
-			display: flex;
-			flex-direction: column;
-			align-items: center;
-			margin-top: 50px;
-		}
+    <title>Doctor Consultation</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link href="StyleSheet.css" rel="stylesheet" type="text/css" media="only screen" />
+    <link href="MobileStyleSheet.css" rel="stylesheet" type="text/css"
+        media="only screen and (max-device-width: 480px) , only screen and (-webkit-min-device-pixel-ratio: 2) , screen and (-webkit-device-pixel-ratio:1.5)" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Secular+One&family=Yeseva+One&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Secular+One&family=Yeseva+One&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Secular+One&family=Yeseva+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
 
-		input[type=email], input[type=password] {
-			padding: 10px;
-			margin: 10px;
-			border-radius: 5px;
-			border: solid 3px black;
-			width: 300px;
-		}
 
-		input[type=submit] {
-			background-color: #4CAF50;
-			color: white;
-			border: none;
-			padding: 10px;
-			border-radius: 5px;
-			width: 150px;
-			cursor: pointer;
-		}
-	</style>
+
+    <style>
+        .navbar {
+            margin: 5px;
+            background-color: rgb(41, 41, 41);
+            position: relative;
+            /* border-radius: 40px; */
+
+        }
+
+        .navbar::before {
+            content: '';
+            background-color: blueviolet;
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            z-index: -1;
+            opacity: 0.4;
+        }
+
+        .navbar ul {
+            margin: 1px;
+            overflow: auto;
+        }
+
+        .navbar li {
+            float: left;
+            list-style: none;
+            margin: 20px 20px;
+        }
+
+        .navbar li a {
+            padding: 3px 3px;
+            color: white;
+            list-style: none;
+            text-decoration: none;
+        }
+
+        .navbar li a:hover {
+            /* background-color: blueviolet; */
+
+        }
+
+        .footer li a:hover {
+            color: gold;
+
+        }
+
+        /*  */
+
+        #logo {
+            /* padding: 10px; */
+            width: 135px;
+            float: right;
+
+
+        }
+
+        .navbar ul li a {
+
+            display: block;
+            /* padding: 3px 22px; */
+            border-radius: 20px;
+
+        }
+    </style>
 </head>
+
 <body>
-	<h1>Login Page</h1>
-	<form action="/login" method="POST">
-		<label for="email">Email:</label>
-		<input type="email" id="email" name="email" required>
 
-		<label for="password">Password:</label>
-		<input type="password" id="password" name="password" required>
+    <header>
+        <nav class="navbar">
 
-		<input type="submit" value="Login">
-	</form>
+            <ul>
+                <li><img src="/ffsdprojectopiherb.jpg" alt="opiherb" id="logo">
+                </li>
+                <li></li>
+                <li></li>
+
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#" data-toggle="modal" data-target="#loginModal">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" data-toggle="modal" data-target="#signupModal">Sign Up</a>
+                </li>
+                <li><a href="">Introduction</a></li>
+                <li><a href="">Doctors</a></li>
+                <li><a href="">Medicines</a></li>
+               
+                <li><a href="">First Aid/Emergency</a></li>
+                <li><a href="">Premium</a></li>
+                <li><a href="">Offers</a></li>
+
+                
+            </ul>
+        </nav>
+    </header>
+
+    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Login</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form class="signup-form" action="/login" method="post">
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" class="form-control" id="email" name="email"
+                                placeholder="Enter your email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" class="form-control" id="password" name="password"
+                                placeholder="Enter your password" required>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary" id="submitButton">Login</button>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Signup Modal -->
+    <div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Sign Up</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form class="signup-form" action="/signup" method="post">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name"
+                                required>
+                        </div>
+                        <div>
+                            <label for="password">Password:</label>
+                            <p><input type="password" id="password" name="password" placeholder="Enter Password"
+                                    required /></p>
+                            <span class="form-error"></span>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="phoneNumber">Phone Number</label>
+                            <input type="tel" class="form-control" id="phoneNumber" name="phoneNumber"
+                                placeholder="Enter your phone number" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" class="form-control" id="email" name="email"
+                                placeholder="Enter your email address" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="address">Address</label>
+                            <input type="text" class="form-control" id="address" name="address"
+                                placeholder="Enter your address" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="emergencyNumber">Emergency Contact Number</label>
+                            <input type="tel" class="form-control" id="emergencyNumber" name="emergencyNumber"
+                                placeholder="Enter emergency contact number" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary" id="submitButton">Sign Up</button>
+                    </form>
+
+
+
+                </div>
+            </div>
+        </div>
+            
+    </div>
+
+
+
 </body>
+<script>
+    const form = document.querySelector('form');
+
+    form.addEventListener('submit', e => {
+        e.preventDefault();
+
+        const password = document.getElementById('password');
+        const errorSpan = document.querySelector('.form-error');
+
+        // Validate password
+        let isValid = true;
+
+        if (password.value.length < 12) {
+            errorSpan.innerHTML = 'Password must be at least 12 characters.';
+            isValid = false;
+        } else if (!/[A-Z]/.test(password.value)) {
+            errorSpan.innerHTML = 'Password must contain at least one uppercase letter.';
+            isValid = false;
+        } else if (!/[a-z]/.test(password.value)) {
+            errorSpan.innerHTML = 'Password must contain at least one lowercase letter.';
+            isValid = false;
+        } else if (!/[0-9]/.test(password.value)) {
+            errorSpan.innerHTML = 'Password must contain at least one number.';
+            isValid = false;
+        } else if (!/[!@#$?]/.test(password.value)) {
+            errorSpan.innerHTML = 'Password must contain at least one special character.';
+            isValid = false;
+        }
+
+       
+        if (isValid) {
+            document.getElementById('submitButton').disabled = true;
+            form.submit();
+        }
+    });
+
+</script>
+
 </html>
