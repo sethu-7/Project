@@ -172,48 +172,6 @@ app.delete('/offers/:title', async (req, res) => {
     }
   });
   
-  
-  const passvalSchema = new mongoose.Schema({
-    Name: String,
-    password: String
-  });
-  
-  // Create a model for the collection
-  const Pass = mongoose.model('Pass', passvalSchema);
-  
-  // Route for the login form submission
-  app.post('/api/login', async (req, res) => {
-    const { username, password } = req.body;
-  
-    try {
-      // Look for a document in the Pass collection with the given username and password
-      const result = await Pass.findOne({ Name: username, password });
-      if (result) {
-        // Credentials are valid
-        res.json({ success: true });
-      } else {
-        // Credentials are invalid
-        res.json({ success: false });
-      }
-    } catch (err) {
-      console.error('Error checking credentials:', err.message);
-      res.status(500).json({ success: false });
-    }
-  });
-
-
-
-
-
-
-  app.get('/admin_password_validation', (req, res) => {
-    res.render('admin_password_validation');
-  });
-
-  app.get('/privacy', (req, res) => {
-    res.render('privacy');
-  });
-
 
 
 app.get('/doctor_project_final', (req, res) => {
@@ -442,7 +400,7 @@ app.post('/signup', async (req, res) => {
         await newpatient.save();
 
 
-        res.redirect('/after-login')
+        res.redirect('/doctor_project_final')
 
     } catch {
         res.status(500).send('Error creating patient');
@@ -453,6 +411,6 @@ app.post('/signup', async (req, res) => {
 
 
 
-app.listen(5500, () => {
-    console.log('Server listening on port 5500');
+app.listen(5000, () => {
+    console.log('Server listening on port 5000');
 });

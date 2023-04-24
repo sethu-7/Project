@@ -14,10 +14,15 @@ const patientSchema = new Schema({
     patient_phoneNumber: Number,
     patient_email: String,
     patient_address:String,
-    patient_emergencyNumber: Number
+    patient_emergencyNumber: Number,
+    patient_dateOfConsultation: Date,
+    patient_timeOfConsultation: String,
+    patient_online: String,
+    patient_offline: String,
+    patient_doctor: String
 })
 
 
-module.exports = mongoose.model('Patients', patientSchema);
+module.exports = mongoose.model('patients', patientSchema);
 
 
