@@ -110,6 +110,9 @@ app.get('/dashboard', (req, res) => {
 app.get('/doctor_profile', (req, res) => {
     res.render('doctor_profile')
 })
+app.get('/login_page1', (req, res) => {
+    res.render('login_page1')
+})
 app.get('/appointment-page', (req, res) => {
     doctor.find({email:req.query.email}).then(function(doct){
         res.render('appointment-page',{
@@ -124,6 +127,10 @@ app.get('/', (req, res) => {
 app.get('/header', (req, res) => {
     
     res.render('header')
+})
+app.get('/after-login', (req, res) => {
+    
+    res.render('after-login')
 })
 app.get('/doctor_list', (req, res) => {
     const spcl=req.query.Spec
@@ -200,9 +207,9 @@ app.post('/submit', upload.single('file'), async (req, res) => {
 });
 
 
-app.listen(5000, () => {
-    console.log('Server listening on port 5000');
-});
+// app.listen(5000, () => {
+//     console.log('Server listening on port 5000');
+// });
 
 
 
@@ -226,7 +233,7 @@ app.post('/signup', async (req, res) => {
         await newpatient.save();
 
 
-        res.redirect('/after-login')
+        res.redirect('/doctor_project_final')
 
     } catch {
         res.status(500).send('Error creating patient');
@@ -234,6 +241,6 @@ app.post('/signup', async (req, res) => {
 });
 
 
-app.listen(5500, () => {
+app.listen(5000, () => {
     console.log('Server listening on port 5500');
 });
