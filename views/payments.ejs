@@ -143,13 +143,13 @@
             <script>
             function validateForm() {
               var name = document.getElementById("name").value;
-              var company = document.getElementById("company").value;
+             
               var email = document.getElementById("email").value;
               var phone = document.getElementById("phone").value;
-              var message = document.getElementById("message").value;
+              var CVV = document.getElementById("CVV").value;
             
               // Check if all fields are filled out
-              if (name == "" || company == "" || email == "" || phone == "" || message == "") {
+              if (name == "" || email == "" || phone == "" || CVV == "") {
                 alert("Please fill out all fields.");
                 return false;
               }
@@ -157,6 +157,10 @@
               // Check if phone number is valid
               if (!(/^\d{10}$/.test(phone))) {
                 alert("Please enter a valid phone number.");
+                return false;
+              }
+              if (!(/^\d{3}$/.test(CVV))) {
+                alert("Please enter a valid 3 digit CVV number.");
                 return false;
               }
             
@@ -182,6 +186,6 @@ button.parentElement.classList.toggle("active")
 );
 }); 
 </script>
-</script>
+
 </body>
 </html>
