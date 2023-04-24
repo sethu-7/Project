@@ -172,48 +172,6 @@ app.delete('/offers/:title', async (req, res) => {
     }
   });
   
-  
-  const passvalSchema = new mongoose.Schema({
-    Name: String,
-    password: String
-  });
-  
-  // Create a model for the collection
-  const Pass = mongoose.model('Pass', passvalSchema);
-  
-  // Route for the login form submission
-  app.post('/api/login', async (req, res) => {
-    const { username, password } = req.body;
-  
-    try {
-      // Look for a document in the Pass collection with the given username and password
-      const result = await Pass.findOne({ Name: username, password });
-      if (result) {
-        // Credentials are valid
-        res.json({ success: true });
-      } else {
-        // Credentials are invalid
-        res.json({ success: false });
-      }
-    } catch (err) {
-      console.error('Error checking credentials:', err.message);
-      res.status(500).json({ success: false });
-    }
-  });
-
-
-
-
-
-
-  app.get('/admin_password_validation', (req, res) => {
-    res.render('admin_password_validation');
-  });
-
-  app.get('/privacy', (req, res) => {
-    res.render('privacy');
-  });
-
 
 
 app.get('/doctor_project_final', (req, res) => {
@@ -232,44 +190,13 @@ app.get('/dashboard', (req, res) => {
 })
 
 app.get('/doctor_profile', (req, res) => {
-<<<<<<< HEAD
-    res.render('doctor_profile')
-})
-app.get('/login_page1', (req, res) => {
-    res.render('login_page1')
-})
-app.get('/appointment-page', (req, res) => {
-    doctor.find({email:req.query.email}).then(function(doct){
-        res.render('appointment-page',{
-            doc:doct
-=======
     doctor.find({ email: req.session.email }).then(function (perdoc) {
         res.render('doctor_profile', {
             per: perdoc
->>>>>>> 6288677214cd087632f954ccadcf09bdd6d35aa3
         })
 
     })
 })
-<<<<<<< HEAD
-app.get('/', (req, res) => {
-    res.render('introduction')
-})
-app.get('/header', (req, res) => {
-    
-    res.render('header')
-})
-app.get('/after-login', (req, res) => {
-    
-    res.render('after-login')
-})
-app.get('/doctor_list', (req, res) => {
-    const spcl=req.query.Spec
-    
-    doctor.find({Specialization:spcl}).then(function(doctorss) {
-        res.render('doctor_list',{
-            list:doctorss
-=======
 app.get('/admin', (req, res) => {
     // const query = doctor.find();
     doctor.find({email:req.query.email}).then(function (perdoc) {
@@ -279,7 +206,6 @@ app.get('/admin', (req, res) => {
         
         res.render('admin_page', {
             per: perdoc
->>>>>>> 6288677214cd087632f954ccadcf09bdd6d35aa3
         })
 
     })
@@ -439,8 +365,6 @@ app.post('/submit', upload.single('file'), async (req, res) => {
 // app.listen(5000, () => {
 //     console.log('Server listening on port 5000');
 // });
-<<<<<<< HEAD
-=======
 
 
 app.get('/admin_page', (req, res) => {
@@ -450,7 +374,6 @@ app.get('/admin_page', (req, res) => {
 app.get('/index', (req, res) => {
     res.render('index')
 })
->>>>>>> 6288677214cd087632f954ccadcf09bdd6d35aa3
 
 
 
@@ -477,7 +400,7 @@ app.post('/signup', async (req, res) => {
         await newpatient.save();
 
 
-        res.redirect('/doctor_project_final')
+        res.redirect('/after-login')
 
     } catch {
         res.status(500).send('Error creating patient');
@@ -485,13 +408,9 @@ app.post('/signup', async (req, res) => {
 });
 
 
-<<<<<<< HEAD
-app.listen(5000, () => {
-=======
 
 
 
 app.listen(5500, () => {
->>>>>>> 6288677214cd087632f954ccadcf09bdd6d35aa3
-    console.log('Server listening on port 5500');
+    console.log('Server listening on port 5500');
 });

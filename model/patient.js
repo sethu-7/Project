@@ -15,9 +15,10 @@ const patientSchema = new Schema({
     patient_email: String,
     patient_address:String,
     patient_emergencyNumber: Number,
-    patient_dateOfConsultation: String,
-    patient_timeOfConsultation: String,
-    patient_visited: String,
+    patient_dateOfConsultation: Date,
+    patient_timeOfConsultation: TimeRanges,
+    patient_online: String,
+    patient_offline: String,
     patient_doctor: String
 })
 
