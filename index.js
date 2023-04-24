@@ -210,6 +210,9 @@ app.delete('/offers/:title', async (req, res) => {
     res.render('admin_password_validation');
   });
 
+  app.get('/privacy', (req, res) => {
+    res.render('privacy');
+  });
 
 
 
