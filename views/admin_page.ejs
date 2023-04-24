@@ -168,8 +168,11 @@
       <table>
         <thead>
           <tr>
+            <th>Image</th>
             <th>Name</th>
+            <th>medicine id</th>
             <th>Description</th>
+           
             <th>Price</th>
 
           </tr>
@@ -177,12 +180,14 @@
         <tbody>
           <tr>
             <td>Aspirin</td>
+            <td>1</td>
             <td>Pain relief</td>
             <td>$5.00</td>
 
           </tr>
           <tr>
             <td>Tylenol</td>
+            <td>2</td>
             <td>Headache relief</td>
             <td>$8.00</td>
 
@@ -195,7 +200,9 @@
       <table>
         <thead>
           <tr>
+            <th>Image</th>
             <th>Name</th>
+            <th>ID</th>
             <th>Description</th>
             <th>Cost</th>
             
@@ -204,10 +211,13 @@
         <tbody>
           <%per.forEach(function(medicines) {%>
           <tr>
+            <td><%=medicines.image%></td>
             <td><%=medicines.name%></td>
-            <td><%=medicines.Description%></td>
-            <td><%=medicines.Cost%></td>
-  
+            <td><%=medicines.m_id%></td>
+    
+            <td><%=medicines.cost%></td>
+            <td><%=medicines.description%></td>
+
           </tr>
           <%})%>
         
@@ -225,32 +235,7 @@
         </form>
       </div>
     </div>
-    <div class="tables">
-
-      <table>
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Description</th>
-            <th>Price</th>
-
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Aspirin</td>
-            <td>Pain relief</td>
-            <td>$5.00</td>
-
-          </tr>
-          <tr>
-            <td>Tylenol</td>
-            <td>Headache relief</td>
-            <td>$8.00</td>
-
-          </tr>
-        </tbody>
-      </table>
+   
       <div>
 
         <form action="">
@@ -267,3 +252,73 @@
 </body>
 
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="container">
+  <div>
+    <h2 style="text-align: center;">Add New medicine</h2>
+    <form action="/medicines" method="POST" class="medicines">
+      <label for="image">Image URL:</label>
+      <input type="text" id="image" name="image" required>
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="m_id" >Id:</label>
+      <input type="text" id="m_id" name="m_id" required>
+
+      <label for="description">Description:</label>
+      <textarea id="description" name="description" required></textarea>
+      <input type="submit" value="Submit" id="medicinesub">
+    </form>
+  </div>
+  <div>   
+    <h2 style="text-align: center;">Delete An medicine By its name</h2>
+  
+    <form id="delete-med-form" class="medicines">
+      <label for="m_id">ID:</label>
+      <input type="text" id="m_id" name="m_id" required>
+      <button type="submit" >Delete medicine</button>
+    </form>
+    
+    <script>
+      const formm = document.getElementById('delete-med-form');
+      formm.addEventListener('submit', async (event) => {
+        event.preventDefault();
+    
+        const m_id = formm.m_id.value;
+    
+        try {
+        
+          const response = await fetch(`/admin/${m_id}`, { method: 'DELETE' });
+    
+          if (response.ok) {
+            alert('medicine deleted successfully');
+            // Reload the page to update the offer list
+            location.reload();
+          } else {
+            const errorMessage = await response.text();
+            throw new Error(errorMessage);
+          }
+        } catch (err) {
+          console.error('Error deleting medicine:', err);
+          alert('An error occurred while deleting the medicine');
+        }
+      });
+    </script>
+  
+  </div>
+</div>
+</body>

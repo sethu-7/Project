@@ -3,7 +3,8 @@ const mongoose = require('mongoose');
 const multer = require('multer');
 const bodyParser = require('body-parser');
 const doctor = require('./model/doctor')
-const patient = require('./model/patient')
+
+const medicines = require('./model/medicines')
 
 const app = express();
 const session = require('express-session')
@@ -131,10 +132,11 @@ app.get('/medicines', async (req, res) => {
 // Handle form submission
 app.post('/medicines', async (req, res) => {
     try {
-        const { name, m_id, cost, description, added } = req.body;
+        const { image,name, m_id, cost, description, added } = req.body;
 
         // Create a new offer object and set its properties
         const med = new medicines({
+            image,
             name,
             m_id,
             cost,
@@ -179,45 +181,6 @@ app.delete('/medicines/:name', async (req, res) => {
 });
 
 
-
-router.post("/viewcart_final", async (req, res) => {
-    const {  name,m_id, cost } = req.body;
-
-    const userId = "5de7ffa74fff640a0491bc4f"; //TODO: the logged in user id
-
-    try {
-        let cart = await medicines.findOne({ userId });
-
-        if (cart) {
-            //cart exists for user
-
-            let itemIndex = cart.findIndex(p => p.m_id == m_id);
-
-            if (itemIndex > -1) {
-                //product exists in the cart, update the quantity
-                let productItem = cart.[itemIndex];
-                
-                cart.[itemIndex] = productItem;
-            } else {
-                //product does not exists in cart, add new item
-                cart.push({ name, m_id, cost });
-            }
-            cart = await cart.save();
-            return res.status(201).send(cart);
-        } else {
-            //no cart for user, create new cart
-            const newCart = await medicines.create({
-                userId,
-                products: [{ name, m_id, cost}]
-            });
-
-            return res.status(201).send(newCart);
-        }
-    } catch (err) {
-        console.log(err);
-        res.status(500).send("Something went wrong");
-    }
-});
 
 
 app.get('/doctor_project_final', (req, res) => {
@@ -267,6 +230,45 @@ app.get('/', (req, res) => {
 app.get('/login', (req, res) => {
 
     res.render('login')
+})
+app.get('/medicine', (req, res) => {
+
+    res.render('project_final')
+})
+app.get('/medicines_list', (req, res) => {
+   
+
+    medicines.find({}).then(function (medi) {
+        res.render('medicines', {
+            me: medi
+        })
+
+
+    })
+
+})
+app.get('/single_med', (req, res) => {
+   
+
+    medicines.find({}).then(function (medic) {
+        res.render('medicines', {
+            mee: medic
+        })
+
+
+    })
+
+})
+app.get('/viewcart_final', (req, res) => {
+    medicines.find({ added:'true' }).then(function (cartt) {
+        // if (err) {
+        //     console.error(err);
+        //     return res.status(500).send('Error occurred');
+        //   }
+        res.render('viewcart_final', {
+            cartitems: cartt
+        })
+    })
 })
 app.get('/doctor_list', (req, res) => {
     const spcl = req.query.Spec
