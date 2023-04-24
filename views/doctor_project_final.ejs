@@ -637,6 +637,11 @@
                                 <input type="text" class="form-control" id="experience" name="experience"
                                     placeholder="Enter your experience" required>
                             </div>
+                            <div class="form-group">
+                                <label for="experience">Consultation Fee</label>
+                                <input type="text" class="form-control" id="fee" name="fee"
+                                    placeholder="Enter consultation fee" required>
+                            </div>
                             <h4>Select favourable timeslots</h4>
                             <div class="form-group">
                                 <label for="timeslot">Time Slot 1</label>
@@ -681,10 +686,10 @@
                                 </select>
                             </div>
 
-                            <div>
-                                <label for="file" class="form-label">Upload Doctors License</label>
-                                <input class="form-control form-control-lg" id="file" name="file" type="file" />
-                                         
+                            <div class="form-group">
+                                <label for="cvv">Medical License number</label>
+                                <input type="text" class="form-control" id="cvv" name="cvv"
+                                    placeholder="Enter your Medical License number" required>
                             </div>
                             <button type="submit" class="btn btn-primary" id="submitButton">Sign Up</button>
                         </form>
@@ -744,13 +749,15 @@
         <div class="ourboxcontainer">
             <%doctorlist.forEach(function(doctor) {%>
                 <div class="ourbox">
-                    <img src="" alt="doc">
+                    
 
                     <h3>
                         <%=doctor.name%>
                     </h3>
+                    
 
                     <span>Expert Doctor</span>
+                    <span>Specialization:<%=doctor.specialization%></span>
                     <div class="share">
                         <a href="#" class="fab fa-facebook-f"></a>
                         <a href="#" class="fab fa-twitter"></a>
@@ -795,14 +802,7 @@
 
 
 
-    <section class="reviews">
-        <div class="cont">
-            <h2 class="section-title">Our Patients Love Us</h2>
-            <div class="review-cards">
-                <!-- Dynamic review cards will be generated here -->
-            </div>
-        </div>
-    </section>
+    
 
 
 
@@ -891,54 +891,7 @@
 
 
 
-        const reviews = [
-            {
-                name: 'John Smith',
-                photo: 'https://randomuser.me/api/portraits/men/75.jpg',
-                review: 'I had a great experience with the doctor. He was very knowledgeable and took the time to answer all of my questions.',
-                rating: 5
-            },
-            {
-                name: 'Jane Doe',
-                photo: 'https://randomuser.me/api/portraits/women/75.jpg',
-                review: 'The doctor was very kind and caring. He listened to my concerns and helped me find the right treatment plan.',
-                rating: 4
-            },
-            {
-                name: 'David Lee',
-                photo: 'https://randomuser.me/api/portraits/men/76.jpg',
-                review: 'I was impressed with the doctor\'s expertise and professionalism. He was able to diagnose my condition quickly and accurately.',
-                rating: 4.5
-            }
-        ];
-
-        const reviewCards = document.querySelector('.review-cards');
-
-        reviews.forEach(review => {
-            const card = document.createElement('div');
-            card.classList.add('review-card');
-
-            const img = document.createElement('img');
-            img.src = review.photo;
-            img.alt = `${review.name} photo`;
-
-            const name = document.createElement('h3');
-            name.textContent = review.name;
-
-            const rating = document.createElement('span');
-            rating.textContent = `${review.rating} / 5`;
-
-            const reviewText = document.createElement('p');
-            reviewText.textContent = review.review;
-
-            card.appendChild(img);
-            card.appendChild(name);
-            card.appendChild(rating);
-            card.appendChild(reviewText);
-
-            reviewCards.appendChild(card);
-        });
-
+        
 
         const form = document.querySelector('form');
 

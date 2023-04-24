@@ -11,13 +11,13 @@ const doctorSchema = new Schema({
     email: { type : String , unique : true },
     district:String,
     Specialization: String,
-    // fee:Number,
+    fee:Number,
     experience: Number,
     address: String,
     timeslot1:String,
     timeslot2:String,
     timeslot3:String,
-    file:{
+    cvv:{
         type:String
     }
 

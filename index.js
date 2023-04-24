@@ -334,10 +334,11 @@ app.post('/submit', upload.single('file'), async (req, res) => {
             district: req.body.district,
             Specialization: req.body.Specialization,
             experience: req.body.experience,
+            fee: req.body.fee,
             timeslot1: req.body.timeslot1,
             timeslot2: req.body.timeslot2,
             timeslot3: req.body.timeslot3,
-            file: req.body.file
+            cvv: req.body.cvv
 
 
         });
@@ -369,6 +370,9 @@ app.post('/submit', upload.single('file'), async (req, res) => {
 
 app.get('/admin_page', (req, res) => {
     res.render('admin_page')
+})
+app.get('/license', (req, res) => {
+    res.render('files')
 })
 
 app.get('/index', (req, res) => {
