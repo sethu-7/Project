@@ -8,7 +8,7 @@ const doctorSchema = new Schema({
     name: String,
     password: String,
     phoneNumber: Number,
-    email: String,
+    email: { type : String , unique : true },
     district:String,
     Specialization: String,
     // fee:Number,
