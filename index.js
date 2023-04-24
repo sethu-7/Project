@@ -400,7 +400,7 @@ app.post('/signup', async (req, res) => {
         await newpatient.save();
 
 
-        res.redirect('/after-login')
+        res.redirect('/doctor_project_final')
 
     } catch {
         res.status(500).send('Error creating patient');
@@ -411,6 +411,6 @@ app.post('/signup', async (req, res) => {
 
 
 
-app.listen(5500, () => {
-    console.log('Server listening on port 5500');
+app.listen(5000, () => {
+    console.log('Server listening on port 5000');
 });
