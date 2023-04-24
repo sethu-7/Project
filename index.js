@@ -241,43 +241,104 @@ app.get('/doctor_profile', (req, res) => {
 })
 app.get('/admin', (req, res) => {
     // const query = doctor.find();
-    doctor.find({}).then(function (perdoc) {
+    doctor.find({email:req.query.email}).then(function (perdoc) {
+        // if(!req.query.email){
+        //     alert("doctor not present")
+        // }
+        
         res.render('admin_page', {
             per: perdoc
         })
 
     })
+
+    // const deldoc=doctor.findOne({email:req.query.email})
 })
 // app.get('/appointment-page', (req, res) => {
-//     doctor.find({ email: req.query.email }).then(function (doct) {
-//         res.render('appointment-page', {
-//             doc: doct
-//         })
+    //     doctor.find({ email: req.query.email }).then(function (doct) {
+        //         res.render('appointment-page', {
+            //             doc: doct
+            //         })
+            
+            //     })
+            // })
+            app.get('/', (req, res) => {
+                res.render('introduction')
+            })
+            app.get('/login', (req, res) => {
+                
+                res.render('login')
+            })
+            app.get('/doctor_list', (req, res) => {
+                const spcl = req.query.Spec
+                
+                doctor.find({ $or: [{ Specialization: spcl }, { district: req.query.Spec }] }).then(function (doctorss) {
+                    res.render('doctor_list', {
+                        list: doctorss
+                    })
+                    
+                    
+                })
+                
+            })
 
-//     })
-// })
-app.get('/', (req, res) => {
-    res.render('introduction')
-})
-app.get('/login', (req, res) => {
+            // app.post('/del',async(req,res)=>{
+            //     try{
+            //         const em=req.body.email
+            //         console.log(em)
 
-    res.render('login')
-})
-app.get('/doctor_list', (req, res) => {
-    const spcl = req.query.Spec
+            //         const user = await doctor.findOne({
 
-    doctor.find({ $or: [{ Specialization: spcl }, { district: req.query.Spec }] }).then(function (doctorss) {
-        res.render('doctor_list', {
-            list: doctorss
-        })
+            //             email: req.body.email
+                        
+            //         })
+
+            //         console.log(user)
+
+            //         await doctor.findByIdAndDelete({_id:req.params.id},(error,result)=>{
+            //             console.log(user.params.id)
+
+            //             if (error) {
+            //                 res.send('Error while deleting document:');
+            //               } else {
+            //                 console.log('Document deleted successfully:', result);
+            //               }
+            //         })
+            //         console.log("gsghs")
+            //     }
+            //     catch(error){
+            //         res.status(400).send("inavalid email")
+
+            //     }
+
+            // })
 
 
-    })
+            app.delete('/admin/:email', async (req, res) => {
+                try {
+                  const email = req.params.email;
+              
+                  // Find the offer with the matching title and delete it
+                  const deldoc = await doctor.findOneAndDelete({ email });
+              
+                  if (!deldoc) {
+                    // If no offer with the matching title was found, return a 404 Not Found error
+                    res.status(404).send('doctor not found');
+                    return;
+                  }
+              
+                  res.status(204).send();
+                } catch (err) {
+                  console.error('Error deleting odoctor', err);
+                  res.status(500).send('Internal server error');
+                }
+              });
+              
 
-})
 
-app.post('/login', async (req, res, next) => {
-    try {
+            
+            app.post('/login', async (req, res, next) => {
+                try {
         const user = await doctor.findOne({
 
             email: req.body.email,
