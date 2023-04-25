@@ -268,17 +268,19 @@ Generic layout (demo looks)
 <body>
  
   <form class="form-inline">
-    <input class="form-control mr-sm-2 bg-light" type="search" placeholder="Search medicines" aria-label=Search>
-    <button class="btn btn-outline-dark my-6 my-lg-0" type="submit">Search</button>
+   
+    <input class="form-control mr-sm-2 bg-light" type="search" name="name" id="name"
+    placeholder="Search medicines">
+<button class="btn btn-outline-light my-4 my-lg-0" type="search" name="name" id="name">Search</button>
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb sticky bg-light-block ">
             <li class="breadcrumb-item active" aria-current="page"> </li>
             <div class="btn-group" role="group" aria-label="Basic example">
-                <button type="button" class="btn btn-outline-dark  bg-light-block" href="#">View cart</button>
+              <a href="/viewcart_final">  <button type="button" class="btn btn-outline-dark  bg-light-block" >View cart</button></a>
             </div>
         </ol>
     </nav>
-  <!-- <%-include("header") -%> -->
+ 
 
     <section class="articles">
       <%search.forEach(function(medicines){%>

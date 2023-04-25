@@ -156,7 +156,6 @@
 
         <form action="" style="padding-bottom: 10px;">
           <input type="email" name="email" id="email" placeholder="Enter email of doctor to search"
-
             style="height: 25px;  width: 300px;">
 
           <button class="add-button">Search</button>
@@ -189,7 +188,7 @@
             <th>Name</th>
             <th>medicine id</th>
             <th>Description</th>
-           
+
             <th>Price</th>
 
           </tr>
@@ -211,198 +210,214 @@
           </tr>
         </tbody>
       </table>
-      
-    <div class="tables">
 
-      <table>
-        <thead>
-          <tr>
-            <th>Image</th>
-            <th>Name</th>
-            <th>ID</th>
-            <th>Description</th>
-            <th>Cost</th>
-            
-          </tr>
-        </thead>
-        <tbody>
-          <%per.forEach(function(medicines) {%>
-          <tr>
-            <td><%=medicines.image%></td>
-            <td><%=medicines.name%></td>
-            <td><%=medicines.m_id%></td>
-    
-            <td><%=medicines.cost%></td>
-            <td><%=medicines.description%></td>
+      <div class="tables">
 
-          </tr>
-          <%})%>
-        
-        </tbody>
-      </table>
+        <table>
+          <thead>
+            <tr>
+              <th>Image</th>
+              <th>Name</th>
+              <th>ID</th>
+              <th>Description</th>
+              <th>Cost</th>
+
+            </tr>
+          </thead>
+          <tbody>
+            <%per.forEach(function(medicines) {%>
+              <tr>
+                <td>
+                  <%=medicines.image%>
+                </td>
+                <td>
+                  <%=medicines.name%>
+                </td>
+                <td>
+                  <%=medicines.m_id%>
+                </td>
+
+                <td>
+                  <%=medicines.cost%>
+                </td>
+                <td>
+                  <%=medicines.description%>
+                </td>
+
+              </tr>
+              <%})%>
+
+          </tbody>
+        </table>
+        <div>
+
+          <form action="">
+            <input type="email" name="email" id="email" placeholder="Enter email of doctor to delete"
+              style="height: 25px;  width: 300px;">
+
+            <button class="remove-button">Remove</button>
+            <button class="add-button">Add</button>
+
+          </form>
+        </div>
+      </div>
+
+
       <div>
 
         <form action="">
-          <input type="email" name="email" id="email" placeholder="Enter email of doctor to delete"
-            style="height: 25px;  width: 300px;">
 
-          <button class="remove-button">Remove</button>
-          <button class="add-button">Add</button>
+          <div class="tables">
 
-        </form>
+            <table>
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Description</th>
+                  <th>Price</th>
+
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Aspirin</td>
+                  <td>Pain relief</td>
+                  <td>$5.00</td>
+
+                </tr>
+                <tr>
+                  <td>Tylenol</td>
+                  <td>Headache relief</td>
+                  <td>$8.00</td>
+
+                </tr>
+              </tbody>
+            </table>
+            <div>
+
+              <form>
+
+                <input type="email" name="email" id="email" placeholder="Enter email of doctor to delete"
+                  style="height: 25px;  width: 300px;">
+
+                <button class="remove-button">Remove</button>
+                <button class="add-button">Add</button>
+
+              </form>
+            </div>
+          </div>
       </div>
-    </div>
 
-   
-      <div>
-
-        <form action="">
-
-    <div class="tables">
-
-      <table>
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Description</th>
-            <th>Price</th>
-
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Aspirin</td>
-            <td>Pain relief</td>
-            <td>$5.00</td>
-
-          </tr>
-          <tr>
-            <td>Tylenol</td>
-            <td>Headache relief</td>
-            <td>$8.00</td>
-
-          </tr>
-        </tbody>
-      </table>
-      <div>
-
-        <form >
-
-          <input type="email" name="email" id="email" placeholder="Enter email of doctor to delete"
-            style="height: 25px;  width: 300px;">
-
-          <button class="remove-button">Remove</button>
-          <button class="add-button">Add</button>
-
-        </form>
-      </div>
-    </div>
-  </div>
-  <head>
-    <meta charset="UTF-8">
-    <title>Add New Offer</title>
-    <style>
-      /* Basic styling for the form */
-      .offers{
-        max-width: 600px;
-        margin: 0 auto;
-        padding: 20px;
-        background-color: #f9f9f9;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-        margin-bottom: 1rem;
-      }
-      label {
-        display: block;
-        margin-bottom: 10px;
-        font-weight: bold;
-      }
-      input[type="text"],
-      textarea {
-        display: block;
-        width: 100%;
-        padding: 10px;
-        margin-bottom: 20px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        box-sizing: border-box;
-        font-size: 16px;
-      }
-      #offersub {
-        display: block;
-        background-color: #4CAF50;
-        color: #fff;
-        border: none;
-        border-radius: 5px;
-        padding: 10px;
-        font-size: 16px;
-        cursor: pointer;
-        margin-top: 1rem;
-        margin-bottom: 1rem;
-      }
-      #offersub:hover {
-        background-color: #3e8e41;
-      }
-      /* Responsive styling for smaller screens */
-      @media screen and (max-width: 600px) {
-        form {
-          max-width: 100%;
-        }
-      }
-    </style>
-  </head>
-  <div class="container">
-  <div>
-    <h2 style="text-align: center;" >Add New Offer</h2>
-    <form action="/offers" method="POST" class="offers">
-      <label for="image">Image URL:</label>
-      <input type="text" id="image" name="image" required>
-      <label for="title">Title:</label>
-      <input type="text" id="title" name="title" required>
-      <label for="description">Description:</label>
-      <textarea id="description" name="description" required></textarea>
-      <input type="submit" value="Submit" id="offersub" style="background-color: #007bff;">
-    </form>
-  </div>
-  <div>
-    <h2 style="text-align: center;">Delete An Offer By Title</h2>
-  
-    <form id="delete-offer-form" class="offers">
-      <label for="title">Title:</label>
-      <input type="text" id="title" name="title" required>
-      <button type="submit" id="offersub" style="background-color: #dc3545;
-    ;">Delete offer</button>
-    </form>
-  
-    <script>
-      const form = document.getElementById('delete-offer-form');
-      form.addEventListener('submit', async (event) => {
-        event.preventDefault();
-    
-        const title = form.title.value;
-    
-        try {
-          // Send a DELETE request to the server with the offer title in the URL path
-          const response = await fetch(`/offers/${title}`, { method: 'DELETE' });
-    
-          if (response.ok) {
-            alert('Offer deleted successfully');
-            // Reload the page to update the offer list
-            location.reload();
-          } else {
-            const errorMessage = await response.text();
-            throw new Error(errorMessage);
+      <head>
+        <meta charset="UTF-8">
+        <title>Add New Offer</title>
+        <style>
+          /* Basic styling for the form */
+          .offers {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+            margin-bottom: 1rem;
           }
-        } catch (err) {
-          console.error('Error deleting offer:', err);
-          alert('An error occurred while deleting the offer');
-        }
-      });
-    </script>
-  
-  </div>
-</div>
+
+          label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+          }
+
+          input[type="text"],
+          textarea {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-size: 16px;
+          }
+
+          #offersub {
+            display: block;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+          }
+
+          #offersub:hover {
+            background-color: #3e8e41;
+          }
+
+          /* Responsive styling for smaller screens */
+          @media screen and (max-width: 600px) {
+            form {
+              max-width: 100%;
+            }
+          }
+        </style>
+      </head>
+      <div class="container">
+        <div>
+          <h2 style="text-align: center;">Add New Offer</h2>
+          <form action="/offers" method="POST" class="offers">
+            <label for="image">Image URL:</label>
+            <input type="text" id="image" name="image" required>
+            <label for="title">Title:</label>
+            <input type="text" id="title" name="title" required>
+            <label for="description">Description:</label>
+            <textarea id="description" name="description" required></textarea>
+            <input type="submit" value="Submit" id="offersub" style="background-color: #007bff;">
+          </form>
+        </div>
+        <div>
+          <h2 style="text-align: center;">Delete An Offer By Title</h2>
+
+          <form id="delete-offer-form" class="offers">
+            <label for="title">Title:</label>
+            <input type="text" id="title" name="title" required>
+            <button type="submit" id="offersub" style="background-color: #dc3545;
+    ;">Delete offer</button>
+          </form>
+
+          <script>
+            const form = document.getElementById('delete-offer-form');
+            form.addEventListener('submit', async (event) => {
+              event.preventDefault();
+
+              const title = form.title.value;
+
+              try {
+                // Send a DELETE request to the server with the offer title in the URL path
+                const response = await fetch(`/offers/${title}`, { method: 'DELETE' });
+
+                if (response.ok) {
+                  alert('Offer deleted successfully');
+                  // Reload the page to update the offer list
+                  location.reload();
+                } else {
+                  const errorMessage = await response.text();
+                  throw new Error(errorMessage);
+                }
+              } catch (err) {
+                console.error('Error deleting offer:', err);
+                alert('An error occurred while deleting the offer');
+              }
+            });
+          </script>
+
+        </div>
+      </div>
 </body>
 <!-- <script>
   function del(email) {
@@ -422,28 +437,28 @@
 
 <script>
   const docform = document.getElementById('docdel');
-      docform.addEventListener('submit', async (event) => {
-        event.preventDefault();
-    
-        const email = docform.email.value;
-    
-        try {
-          // Send a DELETE request to the server with the offer title in the URL path
-          const response = await fetch(`/admin/${email}`, { method: 'DELETE' });
-    
-          if (response.ok) {
-            alert('doctor deleted successfully');
-            // Reload the page to update the offer list
-            location.reload();
-          } else {
-            const errorMessage = await response.text();
-            throw new Error(errorMessage);
-          }
-        } catch (err) {
-          console.error('Error deleting doctor:', err);
-          alert('An error occurred while deleting the doctor');
-        }
-      });
+  docform.addEventListener('submit', async (event) => {
+    event.preventDefault();
+
+    const email = docform.email.value;
+
+    try {
+      // Send a DELETE request to the server with the offer title in the URL path
+      const response = await fetch(`/admin/${email}`, { method: 'DELETE' });
+
+      if (response.ok) {
+        alert('doctor deleted successfully');
+        // Reload the page to update the offer list
+        location.reload();
+      } else {
+        const errorMessage = await response.text();
+        throw new Error(errorMessage);
+      }
+    } catch (err) {
+      console.error('Error deleting doctor:', err);
+      alert('An error occurred while deleting the doctor');
+    }
+  });
 </script>
 
 </html>
@@ -471,7 +486,7 @@
       <input type="text" id="image" name="image" required>
       <label for="name">Name:</label>
       <input type="text" id="name" name="name" required>
-      <label for="m_id" >Id:</label>
+      <label for="m_id">Id:</label>
       <input type="text" id="m_id" name="m_id" required>
 
       <label for="description">Description:</label>
@@ -479,26 +494,26 @@
       <input type="submit" value="Submit" id="medicinesub">
     </form>
   </div>
-  <div>   
+  <div>
     <h2 style="text-align: center;">Delete An medicine By its name</h2>
-  
+
     <form id="delete-med-form" class="medicines">
-      <label for="m_id">ID:</label>
-      <input type="text" id="m_id" name="m_id" required>
-      <button type="submit" >Delete medicine</button>
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <button type="submit" id="medicinesub">Delete medicine</button>
     </form>
-    
+
     <script>
       const formm = document.getElementById('delete-med-form');
       formm.addEventListener('submit', async (event) => {
         event.preventDefault();
-    
-        const m_id = formm.m_id.value;
-    
+
+        const name = formm.name.value;
+
         try {
-        
-          const response = await fetch(`/admin/${m_id}`, { method: 'DELETE' });
-    
+
+          const response = await fetch(`/medicines/${name}`, { method: 'DELETE' });
+
           if (response.ok) {
             alert('medicine deleted successfully');
             // Reload the page to update the offer list
@@ -513,7 +528,7 @@
         }
       });
     </script>
-  
+
   </div>
 </div>
 </body>

@@ -312,6 +312,22 @@ app.get('/medi', (req, res) => {
     // const deldoc=doctor.findOne({email:req.query.email})
 })
 
+app.get('/medi', (req, res) => {
+    // const query = doctor.find();
+    medicines.find({ name: req.query.name }).then(function (namee) {
+        // if(!req.query.email){
+        //     alert("doctor not present")
+        // }
+
+        res.render('medicines', {
+            search: namee
+        })
+
+    })
+
+    // const deldoc=doctor.findOne({email:req.query.email})
+})
+
     //             email: req.body.email
 
     //         })

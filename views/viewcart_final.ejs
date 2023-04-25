@@ -13,14 +13,15 @@
 
     * {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      
+
       box-sizing: border-box;
     }
 
-    body{
-      
+    body {
+
       background-color: black;
     }
+
     img {
       width: 100%;
       height: auto;
@@ -173,29 +174,30 @@
       flex-direction: column;
       justify-content: space-evenly;
     }
-.details h3{
-  margin: 0;
-        position: relative;
-        z-index: 1;
-        font-size: 2.6em;
-      
-}
-     
 
-      .details p {
-        font-size: 1em;
-      }
+    .details h3 {
+      margin: 0;
+      position: relative;
+      z-index: 1;
+      font-size: 2.6em;
 
-     .details input[type="number"] {
-        width: 50px;
-        height: 30px;
-        padding: 2px;
-        outline: none;
-        border-radius: 5px;
-        border: none;
-        border: 1px solid #ccc;
-      }
-    
+    }
+
+
+    .details p {
+      font-size: 1em;
+    }
+
+    .details input[type="number"] {
+      width: 50px;
+      height: 30px;
+      padding: 2px;
+      outline: none;
+      border-radius: 5px;
+      border: none;
+      border: 1px solid #ccc;
+    }
+
 
 
     .summary {
@@ -205,17 +207,18 @@
       border-radius: 5px;
       margin-bottom: 80px;
     }
-      .summary .meta-data {
-        border-right: 1px solid #eee;
-        padding-right: 10%;
-      }
 
-      .summary .total {
-        font-size: 2em;
-        text-align: center;
-        line-height: 65px;
-      }
-    
+    .summary .meta-data {
+      border-right: 1px solid #eee;
+      padding-right: 10%;
+    }
+
+    .summary .total {
+      font-size: 2em;
+      text-align: center;
+      line-height: 65px;
+    }
+
 
     .container {
       max-width: 1140px;
@@ -244,7 +247,7 @@
     .btn-summary {
       display: flex;
       justify-content: space-around;
-    
+
     }
 
     .btn-reverse {
@@ -270,7 +273,7 @@
     }
 
     h3 {
-   
+
       font-size: 2em;
     }
 
@@ -283,12 +286,13 @@
       align-items: center;
       margin-bottom: 20px;
     }
-      /* .coupon &h3 {
+
+    /* .coupon &h3 {
         margin-right: 30px;
         font-family: "Amatic SC", cursive;
         font-size: 2em;
       } */
-    
+
 
     input {
       border-radius: 10px;
@@ -319,11 +323,11 @@
     }
 
     h1 {
-    text-align: center;
+      text-align: center;
       font-size: 4em;
       padding-bottom: 0px;
       margin-bottom: 0px;
-      
+
     }
 
     .summary-content {
@@ -409,9 +413,11 @@
         width: 100%;
         margin-bottom: 20px;
       }
-.grid_12{
-  border: 1px solid black;
-}
+
+      .grid_12 {
+        border: 1px solid black;
+      }
+
       .grid_12.summary {
         font-size: 22px;
         position: fixed;
@@ -431,10 +437,13 @@
       .taxes {
         font-size: 1em;
       }
-.cart {
-  background-color:#478298;
-  text-align: center;
-}
+
+      .cart {
+        font-size:20px;
+        background-color: #478298;
+        text-align: center;
+      }
+
       .summary .total {
         font-size: 1.6em;
         line-height: 1em;
@@ -475,9 +484,10 @@
       .btn-remove {
         font-size: 1.2em;
       }
-      .cart{
+
+      .cart {
         padding-top: 0px;
-        margin-top:0px;
+        margin-top: 0px;
       }
 
     }
@@ -544,33 +554,35 @@
 </head>
 
 
-  <%-include("header") -%>
-  <body>
-  <div class="cart">
-    <h1 style="color:#478298 background-color:black">Your Cart</h1>
-    <div class="container">
-      <div class="grid_12">
-      
-      </div>
-      <%cartitems.forEach(function(medicines){%>
-      <ul class="items">
-        <li class="grid_4 item">
-          <a href="#" class="btn-remove">
-            <i class="far fa-trash-alt"></i>
-          </a>
-          <div class="preview">
-            <img src="<%=medicines.image%>" />
-          </div>
-          <div class="details" data-price="15.50">
-            <h3>
-              <%=medicines.name%>
-            </h3>
-            <p> Medicine id :<%=medicines.m_id%> <br>
-              Cost : <%=medicines.cost%> rps<br>
-                Description: <%=medicines.description%></p>
+<%-include("header") -%>
 
-          </div>
-          <div class="inner_container">
+  <body>
+    <div class="cart">
+      <h1 style="color:#478298 background-color:black ">Your Cart</h1>
+      <div class="container">
+        <div class="grid_12">
+
+        </div>
+        <%cartitems.forEach(function(medicines){%>
+          <ul class="items">
+            <li class="grid_4 item">
+              <a href="#" class="btn-remove">
+                <i class="far fa-trash-alt"></i>
+              </a>
+              <div class="preview">
+                <img src="<%=medicines.image%>" />
+              </div>
+              <div class="details" data-price="15.50">
+                <h3>
+                  <%=medicines.name%>
+                </h3>
+                <p> Medicine id :<%=medicines.m_id%> <br>
+                    Cost : <%=medicines.cost%>80 rps<br>
+                      Description: <%=medicines.description%>
+                </p>
+
+              </div>
+              <!-- <div class="inner_container">
 
             <div class="col_1of2 align-center picker">
               <p>
@@ -586,52 +598,57 @@
               </p>
               <input type="hidden" class="quantity_field" name="quantity" data-price="15.50" value="1" />
             </div>
-          </div>
+          </div> -->
 
-        </li>
-        <%})%>  
-        
-      </ul>
-      <div class="grid_12 delivery-payment">
-        <div class="grid_6 delivery-address">
-          <h3>Delivery Address</h3>
-          <p>46 Vale Road</br>
-            Ramsgate</p>
-        </div>
-       
-      </div>
-      <div class="grid_12 coupon">
-        <h3>Apply Coupon</h3>
-        <input class="coupon-input" type="text">
-      </div>
+            </li>
+            <%})%>
 
-      <div class="grid_12 summary">
-        <div class="inner_container">
-          <div class="summary-content">
-            <div class="col_1of2 meta-data">
-              <div class="sub-total">
-                <em>Sub Total: </em><span class="amount"></span>
-              </div>
-              <div class="taxes">
-                <em>Plus VAT: </em><span class="amount">@ 20%</span>
-              </div>
+          </ul>
+          <div class="grid_12 delivery-payment">
+            <div class="grid_6 delivery-address">
+              <form>
+                <div class="form-group">
+                  <!-- <label for="exampleInputaddress">Enter your address</label> -->
+                  <input type="address" style="font-size:20px" class="form-control" id="exampleInputAdress1"
+                    aria-describedby="addressHelp" placeholder="Enter your address">
 
+                </div>
+              </form>
             </div>
-            <div class="col_1of2">
-              <div class="total">
-                <span class="amount"></span>
+
+          </div>
+          <div class="grid_12 coupon">
+            <h3>Apply Coupon</h3>
+            <input class="coupon-input" type="text">
+          </div>
+
+          <div class="grid_12 summary">
+            <div class="inner_container">
+              <div class="summary-content">
+                <div class="col_1of2 meta-data">
+                  <div class="sub-total">
+                    <em>Sub Total: 80 rps</em><span class="amount"></span>
+                  </div>
+                  <div class="taxes">
+                    <em>Plus VAT: </em><span class="amount">@ 20%</span>
+                  </div>
+
+                </div>
+                <div class="col_1of2">
+                  <div class="total">
+                    <span class="amount"></span>
+                  </div>
+                </div>
+              </div>
+              <div class="btn-summary">
+
+                <a href="/medicines_list" class="btn-checkout btn-reverse">Continue Shopping</a>
+
+                <a href="#" class="btn-checkout">Checkout</a>
+
               </div>
             </div>
           </div>
-          <div class="btn-summary">
-
-            <a href="/medicines_list" class="btn-checkout btn-reverse">Continue Shopping</a>
-
-            <a href="#" class="btn-checkout">Checkout</a>
-
-          </div>
-        </div>
       </div>
     </div>
-  </div>
-</body>
+  </body>
