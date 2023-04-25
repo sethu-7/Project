@@ -4,10 +4,16 @@ const Schema = mongoose.Schema;
 const medSchema = new Schema({
     image:String,
     name: String,
-    m_id: Number,
+    m_id: {
+        type:Number,
+        unique:true
+    },
     cost: Number,
     description: String,
-    added: String,
+    added: {
+        type:String,
+        default:"false"
+    }
 
 })
 

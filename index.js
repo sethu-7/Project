@@ -118,15 +118,15 @@ app.delete('/offers/:title', async (req, res) => {
 });
 
 
-app.get('/medicines', async (req, res) => {
-    try {
-        const medicines = await medicines.find();
-        res.render('medicines', { medicines });
-    } catch (err) {
-        console.error('Error retrieving medicines:', err);
-        res.status(500).send('Internal server error');
-    }
-});
+// app.get('/medicines', async (req, res) => {
+//     try {
+//         const medicines = await medicines.find();
+//         res.render('medicines', { medicines });
+//     } catch (err) {
+//         console.error('Error retrieving medicines:', err);
+//         res.status(500).send('Internal server error');
+//     }
+// });
 
 
 // Handle form submission
@@ -256,7 +256,7 @@ app.get('/doctor_list', (req, res) => {
 //         console.log(em)
 
 
-app.get('/medicine', (req, res) => {
+app.get('/project_final', (req, res) => {
 
     res.render('project_final')
 })
@@ -265,7 +265,7 @@ app.get('/medicines_list', (req, res) => {
 
     medicines.find({}).then(function (medi) {
         res.render('medicines', {
-            me: medi
+            search: medi
         })
 
 
@@ -296,6 +296,21 @@ app.get('/viewcart_final', (req, res) => {
     })
 })
 
+app.get('/medi', (req, res) => {
+    // const query = doctor.find();
+    medicines.find({ name: req.query.name }).then(function (namee) {
+        // if(!req.query.email){
+        //     alert("doctor not present")
+        // }
+
+        res.render('medicines', {
+            search: namee
+        })
+
+    })
+
+    // const deldoc=doctor.findOne({email:req.query.email})
+})
 
     //             email: req.body.email
 
@@ -458,8 +473,28 @@ app.get('/viewcart_final', (req, res) => {
     });
 
 
+    // const CartItem = require('./model/medicines');
 
-
+    // Route to add a medicine to the cart
+    app.post('/viewcart', async (req, res) => {
+      const { m_id } = req.body;
+      try {
+        // Find the medicine by ID and update the "added" field to true
+        const k=await medicines.findOneAndUpdate(m_id, { added: "true" });
+        // Add the medicine to the cart
+        // const cartItem = new CartItem({
+        //   name: medicine.name,
+        //   price: medicine.cost
+        // });
+        // await cartItem.save();
+        res.redirect('/medicines_list');
+        console.log("added")
+        
+    } catch (err) {
+      console.log(err);
+      res.status(500).send('Internal Server Error');
+    }
+  });
 
     app.listen(5500, () => {
         console.log('Server listening on port 5500');

@@ -260,9 +260,13 @@ Generic layout (demo looks)
       border: none;
     }
   </style>
+<header><%-include("header") -%></header>
+  
+
 </head>
 
 <body>
+ 
   <form class="form-inline">
     <input class="form-control mr-sm-2 bg-light" type="search" placeholder="Search medicines" aria-label=Search>
     <button class="btn btn-outline-dark my-6 my-lg-0" type="submit">Search</button>
@@ -277,7 +281,7 @@ Generic layout (demo looks)
   <!-- <%-include("header") -%> -->
 
     <section class="articles">
-      <%me.forEach(function(medicines){%>
+      <%search.forEach(function(medicines){%>
         <article>
           <div class="article-wrapper">
             <figure>
@@ -295,20 +299,16 @@ Generic layout (demo looks)
                     Description: <%=medicines.description%>
 
               </p>
-              <a href="/single_med" class="read-more">
+              
 
-                <button onclick="window.location.href='#'"> Read more <span class="sr-only">about this is some
-                    title</span>
-                  <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 20 20" fill="currentColor">
-                    <path fill-rule="evenodd"
-                      d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z"
-                      clip-rule="evenodd" />
-                  </svg>
-                </button>
-               
-
-              </a>
-              <button>Add to cart</button>
+          
+                <form action="/viewcart" method="POST">
+                  <input type="hidden" id="m_id" name="m_id" value="<%= search.m_id %>">
+                  <p><%= search.m_id %></p>
+                  <button type="submit" onclick="check()">Add to Cart</button>
+                </form>
+              
+            
             </div>
           </div>
         </article>
@@ -360,5 +360,11 @@ Generic layout (demo looks)
         </div>
 
 
+
       </div>
+      <script>
+        check(){
+          alert("medicine added successfully")
+        }
+      </script>
     </footer>
