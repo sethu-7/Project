@@ -430,9 +430,37 @@ app.get('/viewcart_final', (req, res) => {
     app.get('/payments', (req, res) => {
         res.render('payments')
     })
+    app.get('/admin_password_validation', (req, res) => {
+        res.render('admin_password_validation')
+    })
 
-
-
+    const passvalSchema = new mongoose.Schema({
+        Name: String,
+        password: String
+      });
+    
+      // Create a model for the collection
+      const Pass = mongoose.model('Pass', passvalSchema);
+    
+      // Route for the login form submission
+      app.post('/api/login', async (req, res) => {
+        const { username, password } = req.body;
+    
+        try {
+          // Look for a document in the Pass collection with the given username and password
+          const result = await Pass.findOne({ Name: username, password });
+          if (result) {
+            // Credentials are valid
+            res.json({ success: true });
+          } else {
+            // Credentials are invalid
+            res.json({ success: false });
+          }
+        } catch (err) {
+          console.error('Error checking credentials:', err.message);
+          res.status(500).json({ success: false });
+        }
+      });
 
     app.post('/signup', async (req, res) => {
         try {
@@ -455,105 +483,7 @@ app.get('/viewcart_final', (req, res) => {
         } catch {
             res.status(500).send('Error creating patient');
         }
-<<<<<<< HEAD
-    }
-    catch (error) {
-        res.status(400).send("inavalid email")
-    }
-})
-
-
-
-app.post('/submit', upload.single('file'), async (req, res) => {
-    try {
-
-        let newdoctor = new doctor({
-            name: req.body.name,
-            password: req.body.password,
-            phoneNumber: req.body.phoneNumber,
-            email: req.body.email,
-            district: req.body.district,
-            Specialization: req.body.Specialization,
-            experience: req.body.experience,
-            fee: req.body.fee,
-            timeslot1: req.body.timeslot1,
-            timeslot2: req.body.timeslot2,
-            timeslot3: req.body.timeslot3,
-            cvv: req.body.cvv
-
-
-        });
-
-        // const file = {
-        //     data: req.file.buffer,
-        //     contentType: req.file.mimetype,
-
-        // };
-
-        // const result = db.collection('doctor').insertOne(file);
-        // console.log('File saved to database:', result.insertedId);
-        await newdoctor.save();
-        req.session.email = newdoctor.email;
-
-        res.redirect('/doctor_profile')
-
-        // res.status(201).send('doctor created successfully');
-    } catch {
-        res.status(500).send('Error creating docto');
-    }
-});
-
-
-// app.listen(5000, () => {
-//     console.log('Server listening on port 5000');
-// });
-
-
-app.get('/admin_page', (req, res) => {
-    res.render('admin_page')
-})
-app.get('/license', (req, res) => {
-    res.render('files')
-})
-
-app.get('/index', (req, res) => {
-    res.render('index')
-})
-
-
-
-app.get('/payments', (req, res) => {
-    res.render('payments')
-})
-
-
-
-
-app.post('/signup', async (req, res) => {
-    try {
-
-        let newpatient = new patient({
-            patient_name: req.body.patient_name,
-            patient_password: req.body.patient_password,
-            patient_phoneNumber: req.body.patient_phoneNumber,
-            patient_email: req.body.patient_email,
-            patient_address: req.body.patient_address,
-            patient_emergencyNumber: req.body.patient_emergencyNumber
-
-        });
-
-        await newpatient.save();
-
-
-        res.redirect('/after-login')
-
-    } catch {
-        res.status(500).send('Error creating patient');
-    }
-});
-=======
     });
->>>>>>> ad6813059d36b66165b8bb573214820699ec61a4
 
 
 
