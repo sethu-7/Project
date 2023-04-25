@@ -164,7 +164,11 @@
 
                                 <h4>Available time slots</h4>
                                 <label for="time" style="padding-bottom: 1%; font-size: 100%; ">Select Time</label>
+<<<<<<< HEAD
+                                <select class="form-control" id="time" style="font-size: 100%;">
+=======
                                 <select class="form-control" id="patient_timeOfConsultation" style="font-size: 200%;">
+>>>>>>> ad6813059d36b66165b8bb573214820699ec61a4
                                     <option>
                                         <%=doctor.timeslot1%>
                                     </option>
@@ -176,7 +180,8 @@
                                     </option>
     
                                 </select>
-    
+
+                                <p></p>
                                 <button type="button"  class="book-now-btn" onclick="alert('Booking Succesful')">Book
                                     Now</button>
                             </div>
@@ -186,50 +191,7 @@
                 <%})%>
 
         </main>
-        <footer>
-            <div class="footer">
-
-                <div>
-                    <h4>Know us</h4>
-                    <li><a href="">About</a></li>
-                    <li><a href="">Contact</a></li>
-                    <li><a href="">Business</a></li>
-                    <li><a href="">Partnership</a></li>
-
-                </div>
-                <div>
-                    <h4>Our Policies</h4>
-                    <li><a href="">Privacy Policy</a></li>
-                    <li><a href="">Grievance Redressal</a></li>
-                    <li><a href="">Fake jobs and Frauds</a></li>
-                </div>
-                <div>
-                    <h4>Our Services</h4>
-                    <li><a href="">Order Medicines</a></li>
-                    <li><a href="">Consult a Doctor</a></li>
-                    <li><a href="">Articles</a></li>
-                </div>
-                <div>
-                    <h4>Connect with Us</h4>
-                    <li>
-
-                        <a href="#" class="fab fa-facebook-f"> facebook</a>
-                    </li>
-                    <li>
-
-                        <a href="#" class="fab fa-twitter"> twitter</a>
-                    </li>
-                    <li>
-
-                        <a href="#" class="fab fa-instagram"> instagram</a>
-                    </li>
-
-
-                </div>
-
-
-            </div>
-        </footer>
+        <%-include("footer") %>
         <script>
             const consultationOptions = document.querySelectorAll('input[name="consultation-option"]');
 

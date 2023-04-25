@@ -328,79 +328,170 @@ app.get('/medi', (req, res) => {
     // const deldoc=doctor.findOne({email:req.query.email})
 })
 
-    //             email: req.body.email
+//             email: req.body.email
 
-    //         })
+//         })
 
-    //         console.log(user)
+//         console.log(user)
 
-    //         await doctor.findByIdAndDelete({_id:req.params.id},(error,result)=>{
-    //             console.log(user.params.id)
+//         await doctor.findByIdAndDelete({_id:req.params.id},(error,result)=>{
+//             console.log(user.params.id)
 
-    //             if (error) {
-    //                 res.send('Error while deleting document:');
-    //               } else {
-    //                 console.log('Document deleted successfully:', result);
-    //               }
-    //         })
-    //         console.log("gsghs")
-    //     }
-    //     catch(error){
-    //         res.status(400).send("inavalid email")
+//             if (error) {
+//                 res.send('Error while deleting document:');
+//               } else {
+//                 console.log('Document deleted successfully:', result);
+//               }
+//         })
+//         console.log("gsghs")
+//     }
+//     catch(error){
+//         res.status(400).send("inavalid email")
 
-    //     }
+//     }
 
-    // })
+// })
 
 
-    app.delete('/admin/:email', async (req, res) => {
-        try {
-            const email = req.params.email;
+app.delete('/admin/:email', async (req, res) => {
+    try {
+        const email = req.params.email;
 
-            // Find the offer with the matching title and delete it
-            const deldoc = await doctor.findOneAndDelete({ email });
+        // Find the offer with the matching title and delete it
+        const deldoc = await doctor.findOneAndDelete({ email });
 
-            if (!deldoc) {
-                // If no offer with the matching title was found, return a 404 Not Found error
-                res.status(404).send('doctor not found');
-                return;
-            }
-
-            res.status(204).send();
-        } catch (err) {
-            console.error('Error deleting odoctor', err);
-            res.status(500).send('Internal server error');
+        if (!deldoc) {
+            // If no offer with the matching title was found, return a 404 Not Found error
+            res.status(404).send('doctor not found');
+            return;
         }
-    });
+
+        res.status(204).send();
+    } catch (err) {
+        console.error('Error deleting odoctor', err);
+        res.status(500).send('Internal server error');
+    }
+});
 
 
 
 
-    app.post('/login', async (req, res, next) => {
-        try {
-            const user = await doctor.findOne({
+app.post('/login', async (req, res, next) => {
+    try {
+        const user = await doctor.findOne({
 
-                email: req.body.email,
-                password: req.body.password
-            })
-
-
+            email: req.body.email,
+            password: req.body.password
+        })
 
 
-            if (user) {
-                req.session.email = user.email;
 
-                res.redirect('/doctor_profile')
-            }
-            else {
-                send("password incorrect")
-                // res.redirect('introduction')
-            }
+
+        if (user) {
+            req.session.email = user.email;
+
+            res.redirect('/doctor_profile')
         }
-        catch (error) {
-            res.status(400).send("inavalid email")
+        else {
+            send("password incorrect")
+            // res.redirect('introduction')
         }
-    })
+    }
+    catch (error) {
+        res.status(400).send("inavalid email")
+    }
+})
+
+
+
+app.post('/submit', upload.single('file'), async (req, res) => {
+    try {
+
+        let newdoctor = new doctor({
+            name: req.body.name,
+            password: req.body.password,
+            phoneNumber: req.body.phoneNumber,
+            email: req.body.email,
+            district: req.body.district,
+            Specialization: req.body.Specialization,
+            experience: req.body.experience,
+            timeslot1: req.body.timeslot1,
+            timeslot2: req.body.timeslot2,
+            timeslot3: req.body.timeslot3,
+            file: req.body.file
+
+
+        });
+
+        // const file = {
+        //     data: req.file.buffer,
+        //     contentType: req.file.mimetype,
+
+        // };
+
+        // const result = db.collection('doctor').insertOne(file);
+        // console.log('File saved to database:', result.insertedId);
+        await newdoctor.save();
+        req.session.email = newdoctor.email;
+
+        res.redirect('/doctor_profile')
+
+        // res.status(201).send('doctor created successfully');
+    } catch {
+        res.status(500).send('Error creating docto');
+    }
+});
+
+
+// app.listen(5000, () => {
+//     console.log('Server listening on port 5000');
+// });
+
+
+app.get('/admin_page', (req, res) => {
+    res.render('admin_page')
+})
+
+app.get('/index', (req, res) => {
+    res.render('index')
+})
+
+
+
+app.get('/payments', (req, res) => {
+    res.render('payments')
+})
+
+
+
+
+app.post('/signup', async (req, res) => {
+    try {
+
+        let newpatient = new patient({
+            patient_name: req.body.patient_name,
+            patient_password: req.body.patient_password,
+            patient_phoneNumber: req.body.patient_phoneNumber,
+            patient_email: req.body.patient_email,
+            patient_address: req.body.patient_address,
+            patient_emergencyNumber: req.body.patient_emergencyNumber
+
+        });
+
+        await newpatient.save();
+
+
+        res.redirect('/doctor_project_final')
+
+    } catch {
+        res.status(500).send('Error creating patient');
+    }
+    //     catch (error) {
+    //     res.status(400).send("inavalid email")
+    // }
+})
+
+
 
 
 
@@ -415,10 +506,11 @@ app.get('/medi', (req, res) => {
                 district: req.body.district,
                 Specialization: req.body.Specialization,
                 experience: req.body.experience,
+                fee: req.body.fee,
                 timeslot1: req.body.timeslot1,
                 timeslot2: req.body.timeslot2,
                 timeslot3: req.body.timeslot3,
-                file: req.body.file
+                cvv: req.body.cvv
 
 
             });
@@ -443,50 +535,53 @@ app.get('/medi', (req, res) => {
     });
 
 
-    // app.listen(5000, () => {
-    //     console.log('Server listening on port 5000');
-    // });
+// app.listen(5000, () => {
+//     console.log('Server listening on port 5000');
+// });
 
 
-    app.get('/admin_page', (req, res) => {
-        res.render('admin_page')
-    })
+app.get('/admin_page', (req, res) => {
+    res.render('admin_page')
+})
+app.get('/license', (req, res) => {
+    res.render('files')
+})
 
-    app.get('/index', (req, res) => {
-        res.render('index')
-    })
-
-
-
-    app.get('/payments', (req, res) => {
-        res.render('payments')
-    })
+app.get('/index', (req, res) => {
+    res.render('index')
+})
 
 
 
-
-    app.post('/signup', async (req, res) => {
-        try {
-
-            let newpatient = new patient({
-                patient_name: req.body.patient_name,
-                patient_password: req.body.patient_password,
-                patient_phoneNumber: req.body.patient_phoneNumber,
-                patient_email: req.body.patient_email,
-                patient_address: req.body.patient_address,
-                patient_emergencyNumber: req.body.patient_emergencyNumber
-
-            });
-
-            await newpatient.save();
+app.get('/payments', (req, res) => {
+    res.render('payments')
+})
 
 
-            res.redirect('/doctor_project_final')
 
-        } catch {
-            res.status(500).send('Error creating patient');
-        }
-    });
+
+app.post('/signup', async (req, res) => {
+    try {
+
+        let newpatient = new patient({
+            patient_name: req.body.patient_name,
+            patient_password: req.body.patient_password,
+            patient_phoneNumber: req.body.patient_phoneNumber,
+            patient_email: req.body.patient_email,
+            patient_address: req.body.patient_address,
+            patient_emergencyNumber: req.body.patient_emergencyNumber
+
+        });
+
+        await newpatient.save();
+
+
+        res.redirect('/after-login')
+
+    } catch {
+        res.status(500).send('Error creating patient');
+    }
+});
 
 
     // const CartItem = require('./model/medicines');
@@ -512,6 +607,6 @@ app.get('/medi', (req, res) => {
     }
   });
 
-    app.listen(5500, () => {
-        console.log('Server listening on port 5500');
-    });
+app.listen(5500, () => {
+    console.log('Server listening on port 5500');
+});
