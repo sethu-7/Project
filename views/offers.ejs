@@ -184,35 +184,11 @@ a.Signin{
     </style>
 </head>
 <body>
+  <header>
+    <%-include('header')-%>
 
-    <nav class="start1nav navbar navbar-expand-lg bg-body-tertiary">
-        <div class="  container-fluid">
+  </header>
 
-          <img class="logo" src="actualprojectlogo.jpg" alt="no img" height="80px" width="130px">
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon" style="height: 52px; "></span>
-          </button>
-        
-            
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-           
-            
-            <div style="text-align: center;width: 100%;"> <header>
-              <h1 class="gradient-text"> <div><h1> DISCOUNTS AND OFFERS</h1></div></h1>
-            </header></div>
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a class="Signin  nav-link active" aria-current="page" href="#">Sign-in</a>
-              </li>
-              <li class="nav-item">
-                <a class="Signin  nav-link active" aria-current="page" href="#">Sign-up</a>
-        
-            </ul>
-          </div>
-          
-        </div>
-       
-      </nav>
 
       <div class="card-container">
       <% for (let i = 0; i < offers.length; i++) { %>

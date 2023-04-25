@@ -3,9 +3,8 @@ const mongoose = require('mongoose');
 const multer = require('multer');
 const bodyParser = require('body-parser');
 const doctor = require('./model/doctor')
-
+const patient=require('./model/patient')
 const medicines = require('./model/medicines')
-
 const app = express();
 const session = require('express-session')
 app.use(bodyParser.urlencoded({ extended: true }))
@@ -237,6 +236,10 @@ app.get('/login', (req, res) => {
 
     res.render('login')
 })
+app.get('/login_patient', (req, res) => {
+
+    res.render('login_patient')
+})
 app.get('/doctor_list', (req, res) => {
     const spcl = req.query.Spec
 
@@ -260,6 +263,49 @@ app.get('/project_final', (req, res) => {
 
     res.render('project_final')
 })
+app.get('/doctor_dashboard', (req, res) => {
+
+    res.render('doctor_dashboard')
+})
+app.get('/doctor_todays_visits', (req, res) => {
+
+    res.render('doctor_todays_visits')
+})
+app.get('/doctor_patients', (req, res) => {
+
+    res.render('doctor_patients')
+})
+app.get('/admin_password_validation', (req, res) => {
+    res.render('admin_password_validation')
+})
+
+const passvalSchema = new mongoose.Schema({
+    Name: String,
+    password: String
+  });
+
+  // Create a model for the collection
+  const Pass = mongoose.model('Pass', passvalSchema);
+
+  // Route for the login form submission
+  app.post('/api/login', async (req, res) => {
+    const { username, password } = req.body;
+
+    try {
+      // Look for a document in the Pass collection with the given username and password
+      const result = await Pass.findOne({ Name: username, password });
+      if (result) {
+        // Credentials are valid
+        res.json({ success: true });
+      } else {
+        // Credentials are invalid
+        res.json({ success: false });
+      }
+    } catch (err) {
+      console.error('Error checking credentials:', err.message);
+      res.status(500).json({ success: false });
+    }
+  });
 app.get('/medicines_list', (req, res) => {
 
 
@@ -361,12 +407,38 @@ app.post('/login', async (req, res, next) => {
 
             res.redirect('/doctor_profile')
         }
-<<<<<<< HEAD
         else {
             send("password incorrect")
             // res.redirect('introduction')
         }
     }
+    
+    catch (error) {
+        res.status(400).send("inavalid email")
+    }
+})
+app.post('/loginPat', async (req, res, next) => {
+    try {
+        const user = await patient.findOne({
+
+            email: req.body.email,
+            password: req.body.password
+        })
+
+
+
+
+        if (user) {
+            // req.session.email = user.email;
+
+            res.redirect('/')
+        }
+        else {
+            send("password incorrect")
+            // res.redirect('introduction')
+        }
+    }
+    
     catch (error) {
         res.status(400).send("inavalid email")
     }
@@ -552,83 +624,6 @@ app.post('/signup', async (req, res) => {
         res.status(500).send('Error creating patient');
     }
 });
-=======
-    });
-
-
-    // app.listen(5000, () => {
-    //     console.log('Server listening on port 5000');
-    // });
-
-
-    app.get('/admin_page', (req, res) => {
-        res.render('admin_page')
-    })
-
-    app.get('/index', (req, res) => {
-        res.render('index')
-    })
-
-
-
-    app.get('/payments', (req, res) => {
-        res.render('payments')
-    })
-    app.get('/admin_password_validation', (req, res) => {
-        res.render('admin_password_validation')
-    })
-
-    const passvalSchema = new mongoose.Schema({
-        Name: String,
-        password: String
-      });
-    
-      // Create a model for the collection
-      const Pass = mongoose.model('Pass', passvalSchema);
-    
-      // Route for the login form submission
-      app.post('/api/login', async (req, res) => {
-        const { username, password } = req.body;
-    
-        try {
-          // Look for a document in the Pass collection with the given username and password
-          const result = await Pass.findOne({ Name: username, password });
-          if (result) {
-            // Credentials are valid
-            res.json({ success: true });
-          } else {
-            // Credentials are invalid
-            res.json({ success: false });
-          }
-        } catch (err) {
-          console.error('Error checking credentials:', err.message);
-          res.status(500).json({ success: false });
-        }
-      });
-
-    app.post('/signup', async (req, res) => {
-        try {
-
-            let newpatient = new patient({
-                patient_name: req.body.patient_name,
-                patient_password: req.body.patient_password,
-                patient_phoneNumber: req.body.patient_phoneNumber,
-                patient_email: req.body.patient_email,
-                patient_address: req.body.patient_address,
-                patient_emergencyNumber: req.body.patient_emergencyNumber
-
-            });
-
-            await newpatient.save();
-
-
-            res.redirect('/doctor_project_final')
-
-        } catch {
-            res.status(500).send('Error creating patient');
-        }
-    });
->>>>>>> 551ca9539f2ca7627b2bb2d077d6b781c526cec8
 
 
 
