@@ -117,15 +117,15 @@ app.delete('/offers/:title', async (req, res) => {
 });
 
 
-app.get('/medicines', async (req, res) => {
-    try {
-        const medicines = await medicines.find();
-        res.render('medicines', { medicines });
-    } catch (err) {
-        console.error('Error retrieving medicines:', err);
-        res.status(500).send('Internal server error');
-    }
-});
+// app.get('/medicines', async (req, res) => {
+//     try {
+//         const medicines = await medicines.find();
+//         res.render('medicines', { medicines });
+//     } catch (err) {
+//         console.error('Error retrieving medicines:', err);
+//         res.status(500).send('Internal server error');
+//     }
+// });
 
 
 // Handle form submission
@@ -195,6 +195,9 @@ app.get('/doctor_project_final', (req, res) => {
 })
 app.get('/dashboard', (req, res) => {
     res.render('dashboard')
+})
+app.get('/fsd', (req, res) => {
+    res.render('fsd')
 })
 
 app.get('/doctor_profile', (req, res) => {
@@ -311,7 +314,7 @@ app.get('/medicines_list', (req, res) => {
 
     medicines.find({}).then(function (medi) {
         res.render('medicines', {
-            me: medi
+            search: medi
         })
 
 
@@ -342,6 +345,37 @@ app.get('/viewcart_final', (req, res) => {
     })
 })
 
+app.get('/medi', (req, res) => {
+    // const query = doctor.find();
+    medicines.find({ name: req.query.name }).then(function (namee) {
+        // if(!req.query.email){
+        //     alert("doctor not present")
+        // }
+
+        res.render('medicines', {
+            search: namee
+        })
+
+    })
+
+    // const deldoc=doctor.findOne({email:req.query.email})
+})
+
+app.get('/medi', (req, res) => {
+    // const query = doctor.find();
+    medicines.find({ name: req.query.name }).then(function (namee) {
+        // if(!req.query.email){
+        //     alert("doctor not present")
+        // }
+
+        res.render('medicines', {
+            search: namee
+        })
+
+    })
+
+    // const deldoc=doctor.findOne({email:req.query.email})
+})
 
 //             email: req.body.email
 
@@ -460,7 +494,7 @@ app.post('/submit', upload.single('file'), async (req, res) => {
             timeslot1: req.body.timeslot1,
             timeslot2: req.body.timeslot2,
             timeslot3: req.body.timeslot3,
-            file: req.body.file
+            cvv: req.body.cvv
 
 
         });
@@ -479,8 +513,8 @@ app.post('/submit', upload.single('file'), async (req, res) => {
         res.redirect('/doctor_profile')
 
         // res.status(201).send('doctor created successfully');
-    } catch {
-        res.status(500).send('Error creating docto');
+    } catch (error){
+        res.status(500).send(error);
     }
 });
 
@@ -507,31 +541,31 @@ app.get('/payments', (req, res) => {
 
 
 
-app.post('/signup', async (req, res) => {
-    try {
+// app.post('/signup', async (req, res) => {
+//     try {
 
-        let newpatient = new patient({
-            patient_name: req.body.patient_name,
-            patient_password: req.body.patient_password,
-            patient_phoneNumber: req.body.patient_phoneNumber,
-            patient_email: req.body.patient_email,
-            patient_address: req.body.patient_address,
-            patient_emergencyNumber: req.body.patient_emergencyNumber
+//         let newpatient = new patient({
+//             patient_name: req.body.patient_name,
+//             patient_password: req.body.patient_password,
+//             patient_phoneNumber: req.body.patient_phoneNumber,
+//             patient_email: req.body.patient_email,
+//             patient_address: req.body.patient_address,
+//             patient_emergencyNumber: req.body.patient_emergencyNumber
 
-        });
+//         });
 
-        await newpatient.save();
+//         await newpatient.save();
 
 
-        res.redirect('/doctor_project_final')
+//         res.redirect('/doctor_project_final')
 
-    } catch {
-        res.status(500).send('Error creating patient');
-    }
-    //     catch (error) {
-    //     res.status(400).send("inavalid email")
-    // }
-})
+//     } catch {
+//         res.status(500).send('Error creating patient');
+//     }
+//     //     catch (error) {
+//     //     res.status(400).send("inavalid email")
+//     // }
+// })
 
 
 
@@ -611,23 +645,78 @@ app.post('/signup', async (req, res) => {
             patient_phoneNumber: req.body.patient_phoneNumber,
             patient_email: req.body.patient_email,
             patient_address: req.body.patient_address,
-            patient_emergencyNumber: req.body.patient_emergencyNumber
+            patient_emergencyNumber: req.body.patient_emergencyNumber,
+            patient_dateOfConsultation: req.body.patient_dateOfConsultation,
+            patient_timeOfConsultation: req.body.patient_timeOfConsultation,
+            patient_online:req.body.patient_online,
+            patient_doctor: req.body.patient_doctor
 
         });
 
         await newpatient.save();
+        // req.session.patient_email = newpatient.email;
 
 
-        res.redirect('/after-login')
+        res.redirect('/doctor_project_final')
+
+        // mongoose.connect(dbUrl, { useNewUrlParser: true });
+
+        // Search the collection
+        // const collection = mongoose.connection.collection('ffsd.patients');
+
+  // Add the new fields
+//   collection.updateOne({ patient_email: req.session.patient_email }, { $set: { patient_dateOfConsultation: req.body.patient_dateOfConsultation, patient_timeOfConsultation: req.body.patient_timeOfConsultation } }, (err, result) => {
+//     if (err) throw err;
+//     console.log(result);
+//   });
+
+// collection.updateOne(
+//     { patient_email: req.session.patient_email },
+//     { $set: { patient_dateOfConsultation: new Date() } },
+//     (err, result) => {
+//       if (err) throw err;
+//       console.log('Document updated');
+//       client.close();
+//     }
+//   );
+
+
+// const collection = mongoose.connection.collection('ffsd.patients');
+
+// collection.findOneAndUpdate({ patient_email: req.session.patient_email }, { $set: { patient_dateOfConsultation: req.body.patient_dateOfConsultation, patient_timeOfConsultation: req.body.patient_timeOfConsultation }, $setOnInsert: { patient_dateOfConsultation: req.body.patient_dateOfConsultation, patient_timeOfConsultation: req.body.patient_timeOfConsultation } }, { upsert: true }, (err, result) => {
+//     if (err) throw err;
+//     console.log(result);
+//   });
+
 
     } catch {
         res.status(500).send('Error creating patient');
-    }
+    }
 });
 
 
+    // const CartItem = require('./model/medicines');
 
-
+    // Route to add a medicine to the cart
+    app.post('/viewcart', async (req, res) => {
+      const { m_id } = req.body;
+      try {
+        // Find the medicine by ID and update the "added" field to true
+        const k=await medicines.findOneAndUpdate(m_id, { added: "true" });
+        // Add the medicine to the cart
+        // const cartItem = new CartItem({
+        //   name: medicine.name,
+        //   price: medicine.cost
+        // });
+        // await cartItem.save();
+        res.redirect('/medicines_list');
+        console.log("added")
+        
+    } catch (err) {
+      console.log(err);
+      res.status(500).send('Internal Server Error');
+    }
+  });
 
 app.listen(5500, () => {
     console.log('Server listening on port 5500');

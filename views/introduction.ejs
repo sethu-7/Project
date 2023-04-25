@@ -1,82 +1,32 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <title>Introduction</title>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Doctor Consultation</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <style>
-    body {
-        background-color: #DCDCDC;
-    }
-
-    .search-container {
-    width: 100%;
-    margin: 0 auto;
-    text-align: center;
-}
-
-.nav-item:hover .subnav {
-  		display: block;
-  	}
-  	.subnav {
-  		display: none;
-  		position: absolute;
-  		margin: 0;
-  		padding: 0;
-  		list-style: none;
-  		background-color: #eee;
-  		z-index: 9;
-  		width: inherit;
-  		box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-  	}
-  	.subnav li a {
-  		display: block;
-  		text-decoration: none;
-  		color: #000;
-  		padding: 10px;
-  		margin: 0;
-  		border-bottom: 1px solid #ddd;
-  	}
-  	.subnav li a:hover {
-  		background-color: #ccc;
-  	}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link href="StyleSheet.css" rel="stylesheet" type="text/css" media="only screen" />
+    <link href="MobileStyleSheet.css" rel="stylesheet" type="text/css"
+        media="only screen and (max-device-width: 480px) , only screen and (-webkit-min-device-pixel-ratio: 2) , screen and (-webkit-device-pixel-ratio:1.5)" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Secular+One&family=Yeseva+One&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Secular+One&family=Yeseva+One&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Secular+One&family=Yeseva+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
 
 
-.middle-search {
-    margin-top: 30px;
-	margin-bottom: 30px;
-}
 
-input[type="text"] {
-    width: 400px;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-}
-
-button[type="submit"] {
-    background-color: #4CAF50;
-    color: white;
-    padding: 8px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-button[type="submit"]:hover {
-    background-color: #45a049;
-}
-
-    </style>
-  </head>
-
-
-  <header>
     <style>
         .navbar {
             margin: 5px;
@@ -124,30 +74,7 @@ button[type="submit"]:hover {
 
         }
 
-        #search {
-            /* margin-top: 50px; */
-            width: 100%;
-            position: absolute;
-            /* bottom: 416px;
-            left: 320px;
-            height: 36px; */
-            text-align: center;
-            width: 50%;
-            border-radius: 40px;
-            padding: 6px 20px 5px 30px;
-            overflow: auto;
-            display: flex;
-
-
-            /* width: 100%; */
-            /* justify-content: center; */
-            flex-wrap: wrap;
-            flex-grow: inherit;
-            /* display: flex; */
-
-
-
-        }
+        /*  */
 
         #logo {
             /* padding: 10px; */
@@ -157,7 +84,7 @@ button[type="submit"]:hover {
 
         }
 
-.navbar ul li a {
+        .navbar ul li a {
 
             display: block;
             /* padding: 3px 22px; */
@@ -165,97 +92,52 @@ button[type="submit"]:hover {
 
         }
     </style>
-    <<%-include('header')-%>
+</head>
 
+<body>
 
-</header>
+    <header>
+        <%-include("header") -%>
+    </header>
+</body>
+<script>
+    const form = document.querySelector('form');
 
-  <body>
+    form.addEventListener('submit', e => {
+        e.preventDefault();
 
-    <!-- Signup Modal -->
-    <div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Sign Up</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form class="signup-form" action="/signup" method="post">
-                        <div class="form-group">
-                            <label for="name">Name</label>
-                            <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name" required>
-                        </div>
-        
-                        <div>
-                            <label for="password">Password:</label>
-                            <p><input type="password" id="password" name="password" placeholder="Enter Password" required /></p>
-                            <span class="form-error"></span>
-                        </div>
-                        
+        const password = document.getElementById('password');
+        const errorSpan = document.querySelector('.form-error');
 
-                        <div class="form-group">
-                            <label for="phoneNumber">Phone Number</label>
-                            <input type="tel" class="form-control" id="phoneNumber" name="phoneNumber" placeholder="Enter your phone number" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email Address</label>
-                            <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email address" required>
-                        </div>
-                        <div class="form-group">—
-                            <label for="address">Address</label>
-                            <input type="text" class="form-control" id="address" name="address" placeholder="Enter your address" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="emergencyNumber">Emergency Contact Number</label>
-                            <input type="tel" class="form-control" id="emergencyNumber" name="emergencyNumber" placeholder="Enter emergency contact number" required>
-                        </div>
-                        <button type="submit" class="btn btn-primary" id="submitButton">Sign Up</button>
-                    </form>
-                    
-                    <script>
-                        const form = document.querySelector('form');
-            
-                        form.addEventListener('submit', e => {
-                            e.preventDefault();
+        // Validate password
+        let isValid = true;
 
-                            const password = document.getElementById('password');
-                            const errorSpan = document.querySelector('.form-error');
-            
-                            // Validate password
-                            let isValid = true;
-            
-                            if (password.value.length < 12) {
-                                errorSpan.innerHTML = 'Password must be at least 12 characters.';
-                                isValid = false;
-                            } else if (!/[A-Z]/.test(password.value)) {
-                                errorSpan.innerHTML = 'Password must contain at least one uppercase letter.';
-                                isValid = false;
-                            } else if (!/[a-z]/.test(password.value)) {
-                                errorSpan.innerHTML = 'Password must contain at least one lowercase letter.';
-                                 isValid = false;
-                            } else if (!/[0-9]/.test(password.value)) {
-                                errorSpan.innerHTML = 'Password must contain at least one number.';
-                                isValid = false;
-                            } else if (!/[!@#$?]/.test(password.value)) {
-                                errorSpan.innerHTML = 'Password must contain at least one special character.';
-                                isValid = false;
-                            }
-            
-                            // Submit form
-                            if (isValid) {
-                                document.getElementById('submitButton').disabled = true;
-                                form.submit();
-                            }
-                        });
-                    </script>
+        if (password.value.length < 12) {
+            errorSpan.innerHTML = 'Password must be at least 12 characters.';
+            isValid = false;
+        } else if (!/[A-Z]/.test(password.value)) {
+            errorSpan.innerHTML = 'Password must contain at least one uppercase letter.';
+            isValid = false;
+        } else if (!/[a-z]/.test(password.value)) {
+            errorSpan.innerHTML = 'Password must contain at least one lowercase letter.';
+            isValid = false;
+        } else if (!/[0-9]/.test(password.value)) {
+            errorSpan.innerHTML = 'Password must contain at least one number.';
+            isValid = false;
+        } else if (!/[!@#$?]/.test(password.value)) {
+            errorSpan.innerHTML = 'Password must contain at least one special character.';
+            isValid = false;
+        }
 
-                </div>
-            </div>
-        </div>
-    </div>
+        // Submit form
+        if (isValid) {
+            document.getElementById('submitButton').disabled = true;
+            form.submit();
+        }
+    });
+
+</script>
+
 
      <!-- Login Modal -->
      <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -297,7 +179,7 @@ button[type="submit"]:hover {
 			<div class="search-container">
 			
 				<!-- Middle Search Bar -->
-				<div class="middle-search">
+				<div class="middle-search" style="padding-left: 43%; padding-bottom: 2%;">
 					<form>
 						<input type="text" placeholder="Search Medicines" />
 						<button type="submit">Search</button>
@@ -609,5 +491,75 @@ reviewCards.appendChild(card);
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
 
-    <%-include("footer") %>
+  <footer class="site-footer">
+       
+         
+        
+    <div class="foot1 d-flex" style="flex-wrap: wrap; justify-content: space-around;""\>
+      <div class="d-inline-block">
+          <h6>Know us</h6>
+          
+           
+              <ul class="footer-links">
+              <li><a href="aboutus">About Us</a></li>
+              <li><a href="contact">Contact Us</a></li>
+              <li><a href="">Business</a></li>
+              <li><a href="partnership">Partnerships</a></li>
+               <!-- <li><a href="./payments">Payment</a></li>
+              <li><a href="./offers">Offers</a></li> -->
+            </ul>
+          </div>
+            
+
+          <div class="d-inline-block"> 
+            <h6> Our policies</h6>
+              <ul class="footer-links"><li><a href="privacy">Privacy Policy</a>
+              </li>
+              <li><a href="grievance">Grievance Redressal</a></li>
+              <li><a href="fraud">Fake jobs and Frauds</a></li>
+             
+            </ul>
+          </div>
+
+          <div class="d-inline-block"> 
+            <h6>Services</h6>
+              <ul class="footer-links"><li><a href="medicines">Order Medicines</a>
+              </li>
+              <li><a href="appointment-page">Consult a Doctor</a></li>
+              <li><a href="">Articles</a></li>
+              <li><a href="payments">payments</a></li>
+              
+            </ul>
+          </div>
+
+          <div class="d-inline-block"> 
+            <h6> Social Media</h6>
+              <ul class="footer-links"> <li>
+
+                <a href="#" class="fab fa-facebook-f"> facebook</a>
+            </li>
+            <li>
+
+                <a href="#" class="fab fa-twitter"> twitter</a>
+            </li>
+            <li>
+
+                <a href="#" class="fab fa-instagram"> instagram</a>
+            </li>
+              
+            </ul>
+          </div>
+
+        </div>
+            
+            
+         
+      
+        
+    
+      <hr>
+   
+    
+</footer>
+
 </html>

@@ -9,12 +9,30 @@ const Schema = mongoose.Schema;
 
 const patientSchema = new Schema({
     
-    patient_name: String,
-    patient_password: String,
-    patient_phoneNumber: Number,
-    patient_email: String,
-    patient_address:String,
-    patient_emergencyNumber: Number,
+    patient_name: {
+        type:String,
+        default:"Epshita Sarkar"
+    },
+    patient_password: {
+        type:String,
+        default:"QWE!@#123qwe"
+    },
+    patient_phoneNumber: {
+        type:Number,
+        default:"9090908787"
+    },
+    patient_email: {
+        type:String,
+        default:"epshita@gmail.com"
+    },
+    patient_address:{
+        type:String,
+        default:"Mumbai"
+    },
+    patient_emergencyNumber: {
+        type:Number,
+        default:"8787879090"
+    },
     patient_dateOfConsultation:{
         type: String,
         default: Date.now
