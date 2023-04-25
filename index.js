@@ -361,6 +361,7 @@ app.post('/login', async (req, res, next) => {
 
             res.redirect('/doctor_profile')
         }
+<<<<<<< HEAD
         else {
             send("password incorrect")
             // res.redirect('introduction')
@@ -551,6 +552,83 @@ app.post('/signup', async (req, res) => {
         res.status(500).send('Error creating patient');
     }
 });
+=======
+    });
+
+
+    // app.listen(5000, () => {
+    //     console.log('Server listening on port 5000');
+    // });
+
+
+    app.get('/admin_page', (req, res) => {
+        res.render('admin_page')
+    })
+
+    app.get('/index', (req, res) => {
+        res.render('index')
+    })
+
+
+
+    app.get('/payments', (req, res) => {
+        res.render('payments')
+    })
+    app.get('/admin_password_validation', (req, res) => {
+        res.render('admin_password_validation')
+    })
+
+    const passvalSchema = new mongoose.Schema({
+        Name: String,
+        password: String
+      });
+    
+      // Create a model for the collection
+      const Pass = mongoose.model('Pass', passvalSchema);
+    
+      // Route for the login form submission
+      app.post('/api/login', async (req, res) => {
+        const { username, password } = req.body;
+    
+        try {
+          // Look for a document in the Pass collection with the given username and password
+          const result = await Pass.findOne({ Name: username, password });
+          if (result) {
+            // Credentials are valid
+            res.json({ success: true });
+          } else {
+            // Credentials are invalid
+            res.json({ success: false });
+          }
+        } catch (err) {
+          console.error('Error checking credentials:', err.message);
+          res.status(500).json({ success: false });
+        }
+      });
+
+    app.post('/signup', async (req, res) => {
+        try {
+
+            let newpatient = new patient({
+                patient_name: req.body.patient_name,
+                patient_password: req.body.patient_password,
+                patient_phoneNumber: req.body.patient_phoneNumber,
+                patient_email: req.body.patient_email,
+                patient_address: req.body.patient_address,
+                patient_emergencyNumber: req.body.patient_emergencyNumber
+
+            });
+
+            await newpatient.save();
+
+
+            res.redirect('/doctor_project_final')
+
+        } catch {
+            res.status(500).send('Error creating patient');
+        }
+    });
+>>>>>>> 551ca9539f2ca7627b2bb2d077d6b781c526cec8
 
 
 
