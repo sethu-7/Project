@@ -39,7 +39,7 @@ const patientSchema = new Schema({
     },
     patient_timeOfConsultation:{
         type: String,
-        default:"25-4-2023"
+        default:"26-4-2023"
     },
     patient_online: {
         type: String,
